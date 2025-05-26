@@ -21,6 +21,12 @@ export default function Footer({ headline, text, buttonText }: FooterProps) {
 				<Content content={text} className={s.text} />
 				<button>{buttonText}</button>
 			</div>
+			<div className={s.copyright}>
+				<span>Jemac Trångsundsvägen 20F393 56 Kalmar</span>
+				<span>
+					<Link href='https://www.linkedin.com/company/jemac-sweden-ab'>Följ oss på LinkedIn</Link>
+				</span>
+			</div>
 		</footer>
 	);
 }

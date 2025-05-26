@@ -5,12 +5,14 @@
 	align-items: center;
 	background-color: var(--gray-dark);
 	width: 100vw;
+	height: 50vh;
 	margin-left: var(--full-bleed-margin);
 	margin-right: var(--full-bleed-margin);
 	padding: var(--outer-margin);
 
 	.wrap {
 		width: 50%;
+
 		h3 {
 		}
 		.text {
@@ -25,6 +27,21 @@
 			color: var(--white);
 			text-transform: uppercase;
 			cursor: pointer;
+		}
+	}
+	.copyright {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		color: var(--white);
+		* {
+			color: var(--white);
+		}
+		span {
+			flex: 1 1;
+			&:last-child {
+				text-align: right;
+			}
 		}
 	}
 }

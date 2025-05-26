@@ -5,7 +5,7 @@ import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import Header from '@/components/common/Header';
-import Footer from '@/components/nav/Footer';
+import Footer from '@/components/common/Footer';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
