@@ -20,6 +20,9 @@ export const routing = defineRouting({
     '/projekt': {
       en: '/projects'
     },
+    '/projekt/[project]': {
+      en: '/projects/[project]'
+    },
     '/om-oss': {
       en: '/about-us',
     },

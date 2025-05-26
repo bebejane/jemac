@@ -52,7 +52,7 @@ importers:
         version: 15.3.2(@babel/core@7.26.10)(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117)(sass@1.80.4)
       next-dato-utils:
         specifier: github:bebejane/next-dato-utils#next15
-        version: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/9d3852131c981c7c6ad4e66d4d18df81a21be064(@datocms/cma-client-browser@4.0.1)(@datocms/cma-client-node@4.0.1)(@datocms/cma-client@4.0.1)(@types/node@22.14.1)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(datocms-structured-text-utils@5.0.0)(graphql@16.10.0)(postmark@4.0.5)(react-datocms@8.0.0-1(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(graphql@16.10.0)(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117))(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117)(sass@1.80.4)(typescript@5.8.3)(zod@3.24.3)
+        version: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/7c231bd1bd2656e278d6b5d97239677f706f9053(@datocms/cma-client-browser@4.0.1)(@datocms/cma-client-node@4.0.1)(@datocms/cma-client@4.0.1)(@types/node@22.14.1)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(datocms-structured-text-utils@5.0.0)(graphql@16.10.0)(postmark@4.0.5)(react-datocms@8.0.0-1(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(graphql@16.10.0)(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117))(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117)(sass@1.80.4)(typescript@5.8.3)(zod@3.24.3)
       next-intl:
         specifier: ^4.1.0
         version: 4.1.0(next@15.3.2(@babel/core@7.26.10)(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117)(sass@1.80.4))(react@18.3.0-canary-bbb9cb116-20231117)(typescript@5.8.3)
@@ -3117,9 +3117,9 @@ packages:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
 
-  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/9d3852131c981c7c6ad4e66d4d18df81a21be064:
-    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/9d3852131c981c7c6ad4e66d4d18df81a21be064}
-    version: 1.0.707
+  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/7c231bd1bd2656e278d6b5d97239677f706f9053:
+    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/7c231bd1bd2656e278d6b5d97239677f706f9053}
+    version: 1.0.711
     engines: {node: '>=0.18'}
     hasBin: true
     peerDependencies:
@@ -7896,7 +7896,7 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/9d3852131c981c7c6ad4e66d4d18df81a21be064(@datocms/cma-client-browser@4.0.1)(@datocms/cma-client-node@4.0.1)(@datocms/cma-client@4.0.1)(@types/node@22.14.1)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(datocms-structured-text-utils@5.0.0)(graphql@16.10.0)(postmark@4.0.5)(react-datocms@8.0.0-1(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(graphql@16.10.0)(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117))(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117)(sass@1.80.4)(typescript@5.8.3)(zod@3.24.3):
+  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/7c231bd1bd2656e278d6b5d97239677f706f9053(@datocms/cma-client-browser@4.0.1)(@datocms/cma-client-node@4.0.1)(@datocms/cma-client@4.0.1)(@types/node@22.14.1)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(datocms-structured-text-utils@5.0.0)(graphql@16.10.0)(postmark@4.0.5)(react-datocms@8.0.0-1(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(graphql@16.10.0)(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117))(react-dom@18.3.0-canary-bbb9cb116-20231117(react@18.3.0-canary-bbb9cb116-20231117))(react@18.3.0-canary-bbb9cb116-20231117)(sass@1.80.4)(typescript@5.8.3)(zod@3.24.3):
     dependencies:
       '@datocms/cma-client': 4.0.1
       '@datocms/cma-client-browser': 4.0.1

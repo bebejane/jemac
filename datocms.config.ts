@@ -1,14 +1,18 @@
 import { DatoCmsConfig } from 'next-dato-utils/config';
 import client from './lib/client';
+import { defaultLocale, getPathname } from "@/i18n/routing"
 
 const routes: DatoCmsConfig['routes'] = {
-  "start": async () => [`/`],
-  "about": async () => [`/om-oss`],
-  "contact": async () => [`/kontakt`],
-  "offer": async () => [`/erbjudande`],
-  "join_us": async () => [`/bli-en-av-oss`],
-  "project": async () => [`/projekt`],
-
+  "start": async (record, locale) => [getPathname({ locale, href: '/' })],
+  "about": async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
+  "contact": async (record, locale) => [getPathname({ locale, href: '/kontakt' })],
+  "offer": async (record, locale) => [getPathname({ locale, href: '/erbjudande' })],
+  "join_us": async (record, locale) => [getPathname({ locale, href: '/bli-en-av-oss' })],
+  "join": async (record, locale) => [getPathname({ locale, href: '/bli-en-av-oss' })],
+  "showcase": async (record, locale) => [getPathname({ locale, href: '/projekt' })],
+  "staff": async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
+  "client": async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
+  "project": async ({ slug }, locale) => [getPathname({ locale, href: `/projekt/${slug}` }), getPathname({ locale, href: '/projekt' })],
 }
 
 export default {
