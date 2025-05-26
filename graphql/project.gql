@@ -1,5 +1,5 @@
-query Project($locale: SiteLocale) {
-	project(locale: $locale) {
+query Project($locale: SiteLocale, $slug: String) {
+	project(locale: $locale, filter: { slug: { eq: $slug } }) {
 		...ProjectFragment
 	}
 }
@@ -26,6 +26,7 @@ fragment ProjectFragment on ProjectRecord {
 		...ImageFragment
 	}
 	title
+	slug
 }
 
 fragment ProjectLightFragment on ProjectRecord {
@@ -41,4 +42,5 @@ fragment ProjectLightFragment on ProjectRecord {
 		...ImageFragment
 	}
 	title
+	slug
 }

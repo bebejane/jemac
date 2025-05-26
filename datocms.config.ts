@@ -12,7 +12,7 @@ const routes: DatoCmsConfig['routes'] = {
   "showcase": async (record, locale) => [getPathname({ locale, href: '/projekt' })],
   "staff": async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
   "client": async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
-  "project": async ({ slug }, locale) => [getPathname({ locale, href: `/projekt/${slug}` }), getPathname({ locale, href: '/projekt' })],
+  "project": async ({ slug }, locale) => [getPathname({ locale, href: { pathname: `/projekt/[project]`, params: { project: slug } } }), getPathname({ locale, href: '/projekt' })],
 }
 
 export default {
