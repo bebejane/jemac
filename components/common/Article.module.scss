@@ -1,0 +1,31 @@
+.article {
+	padding-bottom: calc(1.5 * var(--space-big));
+	position: relative;
+
+	header {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+
+		h1 {
+			flex: 1 1 auto;
+
+			@include mq($until: desktop) {
+				color: var(--white);
+			}
+		}
+		.headerContent {
+			position: absolute;
+			top: 0;
+			right: 0;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-left: var(--gutter);
+			button,
+			a {
+				flex: 0 0;
+			}
+		}
+	}
+}

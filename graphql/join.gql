@@ -1,0 +1,9 @@
+query Join($locale: SiteLocale) {
+	join(locale: $locale) {
+		...JoinFragment
+	}
+}
+
+fragment JoinFragment on JoinRecord {
+	title
+}

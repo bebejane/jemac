@@ -1,0 +1,41 @@
+query Offer($locale: SiteLocale) {
+	offer(locale: $locale) {
+		...OfferFragment
+	}
+}
+
+fragment OfferFragment on OfferRecord {
+	footer {
+		... on FooterRecord {
+			buttonText
+		}
+	}
+	header {
+		... on HeaderRecord {
+			image {
+				...ImageFragment
+			}
+		}
+	}
+	sections {
+		... on SectionRecord {
+			referenceProject {
+				... on ProjectRecord {
+					client {
+						... on ClientRecord {
+							logo {
+								...ImageFragment
+							}
+							name
+						}
+					}
+					image {
+						...ImageFragment
+					}
+					title
+				}
+			}
+		}
+	}
+	title
+}

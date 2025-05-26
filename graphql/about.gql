@@ -1,0 +1,24 @@
+query About($locale: SiteLocale) {
+	about(locale: $locale) {
+		title
+		header {
+			id
+			image {
+				...ImageFragment
+			}
+			headline {
+				blocks
+				links
+				value
+			}
+			text {
+				blocks
+				links
+				value
+			}
+		}
+		footer {
+			...FooterFragment
+		}
+	}
+}

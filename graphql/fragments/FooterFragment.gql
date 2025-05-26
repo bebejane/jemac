@@ -1,0 +1,14 @@
+fragment FooterFragment on FooterRecord {
+	id
+	text {
+		blocks
+		links
+		value
+	}
+	text {
+		blocks
+		links
+		value
+	}
+	buttonText
+}

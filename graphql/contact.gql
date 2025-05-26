@@ -1,0 +1,10 @@
+query Contact($locale: SiteLocale) {
+	contact(locale: $locale) {
+		title
+		intro {
+			blocks
+			links
+			value
+		}
+	}
+}

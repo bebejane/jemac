@@ -1,0 +1,42 @@
+{
+	"menu": {
+		"offer": {
+			"en": "What we offer",
+			"sv": "Vårt erbjudande"
+		},
+		"projects": {
+			"en": "Projects",
+			"sv": "Projekt"
+		},
+		"about": {
+			"en": "About us",
+			"sv": "Om oss"
+		},
+		"join": {
+			"en": "Join us",
+			"sv": "Bli en av oss"
+		},
+		"contact": {
+			"en": "Contact",
+			"sv": "Kontakt"
+		}
+	},
+	"Start": {
+		"readmore": {
+			"en": "Read more",
+			"sv": "Läs mer"
+		}
+	},
+	"Contact": {
+		"title": {
+			"en": "Contact",
+			"sv": "Kontakt"
+		},
+		"close": {
+			"en": "Close",
+			"sv": "Stäng"
+		}
+	},
+	"About": {},
+	"Manifest": {}
+}

@@ -1,0 +1,28 @@
+query Staff($locale: SiteLocale) {
+	staff(locale: $locale) {
+		...StaffFragment
+	}
+}
+
+query AllStaff($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale) {
+	allStaffs(first: $first, skip: $skip, locale: $locale) {
+		...StaffFragment
+	}
+	_allStaffsMeta {
+		count
+	}
+}
+
+fragment StaffFragment on StaffRecord {
+	image {
+		...ImageFragment
+	}
+	name
+}
+
+fragment StaffLightFragment on StaffRecord {
+	image {
+		...ImageFragment
+	}
+	name
+}

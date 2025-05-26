@@ -1,0 +1,28 @@
+query Client {
+  client {
+    ...ClientFragment
+  }
+}
+
+query AllClients($first: IntType = 500, $skip: IntType = 0) {
+  allClients(first: $first, skip: $skip) {
+    ...ClientFragment
+  }
+  _allClientsMeta {
+    count
+  }
+}
+
+fragment ClientFragment on ClientRecord {
+  logo {
+    ...ImageFragment
+  }
+  name
+}
+
+fragment ClientLightFragment on ClientRecord {
+  logo {
+    ...ImageFragment
+  }
+  name
+}
