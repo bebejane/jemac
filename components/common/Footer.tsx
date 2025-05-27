@@ -6,12 +6,10 @@ import Link from 'next/link';
 import Content from '@/components/common/Content';
 
 type FooterProps = {
-	headline: any;
-	text: any;
-	buttonText: string;
+	footer: FooterRecord;
 };
 
-export default function Footer({ headline, text, buttonText }: FooterProps) {
+export default function Footer({ footer: { headline, text, buttonText } }: FooterProps) {
 	return (
 		<footer className={s.footer}>
 			<div className={s.wrap}>

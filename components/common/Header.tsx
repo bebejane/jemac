@@ -11,15 +11,19 @@ type Props = {
 	headline: any;
 	image?: FileField;
 	text?: any;
+	position: 'left' | 'right';
 };
 
-export default function Header({ headline, image, text }: Props) {
+export default function Header({ headline, image, text, position = 'left' }: Props) {
 	return (
-		<header className={s.header}>
+		<header className={cn(s.header, s[position])}>
 			{image?.responsiveImage && <Image data={image.responsiveImage} className={s.image} />}
+			<div className={s.fade} />
 			<div className={s.text}>
-				{headline && <Content content={headline} className={s.headline} />}
-				{text && <Content content={text} className={s.content} />}
+				<div className={s.wrap}>
+					{headline && <Content content={headline} className={s.headline} />}
+					{text && <Content content={text} className={s.content} />}
+				</div>
 			</div>
 		</header>
 	);

@@ -1,5 +1,5 @@
 query Start($locale: SiteLocale) {
-	start(locale: $locale) {
+	start(locale: $locale, fallbackLocales: [sv]) {
 		...StartFragment
 	}
 }
@@ -16,9 +16,7 @@ fragment StartFragment on StartRecord {
 		value
 	}
 	footer {
-		... on FooterRecord {
-			buttonText
-		}
+		...FooterFragment
 	}
 	headerImage {
 		...ImageFragment

@@ -6,19 +6,24 @@ query Offer($locale: SiteLocale) {
 
 fragment OfferFragment on OfferRecord {
 	footer {
-		... on FooterRecord {
-			buttonText
-		}
+		...FooterFragment
 	}
 	header {
-		... on HeaderRecord {
-			image {
-				...ImageFragment
-			}
-		}
+		...HeaderFragment
 	}
 	sections {
 		... on SectionRecord {
+			id
+			headline {
+				blocks
+				links
+				value
+			}
+			text {
+				blocks
+				links
+				value
+			}
 			referenceProject {
 				... on ProjectRecord {
 					client {

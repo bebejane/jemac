@@ -1,0 +1,16 @@
+fragment HeaderFragment on HeaderRecord {
+	id
+	headline {
+		blocks
+		links
+		value
+	}
+	text {
+		blocks
+		links
+		value
+	}
+	image {
+		...ImageFragment
+	}
+}

@@ -1,5 +1,7 @@
 .header {
 	position: relative;
+	display: flex;
+	justify-content: flex-start;
 	width: 100vw;
 	height: calc(100vh - var(--navbar-height));
 	margin-left: var(--full-bleed-margin);
@@ -10,21 +12,58 @@
 		height: 100%;
 		object-fit: cover;
 		z-index: 0;
-		opacity: 0.2;
 	}
+
+	.fade {
+		background: rgba(255, 255, 255, 1);
+		background: linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.7) 0%,
+			rgba(255, 255, 255, 0.7) 50%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
 	.text {
 		position: absolute;
-		top: var(--space);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 		padding: var(--outer-margin);
+		top: var(--space);
 		left: 0;
-		width: 50%;
+		width: 100%;
 		z-index: 100;
 
-		.headline {
-			color: var(--green);
-			strong {
-				color: var(--blue);
+		.wrap {
+			width: 50%;
+
+			.headline {
+				color: var(--green);
+				strong {
+					color: var(--blue);
+				}
 			}
+		}
+	}
+
+	&.right {
+		.text {
+			align-items: flex-end;
+		}
+		.fade {
+			background: linear-gradient(
+				-90deg,
+				rgba(255, 255, 255, 0.7) 0%,
+				rgba(255, 255, 255, 0.7) 50%,
+				rgba(255, 255, 255, 0) 100%
+			);
 		}
 	}
 }

@@ -6,13 +6,15 @@ import Link from 'next/link';
 import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
 import Content from './Content';
+import Header from '@/components/common/Header';
 
 export type ArticleProps = {
 	title?: string;
+	headline: any;
 	image?: FileField;
+	headerPosition?: 'left' | 'right';
 	intro?: any;
 	content?: any;
-	headerContent?: any;
 	markdown?: boolean;
 	link?: {
 		href: string;
@@ -24,32 +26,27 @@ export type ArticleProps = {
 
 export default function Article({
 	title,
+	headline,
 	image,
 	intro,
+	headerPosition = 'left',
 	content,
-	headerContent,
-	markdown = false,
 	link,
 	className,
 	children,
 }: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
-			{title && (
-				<header>
-					<h1>{title}</h1>
-				</header>
+			{headline && (
+				<Header
+					headline={headline}
+					image={image as FileField}
+					text={intro}
+					position={headerPosition}
+				/>
 			)}
-			{intro && markdown && <Markdown content={intro} className={'intro'} />}
-			{content && markdown && <Markdown content={content} className={s.content} />}
-			{intro && !markdown && <Content content={intro} className={'intro'} />}
-			{content && !markdown && <Content content={content} className={s.content} />}
+			{content && <Content content={content} className={s.content} />}
 			{children}
-			{link && (
-				<Link href={link.href}>
-					<button className='medium-weight shortcut'>{link.text}</button>
-				</Link>
-			)}
 		</article>
 	);
 }

@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import Article from '@/components/common/Article';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -20,16 +21,16 @@ export default async function Home({ params }: PageProps) {
 	if (!start) return notFound();
 
 	const { headerHeadline, headerImage, headerText } = start;
+
 	return (
 		<>
-			<div className={s.page}>
-				<Header headline={headerHeadline} image={headerImage as FileField} text={headerText} />
-				<Footer
-					headline={start.footer.headline}
-					text={start.footer.text}
-					buttonText={start.footer.buttonText}
-				/>
-			</div>
+			<Article
+				headline={headerHeadline}
+				image={headerImage as FileField}
+				intro={headerText}
+				headerPosition='left'
+			/>
+			<Footer footer={start.footer as FooterRecord} />
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
 	);
