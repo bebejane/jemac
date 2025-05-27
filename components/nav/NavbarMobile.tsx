@@ -30,7 +30,7 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 			<div className={cn(s.topbar, open && s.open)}>
 				<figure className={s.logo}>
 					<Link href={'/'}>
-						<img src={open ? '/images/logo.webp' : '/images/logo.webp'} alt='Logo' />
+						<img src={'/images/logo.svg'} alt='Logo' />
 					</Link>
 				</figure>
 				<div className={s.hamburger}>

@@ -19,8 +19,8 @@
 		background: rgba(255, 255, 255, 1);
 		background: linear-gradient(
 			90deg,
-			rgba(255, 255, 255, 0.7) 0%,
-			rgba(255, 255, 255, 0.7) 50%,
+			rgba(255, 255, 255, 0.9) 0%,
+			rgba(255, 255, 255, 0.9) 50%,
 			rgba(255, 255, 255, 0) 100%
 		);
 		position: absolute;
@@ -61,8 +61,8 @@
 		.fade {
 			background: linear-gradient(
 				-90deg,
-				rgba(255, 255, 255, 0.7) 0%,
-				rgba(255, 255, 255, 0.7) 50%,
+				rgba(255, 255, 255, 0.9) 0%,
+				rgba(255, 255, 255, 0.9) 50%,
 				rgba(255, 255, 255, 0) 100%
 			);
 		}

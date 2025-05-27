@@ -19,7 +19,9 @@ export default function Footer({ footer }: FooterProps) {
 					<Content content={headline} className={s.headline} />
 				</h3>
 				<Content content={text} className={s.text} />
-				<button>{buttonText}</button>
+				<Link href='mailto:info@jemac.se'>
+					<button>{buttonText}</button>
+				</Link>
 			</div>
 			<div className={s.copyright}>
 				<span>Jemac Trångsundsvägen 20F393 56 Kalmar</span>

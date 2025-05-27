@@ -46,7 +46,6 @@ type AboutRecord = RecordInterface & {
   header: HeaderRecord;
   id: Scalars['ItemId']['output'];
   sections: Array<SectionRecord>;
-  staff: Array<StaffRecord>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -2748,6 +2747,7 @@ type ProjectModelWhyFieldMultiLocaleField = {
 type ProjectRecord = RecordInterface & {
   __typename?: 'ProjectRecord';
   _allResultLocales?: Maybe<Array<ProjectModelResultFieldMultiLocaleField>>;
+  _allSlugLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allSummaryLocales?: Maybe<Array<ProjectModelSummaryFieldMultiLocaleField>>;
   _allThumbHeadlineLocales?: Maybe<Array<StringMultiLocaleField>>;
   _allThumbTextLocales?: Maybe<Array<ProjectModelThumbTextFieldMultiLocaleField>>;
@@ -2784,6 +2784,12 @@ type ProjectRecord = RecordInterface & {
 
 /** Record of type Project (project) */
 type ProjectRecord_allResultLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Project (project) */
+type ProjectRecord_allSlugLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
@@ -2832,6 +2838,13 @@ type ProjectRecord_seoMetaTagsArgs = {
 
 /** Record of type Project (project) */
 type ProjectRecordresultArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Project (project) */
+type ProjectRecordslugArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
