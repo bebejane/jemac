@@ -6,4 +6,13 @@ query Join($locale: SiteLocale) {
 
 fragment JoinFragment on JoinRecord {
 	title
+	header {
+		...HeaderFragment
+	}
+	sections {
+		...SectionFragment
+	}
+	footer {
+		...FooterFragment
+	}
 }

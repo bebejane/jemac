@@ -65,6 +65,15 @@ declare module '*/ImageFragment.gql' {
 }
     
 
+declare module '*/ImageSquareFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ImageSquareFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageThumbnailFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -78,6 +87,15 @@ declare module '*/MediaFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const MediaFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/SectionFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const SectionFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -133,13 +151,22 @@ export const ProjectLightFragment: DocumentNode;
 }
     
 
+declare module '*/showcase.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Showcase: DocumentNode;
+export const ShowcaseFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/staff.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Staff: DocumentNode;
 export const AllStaff: DocumentNode;
 export const StaffFragment: DocumentNode;
-export const StaffLightFragment: DocumentNode;
 
   export default defaultDocument;
 }

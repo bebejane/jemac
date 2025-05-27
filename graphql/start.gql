@@ -5,21 +5,11 @@ query Start($locale: SiteLocale) {
 }
 
 fragment StartFragment on StartRecord {
-	headerHeadline {
-		blocks
-		links
-		value
-	}
-	headerText {
-		blocks
-		links
-		value
+	header {
+		...HeaderFragment
 	}
 	footer {
 		...FooterFragment
-	}
-	headerImage {
-		...ImageFragment
 	}
 	jobsImage {
 		...ImageFragment

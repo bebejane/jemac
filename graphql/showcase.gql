@@ -1,0 +1,18 @@
+query Showcase($locale: SiteLocale) {
+	showcase(locale: $locale) {
+		...ShowcaseFragment
+	}
+}
+
+fragment ShowcaseFragment on ShowcaseRecord {
+	title
+	header {
+		...HeaderFragment
+	}
+	sections {
+		...SectionFragment
+	}
+	footer {
+		...FooterFragment
+	}
+}

@@ -19,11 +19,7 @@ export default function Navbar({ menu, bottom }: NavbarProps) {
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
-	const [subStyle, setSubStyle] = useState<CSSProperties | null>();
-	const { innerHeight, innerWidth } = useWindowSize();
-	const { scrolledPosition, viewportHeight } = useScrollInfo();
 	const logoRef = useRef<HTMLImageElement>(null);
-	const parent = menu.find(({ id }) => id === selected);
 
 	function isSelected(item: MenuItem) {
 		return pathname.startsWith(item.slug) || pathname === item.slug;
@@ -49,7 +45,7 @@ export default function Navbar({ menu, bottom }: NavbarProps) {
 						<li
 							id={`${item.id}-menu`}
 							key={`${item.id}-menu`}
-							className={cn(item.sub)}
+							className={cn(isSelected(item) && s.active)}
 							onMouseEnter={() => handleEnter(item.sub ? item.id : null)}
 						>
 							<Link href={item.slug ?? item.href}>{item.title}</Link>

@@ -5,14 +5,12 @@ import cn from 'classnames';
 import Link from 'next/link';
 import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
-import Content from './Content';
-import Header from '@/components/common/Header';
+import Content from '@/components/common/Content';
+import Header from '@/components/layout/Header';
 
 export type ArticleProps = {
 	title?: string;
-	headline: any;
-	image?: FileField;
-	headerPosition?: 'left' | 'right';
+	header?: HeaderRecord;
 	intro?: any;
 	content?: any;
 	markdown?: boolean;
@@ -26,10 +24,8 @@ export type ArticleProps = {
 
 export default function Article({
 	title,
-	headline,
-	image,
+	header,
 	intro,
-	headerPosition = 'left',
 	content,
 	link,
 	className,
@@ -37,14 +33,7 @@ export default function Article({
 }: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
-			{headline && (
-				<Header
-					headline={headline}
-					image={image as FileField}
-					text={intro}
-					position={headerPosition}
-				/>
-			)}
+			{header && <Header header={header} />}
 			{content && <Content content={content} className={s.content} />}
 			{children}
 		</article>

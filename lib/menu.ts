@@ -24,13 +24,13 @@ export const buildMenu = async (locale: SiteLocale): Promise<Menu> => {
     title: t('projects'),
     slug: '/projekt',
   }, {
-    id: 'about',
-    title: t('about'),
-    slug: '/om-oss',
-  }, {
     id: 'join-us',
     title: t('join'),
     slug: '/bli-en-av-oss',
+  }, {
+    id: 'about',
+    title: t('about'),
+    slug: '/om-oss',
   }, {
     id: 'contact',
     title: t('contact'),

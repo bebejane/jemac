@@ -8,16 +8,14 @@ import { StructuredTextDocument } from 'react-datocms/structured-text';
 import { Image } from 'react-datocms';
 
 type Props = {
-	headline: any;
-	image?: FileField;
-	text?: any;
-	position: 'left' | 'right';
+	header: HeaderRecord;
 };
 
-export default function Header({ headline, image, text, position = 'left' }: Props) {
+export default function Header({ header }: Props) {
+	const { headline, image, text, align } = header;
 	return (
-		<header className={cn(s.header, s[position])}>
-			{image?.responsiveImage && <Image data={image.responsiveImage} className={s.image} />}
+		<header className={cn(s.header, s[align])}>
+			{image?.responsiveImage && <Image data={image.responsiveImage} imgClassName={s.image} />}
 			<div className={s.fade} />
 			<div className={s.text}>
 				<div className={s.wrap}>

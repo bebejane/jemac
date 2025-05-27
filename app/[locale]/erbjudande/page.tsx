@@ -1,12 +1,12 @@
-import Article from '@/components/common/Article';
 import s from './page.module.scss';
+import Article from '@/components/layout/Article';
 import { OfferDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Section from '@/components/common/Section';
-import Footer from '@/components/common/Footer';
+import Section from '@/components/layout/Section';
+import Footer from '@/components/layout/Footer';
 
 export default async function OfferPage({ params }: PageProps) {
 	const { locale } = await params;
@@ -24,13 +24,7 @@ export default async function OfferPage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article
-				headline={header.headline}
-				image={header.image as FileField}
-				intro={header.text}
-				title={title}
-				headerPosition='right'
-			>
+			<Article title={title} header={header as HeaderRecord}>
 				{sections.map((section) => (
 					<Section
 						key={section.id}

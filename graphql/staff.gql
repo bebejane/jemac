@@ -14,15 +14,14 @@ query AllStaff($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale) {
 }
 
 fragment StaffFragment on StaffRecord {
-	image {
-		...ImageFragment
-	}
+	id
 	name
-}
-
-fragment StaffLightFragment on StaffRecord {
 	image {
-		...ImageFragment
+		...ImageSquareFragment
 	}
-	name
+	text {
+		blocks
+		links
+		value
+	}
 }

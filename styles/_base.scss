@@ -4,7 +4,7 @@
 :root {
 	--black: #000000;
 	--white: #fafafa;
-	--gray: #efefef;
+	--gray: #e9e9e9;
 	--gray-dark: #5a5a5a;
 	--red: #cd3a00;
 	--blue: #0072bc;
@@ -19,10 +19,9 @@
 	--space-big: 2.5rem;
 	--space-small: 1rem;
 
-	--margin: calc(calc(2 * var(--grid-unit)) + calc(2 * var(--gutter)));
+	--margin: 0;
 	--full-margin: calc(-1 * var(--margin));
 	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
-	--ful-margin: calc(calc(-1 * var(--margin)));
 
 	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) * 5));
 
@@ -70,8 +69,8 @@ main {
 }
 
 article {
-	padding-left: var(--outer-margin);
-	padding-right: var(--outer-margin);
+	//padding-left: var(--outer-margin);
+	//padding-right: var(--outer-margin);
 
 	@include mq($from: desktop) {
 		margin-right: var(--margin);

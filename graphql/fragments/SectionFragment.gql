@@ -1,0 +1,29 @@
+fragment SectionFragment on SectionRecord {
+	id
+	headline {
+		blocks
+		links
+		value
+	}
+	text {
+		blocks
+		links
+		value
+	}
+	referenceProject {
+		... on ProjectRecord {
+			client {
+				... on ClientRecord {
+					logo {
+						...ImageFragment
+					}
+					name
+				}
+			}
+			image {
+				...ImageFragment
+			}
+			title
+		}
+	}
+}

@@ -5,6 +5,7 @@ query Offer($locale: SiteLocale) {
 }
 
 fragment OfferFragment on OfferRecord {
+	title
 	footer {
 		...FooterFragment
 	}
@@ -12,35 +13,6 @@ fragment OfferFragment on OfferRecord {
 		...HeaderFragment
 	}
 	sections {
-		... on SectionRecord {
-			id
-			headline {
-				blocks
-				links
-				value
-			}
-			text {
-				blocks
-				links
-				value
-			}
-			referenceProject {
-				... on ProjectRecord {
-					client {
-						... on ClientRecord {
-							logo {
-								...ImageFragment
-							}
-							name
-						}
-					}
-					image {
-						...ImageFragment
-					}
-					title
-				}
-			}
-		}
+		...SectionFragment
 	}
-	title
 }

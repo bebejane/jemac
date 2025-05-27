@@ -1,0 +1,29 @@
+.section {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: var(--space);
+
+	> div {
+		flex: 0 0 50%;
+	}
+	.header {
+		display: flex;
+		flex-direction: column;
+
+		.headline {
+			flex: 1 1 auto;
+		}
+		.project {
+			flex: 0 0;
+			background-color: var(--gray);
+			display: flex;
+			flex-direction: row;
+
+			.image {
+				width: 100px;
+				height: 100px;
+				object-fit: cover;
+			}
+		}
+	}
+}
