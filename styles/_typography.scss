@@ -21,7 +21,7 @@ h3,
 h4,
 h5 {
 	font-family: var(--headline-font);
-	line-height: 1;
+	line-height: var(--line-height);
 	font-weight: normal;
 
 	strong {
@@ -36,6 +36,7 @@ h2 {
 	padding-bottom: var(--space);
 	line-height: 1.25;
 	font-variation-settings: var(--font-weight-bold) !important;
+	letter-spacing: -0.015em;
 
 	@include mq($from: desktop) {
 		font-size: 2.5rem;
@@ -57,6 +58,7 @@ h4,
 h4 strong {
 	color: var(--blue);
 	padding-bottom: 0.5em;
+	padding-top: 0.5em;
 	font-variation-settings: var(--font-weight-bold) !important;
 	font-weight: normal;
 }
@@ -80,7 +82,7 @@ section {
 		font-size: 0.9rem;
 		margin-bottom: 1rem;
 		p {
-			margin-bottom: 0;
+			margin-bottom: 0.25em;
 		}
 	}
 }
@@ -126,52 +128,6 @@ b {
 
 // För Article
 article {
-	blockquote {
-		margin-left: 0;
-		font-family: var(--label-font);
-		color: var(--darkred);
-		margin-bottom: 1.5em;
-		position: relative;
-
-		p {
-			padding-top: 0.5em;
-			margin-bottom: 0.5em;
-		}
-
-		footer {
-			color: var(--black);
-			font-family: var(--sans-font);
-			font-size: 0.7rem;
-		}
-
-		&::before {
-			@include mq($from: desktop) {
-				content: "’’";
-				position: absolute;
-				left: -7rem;
-				top: 4rem;
-				font-family: var(--headline-font);
-				font-size: 8rem;
-				color: var(--white);
-				--line-tickness: 0.06rem;
-				-webkit-text-stroke: var(--line-tickness) var(--darkred);
-				/* text-shadow:
-          var(--line-tickness) var(--line-tickness) 0 var(--darkred),
-          calc(-1 * var(--line-tickness)) var(--line-tickness) 0 var(--darkred),
-          calc(-1 * var(--line-tickness)) calc(-1 * var(--line-tickness)) 0 var(--darkred),
-          var(--line-tickness) calc(-1 * var(--line-tickness)) 0 var(--darkred); */
-			}
-		}
-	}
-
-	a:hover {
-		color: var(--darkred);
-
-		p {
-			color: var(--black);
-		}
-	}
-
 	p a {
 		text-decoration: underline;
 		text-underline-offset: 0.25em;
@@ -200,13 +156,6 @@ article {
 	ul + h2,
 	p + h2 {
 		padding-top: 1rem;
-	}
-
-	p strong,
-	p b {
-		font-weight: normal !important;
-		font-family: var(--label-font);
-		font-size: 0.95rem;
 	}
 
 	p.center {
