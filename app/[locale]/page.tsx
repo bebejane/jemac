@@ -1,15 +1,14 @@
 import s from './page.module.scss';
-import { StartDocument } from '@/graphql';
+import { StartDocument, AllProjectsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import Footer from '@/components/layout/Footer';
 import Article from '@/components/layout/Article';
-import Link from 'next/link';
-import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
 import Shortcut from '@/components/common/Shortcut';
+import ProjectGallery from '@/components/common/ProjectGallery';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -21,10 +20,20 @@ export default async function Home({ params }: PageProps) {
 		},
 	});
 
+	const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
+		AllProjectsDocument,
+		{
+			variables: {
+				locale,
+				first: 2,
+			},
+		}
+	);
+
 	if (!start) return notFound();
 
 	const { header, footer, shortcuts, textHeadline, textText } = start;
-
+	console.log(allProjects);
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
@@ -40,6 +49,9 @@ export default async function Home({ params }: PageProps) {
 					<div>
 						<Content content={textText} className={s.text} />
 					</div>
+				</section>
+				<section className={s.projects}>
+					<ProjectGallery projects={allProjects} />
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />

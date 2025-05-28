@@ -6,7 +6,7 @@ query Project($locale: SiteLocale, $slug: String) {
 
 query AllProjects($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale) {
 	allProjects(first: $first, skip: $skip, locale: $locale) {
-		...ProjectFragment
+		...ProjectLightFragment
 	}
 	_allProjectsMeta(locale: $locale) {
 		count
@@ -31,15 +31,18 @@ fragment ProjectFragment on ProjectRecord {
 
 fragment ProjectLightFragment on ProjectRecord {
 	client {
-		... on ClientRecord {
-			logo {
-				...ImageFragment
-			}
-			name
+		name
+		logo {
+			...ImageFragment
 		}
 	}
 	image {
 		...ImageFragment
+	}
+	summary {
+		blocks
+		links
+		value
 	}
 	title
 	slug
