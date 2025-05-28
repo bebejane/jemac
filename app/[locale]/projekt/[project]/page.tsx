@@ -4,15 +4,14 @@ import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'next';
+import ProjectGallery from '@/components/common/ProjectGallery';
 
 export type ProjectProps = {
-	params: Promise<{ project: string }>;
-	draft?: boolean;
+	params: Promise<{ project: string; locale: SiteLocale }>;
 };
 
-export default async function ProjectPage(props: ProjectProps) {
-	const { params, draft } = props;
-	const { project: slug } = await params;
+export default async function ProjectPage({ params }: ProjectProps) {
+	const { project: slug, locale } = await params;
 	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(
 		ProjectDocument,
 		{
@@ -22,13 +21,27 @@ export default async function ProjectPage(props: ProjectProps) {
 		}
 	);
 
+	const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
+		AllProjectsDocument,
+		{
+			variables: {
+				locale,
+				first: 2,
+			},
+		}
+	);
+
 	if (!project) return notFound();
 
-	const { title } = project;
+	const { title, header, image, summary, client, result, what, why } = project;
 
 	return (
 		<>
-			<Article title={title}></Article>
+			<Article title={title} header={header as HeaderRecord}>
+				<section>
+					<ProjectGallery projects={allProjects} />
+				</section>
+			</Article>
 			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />
 		</>
 	);
