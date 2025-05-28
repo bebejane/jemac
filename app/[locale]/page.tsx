@@ -4,6 +4,7 @@ import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
+import { Image } from 'react-datocms';
 import Footer from '@/components/layout/Footer';
 import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
@@ -32,14 +33,17 @@ export default async function Home({ params }: PageProps) {
 
 	if (!start) return notFound();
 
-	const { header, footer, shortcuts, textHeadline, textText } = start;
+	const { header, footer, shortcuts, textHeadline, textText, jobsHeadline, jobsImage, jobsText } =
+		start;
 	console.log(allProjects);
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
 				<section className={s.shortcuts}>
 					<ul>
-						{shortcuts?.map((shortcut) => <Shortcut shortcut={shortcut as ShortcutRecord} />)}
+						{shortcuts?.map((shortcut) => (
+							<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} />
+						))}
 					</ul>
 				</section>
 				<section className={s.text}>
@@ -52,6 +56,15 @@ export default async function Home({ params }: PageProps) {
 				</section>
 				<section className={s.projects}>
 					<ProjectGallery projects={allProjects} />
+				</section>
+				<section className={s.jobs}>
+					<div>
+						{jobsImage && <Image data={jobsImage.responsiveImage} imgClassName={s.image} />}
+					</div>
+					<div>
+						<Content content={jobsHeadline} className={s.headline} />
+						<Content content={jobsText} className={s.text} />
+					</div>
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />

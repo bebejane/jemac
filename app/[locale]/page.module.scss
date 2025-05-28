@@ -17,3 +17,11 @@
 		width: 50%;
 	}
 }
+
+.jobs {
+	display: flex;
+	flex-direction: row;
+	> div {
+		flex: 0 0 50%;
+	}
+}
