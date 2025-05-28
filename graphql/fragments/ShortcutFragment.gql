@@ -1,0 +1,17 @@
+fragment ShortcutFragment on ShortcutRecord {
+	id
+	image {
+		...ImageFragment
+	}
+	headline {
+		value
+		blocks
+		links
+	}
+	text {
+		value
+		blocks
+		links
+	}
+	linkText
+}

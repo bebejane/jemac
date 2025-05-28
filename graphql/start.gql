@@ -15,12 +15,7 @@ fragment StartFragment on StartRecord {
 		...ImageFragment
 	}
 	shortcuts {
-		... on ShortcutRecord {
-			image {
-				...ImageFragment
-			}
-			linkText
-		}
+		...ShortcutFragment
 	}
 	footer {
 		headline {
