@@ -6,22 +6,34 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		margin: 0;
+		justify-content: space-between;
+		margin-bottom: var(--space-big);
 	}
 }
 
 .text {
+	border-top: var(--line);
+	padding-top: var(--space-big);
 	display: flex;
 	flex-direction: row;
+	margin-bottom: var(--space-big);
 
-	> div {
-		width: 50%;
+	> div:first-child {
+		width: 30%;
+	}
+	> div:last-child {
+		width: 60%;
+		margin-left: 10%;
 	}
 }
 
 .jobs {
+	margin-top: var(--space-big);
+	margin-bottom: var(--space-big);
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	> div {
-		flex: 0 0 50%;
+		flex: 0 0 calc(50% - var(--gutter));
 	}
 }

@@ -20,7 +20,7 @@ export default function Header({ header }: Props) {
 			<div className={s.text}>
 				<div className={s.wrap}>
 					{headline && <Content content={headline} className={s.headline} />}
-					{text && <Content content={text} className={s.content} />}
+					{text && <Content content={text} className={cn(s.content, "intro")} />}
 				</div>
 			</div>
 		</header>

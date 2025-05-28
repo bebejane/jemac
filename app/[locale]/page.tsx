@@ -50,7 +50,7 @@ export default async function Home({ params }: PageProps) {
 						<Content content={textHeadline} className={s.headline} />
 					</div>
 					<div>
-						<Content content={textText} className={s.text} />
+						<Content content={textText} className={s.texts} />
 					</div>
 				</section>
 				<section className={s.projects}>
@@ -62,7 +62,7 @@ export default async function Home({ params }: PageProps) {
 					</div>
 					<div>
 						<Content content={jobsHeadline} className={s.headline} />
-						<Content content={jobsText} className={s.text} />
+						<Content content={jobsText} className={s.jobtext} />
 					</div>
 				</section>
 			</Article>

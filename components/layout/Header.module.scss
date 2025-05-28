@@ -17,17 +17,18 @@
 	}
 
 	.fade {
+		--fadeGray: 250;
 		background: rgba(255, 255, 255, 1);
 		background: linear-gradient(
 			90deg,
-			rgba(255, 255, 255, 0.9) 0%,
-			rgba(255, 255, 255, 0.9) 50%,
-			rgba(255, 255, 255, 0) 100%
+			rgba(var(--fadeGray), var(--fadeGray), var(--fadeGray), 0.9) 0%,
+			rgba(var(--fadeGray), var(--fadeGray), var(--fadeGray), 0.9) 60%,
+			rgba(var(--fadeGray), var(--fadeGray), var(--fadeGray), 0) 100%
 		);
 		position: absolute;
 		top: 0;
-		right: 0;
-		width: 70%;
+		left: 0;
+		width: 75%;
 		height: 100%;
 		z-index: 1;
 	}
@@ -62,9 +63,11 @@
 			background: linear-gradient(
 				-90deg,
 				rgba(255, 255, 255, 0.9) 0%,
-				rgba(255, 255, 255, 0.9) 50%,
+				rgba(255, 255, 255, 0.9) 60%,
 				rgba(255, 255, 255, 0) 100%
 			);
+			right: 0;
+			left: auto;
 		}
 	}
 }

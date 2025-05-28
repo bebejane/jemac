@@ -5,6 +5,7 @@ html,
 body {
 	font-size: 16px;
 	font-weight: normal;
+	//font-variation-settings: "wght" 450 !important;
 
 	@include mq($from: tablet) {
 		font-size: 20px;
@@ -21,7 +22,7 @@ h3,
 h4,
 h5 {
 	font-family: var(--headline-font);
-	line-height: var(--line-height);
+	line-height: var(--line-height-headlines);
 	font-weight: normal;
 
 	strong {
@@ -36,22 +37,49 @@ h2 {
 	padding-bottom: var(--space);
 	line-height: 1.25;
 	font-variation-settings: var(--font-weight-bold) !important;
-	letter-spacing: -0.015em;
 
 	@include mq($from: desktop) {
-		font-size: 2.5rem;
+		font-size: 2.8rem;
 	}
+}
+
+h1 {
+	letter-spacing: -0.02em;
+}
+
+h1 strong {
+	color: var(--green);
 }
 
 h2 {
 	font-variation-settings: var(--font-weight-light) !important;
 }
 
-h3,
-h3 strong {
-	font-size: 1.5rem;
+h2 strong {
+	font-weight: normal;
 	color: var(--green);
 	font-variation-settings: var(--font-weight-light) !important;
+}
+
+h3,
+h3 strong {
+	font-size: 1.8rem;
+	color: var(--green);
+	font-variation-settings: var(--font-weight-light) !important;
+}
+
+h3 strong {
+	color: var(--blue);
+}
+
+h4,
+h4 strong {
+	color: var(--blue);
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+	font-variation-settings: var(--font-weight-bold) !important;
+	font-weight: normal;
+	font-size: 1.1rem;
 }
 
 h4,
@@ -63,6 +91,10 @@ h4 strong {
 	font-weight: normal;
 }
 
+h4 strong {
+	color: green;
+}
+
 p {
 	line-height: var(--line-height);
 	margin-bottom: 0.5em;
@@ -71,10 +103,7 @@ p {
 p.intro,
 .intro p,
 .intro {
-	font-size: 1.15rem;
-	padding-bottom: 0;
-	font-weight: normal;
-	line-height: var(--line-height);
+	font-size: 1.1rem;
 }
 
 section {
@@ -85,6 +114,11 @@ section {
 			margin-bottom: 0.25em;
 		}
 	}
+}
+
+.mid,
+.mid p {
+	font-size: 0.9rem;
 }
 
 .small,

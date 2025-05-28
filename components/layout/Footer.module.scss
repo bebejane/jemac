@@ -5,13 +5,14 @@
 	align-items: center;
 	background-color: var(--gray-dark);
 	padding: var(--outer-margin);
+	padding-bottom: calc(0.5 * var(--outer-margin));
 	width: 100vw;
-	height: 50vh;
+	//height: 50vh;
 	margin-right: var(--full-bleed-margin);
 	margin-left: var(--full-bleed-margin);
 
 	.wrap {
-		width: 50%;
+		width: 70%;
 		flex: 1 1 auto;
 		h3 {
 		}
@@ -21,8 +22,12 @@
 		button {
 			all: unset;
 			width: 100%;
+			margin-top: var(--space);
+			margin-bottom: var(--space-big);
 			border-top: 1px solid var(--green);
 			border-bottom: 1px solid var(--green);
+			padding-top: var(--space-small);
+			padding-bottom: var(--space-small);
 			text-align: center;
 			color: var(--white);
 			text-transform: uppercase;

@@ -9,6 +9,7 @@ import { Image } from 'react-datocms';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
 import Content from '@/components/common/Content';
+import classNames from 'classnames';
 
 export default async function AboutPage({ params }: PageProps) {
 	const { locale } = await params;
@@ -43,7 +44,7 @@ export default async function AboutPage({ params }: PageProps) {
 						<li key={id}>
 							<Image data={image.responsiveImage} imgClassName={s.image} />
 							<h4>{name}</h4>
-							<Content content={text} className={s.content} />
+							<Content content={text} className={classNames("mid", s.content)} />
 						</li>
 					))}
 				</ul>

@@ -3,6 +3,7 @@
 import s from './Footer.module.scss';
 import Link from 'next/link';
 import Content from '@/components/common/Content';
+import classNames from 'classnames';
 
 type FooterProps = {
 	footer?: FooterRecord;
@@ -15,10 +16,8 @@ export default function Footer({ footer }: FooterProps) {
 	return (
 		<footer className={s.footer}>
 			<div className={s.wrap}>
-				<h3>
-					<Content content={headline} className={s.headline} />
-				</h3>
-				<Content content={text} className={s.text} />
+				<Content content={headline} className={s.headline} />
+				<Content content={text} className={classNames(s.text, "intro")} />
 				<Link href='mailto:info@jemac.se'>
 					<button>{buttonText}</button>
 				</Link>

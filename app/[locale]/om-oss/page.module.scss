@@ -1,9 +1,15 @@
 .staff {
+	margin-top: var(--space-big);
+	margin-bottom: var(--space-big);
+	border-top: var(--line);
+	padding-top: var(--space-big);
 	list-style: none;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	li {
-		flex: 0 0 25%;
+	display: grid;
+	column-gap: var(--gutter);
+	row-gap: var(--gutter);
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+
+	h4 {
+		margin-top: 0.5rem;
 	}
 }

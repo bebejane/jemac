@@ -2,6 +2,12 @@
 	display: flex;
 	flex-direction: row;
 	width: 100%;
+	border-top: var(--line);
+	padding-top: var(--space);
+	padding-bottom: var(--space);
+	padding-left: var(--outer-margin);
+	margin-left: var(--full-bleed-margin);
+	margin-right: var(--full-bleed-margin);
 	h3 {
 		flex: 1 1 auto;
 	}
@@ -21,6 +27,9 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-left: var(--outer-margin);
+	padding-top: var(--space);
+	padding-bottom: var(--space);
 	background-color: var(--gray);
 	margin-left: var(--full-bleed-margin);
 	margin-right: var(--full-bleed-margin);
@@ -40,6 +49,16 @@
 				width: 33%;
 				background-color: var(--white);
 				cursor: pointer;
+				border-radius: var(--border-radius);
+				padding: var(--space);
+				margin-right: var(--gutter);
+
+				&:hover {
+					h4 {
+						color: var(--red);
+					}
+					box-shadow: var(--shadow);
+				}
 
 				.bar {
 					display: flex;
@@ -51,6 +70,7 @@
 						img {
 							height: 1rem;
 						}
+						padding-bottom: 0.5rem;
 					}
 					.arrow {
 						flex: 0 0 auto;
