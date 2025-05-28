@@ -1,5 +1,5 @@
-@use 'fonts';
-@use 'mediaqueries';
+@use "fonts";
+@use "mediaqueries";
 
 html,
 body {
@@ -7,7 +7,7 @@ body {
 	font-weight: normal;
 
 	@include mq($from: tablet) {
-		font-size: 22px;
+		font-size: 20px;
 	}
 
 	@include mq($from: wide) {
@@ -21,7 +21,6 @@ h3,
 h4,
 h5 {
 	font-family: var(--headline-font);
-	color: var(--darkred);
 	line-height: 1;
 	font-weight: normal;
 
@@ -30,20 +29,21 @@ h5 {
 	}
 }
 
-h1 {
+h1,
+h2 {
 	font-size: 1rem;
+	color: var(--blue);
 	padding-bottom: var(--space);
 	line-height: 1.25;
+	font-variation-settings: var(--font-weight-bold) !important;
 
 	@include mq($from: desktop) {
-		font-size: 1.5rem;
+		font-size: 2.5rem;
 	}
 }
 
 h2 {
-	font-size: 1.5rem;
-	padding-bottom: 0.5em;
-	line-height: 1.4;
+	font-variation-settings: var(--font-weight-light) !important;
 }
 
 h3 {
@@ -53,8 +53,17 @@ h3 {
 	line-height: var(--line-height);
 }
 
+h4,
+h4 strong {
+	color: var(--blue);
+	padding-bottom: 0.5em;
+	font-variation-settings: var(--font-weight-bold) !important;
+	font-weight: normal;
+}
+
 p {
 	line-height: var(--line-height);
+	margin-bottom: 0.5em;
 }
 
 p.intro,
@@ -64,6 +73,16 @@ p.intro,
 	padding-bottom: 0;
 	font-weight: normal;
 	line-height: var(--line-height);
+}
+
+section {
+	ul {
+		font-size: 0.9rem;
+		margin-bottom: 1rem;
+		p {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .small,
@@ -125,7 +144,7 @@ article {
 
 		&::before {
 			@include mq($from: desktop) {
-				content: '’’';
+				content: "’’";
 				position: absolute;
 				left: -7rem;
 				top: 4rem;
@@ -156,16 +175,6 @@ article {
 		text-underline-offset: 0.25em;
 		text-decoration-thickness: 1px;
 		text-decoration-color: --darkred;
-	}
-
-	ul {
-		p:last-of-type {
-			margin-bottom: 0.7em;
-		}
-
-		& li:last-child p {
-			margin-bottom: 1em;
-		}
 	}
 
 	p,

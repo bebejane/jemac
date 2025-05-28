@@ -16,6 +16,8 @@
 		}
 		.project {
 			flex: 0 0;
+			width: 50%;
+			border-radius: 10px;
 			background-color: var(--gray);
 			display: flex;
 			flex-direction: row;

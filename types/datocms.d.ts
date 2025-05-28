@@ -544,6 +544,52 @@ type GlobalSeoField = {
   twitterAccount?: Maybe<Scalars['String']['output']>;
 };
 
+type HeaderImageModelHeadlineField = {
+  __typename?: 'HeaderImageModelHeadlineField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+type HeaderImageModelTextField = {
+  __typename?: 'HeaderImageModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+/** Block of type Header with Images (header_image) */
+type HeaderImageRecord = RecordInterface & {
+  __typename?: 'HeaderImageRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  align: Scalars['String']['output'];
+  headline?: Maybe<HeaderImageModelHeadlineField>;
+  id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
+  images: Array<FileField>;
+  text?: Maybe<HeaderImageModelTextField>;
+};
+
+
+/** Block of type Header with Images (header_image) */
+type HeaderImageRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 type HeaderModelHeadlineField = {
   __typename?: 'HeaderModelHeadlineField';
   blocks: Array<Scalars['String']['output']>;

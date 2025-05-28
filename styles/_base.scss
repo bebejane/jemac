@@ -1,23 +1,27 @@
-@use 'fonts';
-@use 'mediaqueries';
+@use "fonts";
+@use "mediaqueries";
 
 :root {
-	--black: #000000;
 	--white: #fafafa;
 	--gray: #e9e9e9;
 	--gray-dark: #5a5a5a;
+	--black: var(--gray-dark);
 	--red: #cd3a00;
 	--blue: #0072bc;
 	--green: #349f49;
 	--background: var(--white);
 	--foreground: var(--black);
+	--blur: blur(25px);
 
-	--outer-margin: 2rem;
+	--font-weight-light: "wght" 250;
+	--font-weight-bold: "wght" 600;
+
+	--outer-margin: 4rem;
 	--gutter: 1rem;
 	--grid-unit: calc(100vw / 16);
-	--space: 2rem;
-	--space-big: 2.5rem;
 	--space-small: 1rem;
+	--space: 2rem;
+	--space-big: 4rem;
 
 	--margin: 1rem;
 	--full-margin: calc(-1 * var(--margin));
@@ -25,7 +29,7 @@
 	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) * 5));
 
 	--navbar-height: 4rem;
-	--line-height: 1.35em;
+	--line-height: 1.4em;
 
 	--z-navbar: 1000;
 	--z-navbar-sub: 1001;
@@ -33,10 +37,10 @@
 	--z-hamburger: 1200;
 	--z-modal: 2000;
 
-	--body-font: 'OceanicText', Times, Serif;
-	--headline-font: 'BuzzBlack', Arial, Helvetica, Sans-Serif;
-	--label-font: 'Jazz-Medium', Arial, Sans-serif;
-	--sans-font: 'Jazz', Arial, Sans-serif;
+	--body-font: "Montserrat", Times, Serif;
+	--headline-font: "Montserrat", Arial, Helvetica, Sans-Serif;
+	--label-font: "Montserrat-Medium", Arial, Sans-serif;
+	--sans-font: "Montserrat", Arial, Sans-serif;
 
 	@include mq($until: desktop) {
 		--outer-margin: 1.5rem;
@@ -54,7 +58,7 @@ body {
 	background-color: var(--background);
 	font-family: var(--body-font);
 	-webkit-font-smoothing: antialiased;
-	font-feature-settings: 'liga', 'kern';
+	font-feature-settings: "liga", "kern";
 	padding-top: var(--navbar-height);
 }
 
@@ -70,11 +74,6 @@ main {
 }
 
 article {
-	@include mq($from: desktop) {
-		margin-right: var(--margin);
-		margin-left: var(--margin);
-	}
-
 	hr {
 		margin-top: var(--space-big);
 		border: 0px;
@@ -108,6 +107,7 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 	transition: var(--color-transtion);
+	transition: color 0.5s;
 
 	&:has(> button) {
 		text-decoration: none !important;
@@ -137,12 +137,12 @@ button {
 	white-space: pre;
 	cursor: pointer;
 
-	&[aria-selected='true'],
-	&[data-selected='true'] {
+	&[aria-selected="true"],
+	&[data-selected="true"] {
 		color: var(--white) !important;
 		background-color: var(--black) !important;
 	}
-	&[data-type='icon'] {
+	&[data-type="icon"] {
 		border-radius: 50% !important;
 		padding: 1em;
 	}
@@ -161,7 +161,7 @@ button {
 input,
 textarea,
 select,
-[contenteditable='true'] {
+[contenteditable="true"] {
 	padding: var(--form-field-padding);
 	border: 1px solid transparent;
 	background-color: var(--white);
@@ -172,7 +172,7 @@ select,
 	}
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
 	box-sizing: border-box;
 	width: 1.2em;
 	height: 1.2em;
@@ -184,17 +184,17 @@ input[type='checkbox'] {
 	transition: outline 0.1s;
 }
 
-input[type='checkbox'] + label {
+input[type="checkbox"] + label {
 	display: inline-block;
 	margin-left: 0.5em;
 }
 
-input[type='checkbox']:checked {
+input[type="checkbox"]:checked {
 	background-size: cover;
 	padding: 2px;
 }
 
-input[type='checkbox']:checked {
+input[type="checkbox"]:checked {
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 32 32" xml:space="preserve"><path style="fill: %23274c77" d="M11.941,28.877l-11.941-11.942l5.695-5.696l6.246,6.246l14.364-14.364L32,8.818"/></svg>');
 }
 

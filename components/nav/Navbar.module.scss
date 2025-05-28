@@ -8,7 +8,10 @@
 	align-items: center;
 	height: var(--navbar-height);
 	padding: var(--outer-margin);
+	padding-top: calc(0.5 * var(--outer-margin));
+	padding-bottom: calc(0.5 * var(--outer-margin));
 	z-index: var(--z-navbar);
+	backdrop-filter: var(--blur);
 
 	&.bottom {
 		position: relative;
@@ -16,7 +19,7 @@
 	.logo {
 		flex: 0 0 calc(var(--margin));
 		img {
-			height: 1rem;
+			height: 1.5rem;
 		}
 	}
 
@@ -34,8 +37,9 @@
 			padding-right: 1.5rem;
 			position: relative;
 
-			&.active > * {
-				color: var(--blue) !important;
+			&.active > *,
+			& a:hover {
+				color: var(--red) !important;
 			}
 		}
 
@@ -59,7 +63,7 @@
 			white-space: nowrap;
 			&::after {
 				position: absolute;
-				content: ' ';
+				content: " ";
 				margin-left: 0.1rem;
 			}
 
