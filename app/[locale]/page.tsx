@@ -23,18 +23,24 @@ export default async function Home({ params }: PageProps) {
 
 	if (!start) return notFound();
 
-	const { header, footer, shortcuts } = start;
+	const { header, footer, shortcuts, textHeadline, textText } = start;
 
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
-				<ul className={s.shortcuts}>
-					{shortcuts?.map((shortcut) => (
-						<li key={shortcut.id}>
-							<Shortcut shortcut={shortcut as ShortcutRecord} />
-						</li>
-					))}
-				</ul>
+				<section className={s.shortcuts}>
+					<ul>
+						{shortcuts?.map((shortcut) => <Shortcut shortcut={shortcut as ShortcutRecord} />)}
+					</ul>
+				</section>
+				<section className={s.text}>
+					<div>
+						<Content content={textHeadline} className={s.headline} />
+					</div>
+					<div>
+						<Content content={textText} className={s.text} />
+					</div>
+				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
 			<DraftMode url={draftUrl} path={`/`} />

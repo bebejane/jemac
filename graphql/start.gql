@@ -17,6 +17,16 @@ fragment StartFragment on StartRecord {
 	shortcuts {
 		...ShortcutFragment
 	}
+	textHeadline {
+		blocks
+		links
+		value
+	}
+	textText {
+		blocks
+		links
+		value
+	}
 	footer {
 		headline {
 			blocks
