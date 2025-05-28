@@ -13,6 +13,7 @@
 			all: unset;
 		}
 	}
+	background-color: var(--white);
 }
 .projects {
 	position: relative;
@@ -20,7 +21,9 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 50vh;
+	background-color: var(--gray);
+	margin-left: var(--full-bleed-margin);
+	margin-right: var(--full-bleed-margin);
 
 	.swiper {
 		display: flex;
@@ -35,7 +38,7 @@
 
 			.slide {
 				width: 33%;
-				padding: var(--outer-margin);
+				background-color: var(--white);
 				cursor: pointer;
 
 				.bar {

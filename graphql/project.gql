@@ -14,6 +14,9 @@ query AllProjects($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale
 }
 
 fragment ProjectFragment on ProjectRecord {
+	header {
+		...HeaderFragment
+	}
 	client {
 		... on ClientRecord {
 			logo {
@@ -24,6 +27,26 @@ fragment ProjectFragment on ProjectRecord {
 	}
 	image {
 		...ImageFragment
+	}
+	what {
+		blocks
+		links
+		value
+	}
+	why {
+		blocks
+		links
+		value
+	}
+	summary {
+		blocks
+		links
+		value
+	}
+	result {
+		blocks
+		links
+		value
 	}
 	title
 	slug
