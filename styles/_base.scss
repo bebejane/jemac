@@ -19,10 +19,9 @@
 	--space-big: 2.5rem;
 	--space-small: 1rem;
 
-	--margin: 0;
+	--margin: 1rem;
 	--full-margin: calc(-1 * var(--margin));
 	--full-bleed-margin: calc(calc(-1 * var(--margin)) - var(--outer-margin));
-
 	--content-width: calc(calc(var(--grid-unit) * 5) + calc(var(--gutter) * 5));
 
 	--navbar-height: 4rem;
@@ -66,12 +65,11 @@ html {
 main {
 	display: block;
 	min-height: 100vh;
+	padding-left: var(--outer-margin);
+	padding-right: var(--outer-margin);
 }
 
 article {
-	//padding-left: var(--outer-margin);
-	//padding-right: var(--outer-margin);
-
 	@include mq($from: desktop) {
 		margin-right: var(--margin);
 		margin-left: var(--margin);

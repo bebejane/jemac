@@ -5,8 +5,10 @@
 	align-items: center;
 	background-color: var(--gray-dark);
 	padding: var(--outer-margin);
-	width: 100%;
+	width: 100vw;
 	height: 50vh;
+	margin-right: var(--full-bleed-margin);
+	margin-left: var(--full-bleed-margin);
 
 	.wrap {
 		width: 50%;
