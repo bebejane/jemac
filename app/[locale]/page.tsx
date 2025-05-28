@@ -35,7 +35,6 @@ export default async function Home({ params }: PageProps) {
 
 	const { header, footer, shortcuts, textHeadline, textText, jobsHeadline, jobsImage, jobsText } =
 		start;
-	console.log(allProjects);
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
