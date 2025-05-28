@@ -101,6 +101,15 @@ declare module '*/SectionFragment.gql' {
 }
     
 
+declare module '*/ShortcutFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const ShortcutFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/SiteFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

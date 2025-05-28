@@ -15,12 +15,17 @@ fragment StartFragment on StartRecord {
 		...ImageFragment
 	}
 	shortcuts {
-		... on ShortcutRecord {
-			image {
-				...ImageFragment
-			}
-			linkText
-		}
+		...ShortcutFragment
+	}
+	textHeadline {
+		blocks
+		links
+		value
+	}
+	textText {
+		blocks
+		links
+		value
 	}
 	footer {
 		headline {

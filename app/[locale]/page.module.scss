@@ -1,7 +1,19 @@
-.page {
-	margin-left: var(--margin);
-	margin-right: var(--margin);
-	section {
-		margin-top: var(--space-big);
+.shortcuts {
+	ul {
+		position: relative;
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin: 0;
+	}
+}
+
+.text {
+	display: flex;
+	flex-direction: row;
+
+	> div {
+		width: 50%;
 	}
 }

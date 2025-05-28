@@ -16,12 +16,15 @@ export default function FilterBar({ shortcut }: Props) {
 	const { headline, text, id, image, linkText } = shortcut;
 
 	return (
-		<div className={cn(s.shortcut)}>
-			<Content content={headline} className={s.headline} />
-			<Content content={text} className={s.content} />
-			<Link href={'/'} className={s.link}>
-				{linkText}
+		<li className={s.shortcut}>
+			<Image data={image.responsiveImage} className={s.image} />
+			<Link href={`/`}>
+				<div className={s.text}>
+					<Content content={headline} className={s.headline} />
+					<Content content={text} className={s.content} />
+				</div>
+				<span>{linkText}</span>
 			</Link>
-		</div>
+		</li>
 	);
 }
