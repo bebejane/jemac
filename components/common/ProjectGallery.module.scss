@@ -1,0 +1,62 @@
+.header {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	h3 {
+		flex: 1 1 auto;
+	}
+	.arrows {
+		display: flex;
+		flex-direction: row;
+		flex: 0 0 auto;
+		button {
+			all: unset;
+		}
+	}
+}
+.projects {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+
+	.swiper {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		max-width: 100%;
+
+		.slideWrap {
+			align-items: center;
+
+			.slide {
+				width: 33%;
+				padding: var(--outer-margin);
+				cursor: pointer;
+
+				.bar {
+					display: flex;
+					flex-direction: row;
+					width: 100%;
+
+					.logo {
+						flex: 1 1 auto;
+						img {
+							height: 1rem;
+						}
+					}
+					.arrow {
+						flex: 0 0 auto;
+						button {
+							all: unset;
+						}
+					}
+				}
+			}
+		}
+	}
+}
