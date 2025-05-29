@@ -25,11 +25,11 @@ export default function ProjectGallery({ projects }: Props) {
 			<div className={cn(s.header)}>
 				<h3>Några exempel på vad vi gjort</h3>
 				<div className={s.arrows}>
-					<button className={cn(s.arrow, s.left)} onClick={() => swiperRef.current?.slidePrev()}>
-						‹
+					<button className={cn(s.back)} onClick={() => swiperRef.current?.slidePrev()}>
+						<img src='/images/arrow.svg' alt='‹' />
 					</button>
-					<button className={cn(s.arrow, s.right)} onClick={() => swiperRef.current?.slideNext()}>
-						›
+					<button className={cn(s.forward)} onClick={() => swiperRef.current?.slideNext()}>
+						<img src='/images/arrow.svg' alt='‹' />
 					</button>
 				</div>
 			</div>
@@ -62,7 +62,7 @@ export default function ProjectGallery({ projects }: Props) {
 									</div>
 								</div>
 								<h4>{project.title}</h4>
-								<Content content={project.summary} className={cn(s.text, "mid")} />
+								<Content content={project.header.text} className={cn(s.text, 'mid')} />
 							</Link>
 						</SwiperSlide>
 					))}

@@ -1,6 +1,6 @@
 fragment FooterFragment on FooterRecord {
 	id
-	text {
+	headline {
 		blocks
 		links
 		value

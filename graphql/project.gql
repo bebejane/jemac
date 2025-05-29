@@ -13,6 +13,15 @@ query AllProjects($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale
 	}
 }
 
+query AllProjectsShowcase($first: IntType = 10, $skip: IntType = 0, $locale: SiteLocale) {
+	allProjects(first: $first, skip: $skip, locale: $locale) {
+		...ProjectLightFragment
+	}
+	_allProjectsMeta(locale: $locale) {
+		count
+	}
+}
+
 fragment ProjectFragment on ProjectRecord {
 	header {
 		...HeaderFragment
@@ -25,20 +34,12 @@ fragment ProjectFragment on ProjectRecord {
 			name
 		}
 	}
-	image {
-		...ImageFragment
-	}
 	what {
 		blocks
 		links
 		value
 	}
 	why {
-		blocks
-		links
-		value
-	}
-	summary {
 		blocks
 		links
 		value
@@ -53,20 +54,15 @@ fragment ProjectFragment on ProjectRecord {
 }
 
 fragment ProjectLightFragment on ProjectRecord {
+	title
+	header {
+		...HeaderFragment
+	}
 	client {
 		name
 		logo {
 			...ImageFragment
 		}
 	}
-	image {
-		...ImageFragment
-	}
-	summary {
-		blocks
-		links
-		value
-	}
-	title
 	slug
 }

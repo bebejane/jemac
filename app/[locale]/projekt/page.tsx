@@ -1,11 +1,12 @@
 import Article from '@/components/layout/Article';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
-import { ShowcaseDocument } from '@/graphql';
+import { AllProjectsShowcaseDocument, ShowcaseDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import ProjectGallery from '@/components/common/ProjectGallery';
 
 export default async function ShowcasePage({ params }: PageProps) {
 	const { locale } = await params;
@@ -20,12 +21,24 @@ export default async function ShowcasePage({ params }: PageProps) {
 		}
 	);
 
+	const { allProjects } = await apiQuery<
+		AllProjectsShowcaseQuery,
+		AllProjectsShowcaseQueryVariables
+	>(AllProjectsShowcaseDocument, {
+		variables: {
+			locale,
+		},
+	});
+
 	if (!showcase) return notFound();
 	const { header, sections, title, footer } = showcase;
 
 	return (
 		<>
 			<Article title={title} header={header as HeaderRecord}>
+				<section>
+					<ProjectGallery projects={allProjects} />
+				</section>
 				{sections.map((section) => (
 					<Section
 						key={section.id}

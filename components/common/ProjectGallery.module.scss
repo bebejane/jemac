@@ -17,6 +17,25 @@
 		flex: 0 0 auto;
 		button {
 			all: unset;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.5rem;
+			border: 1px solid var(--black);
+			border-radius: 50%;
+			cursor: pointer;
+
+			img {
+				height: 1rem;
+			}
+			&.forward {
+				margin-left: 0.5em;
+			}
+			&.back {
+				img {
+					transform: rotate(180deg);
+				}
+			}
 		}
 	}
 	background-color: var(--white);
@@ -35,10 +54,6 @@
 	margin-right: var(--full-bleed-margin);
 
 	.swiper {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
 		width: 100%;
 		max-width: 100%;
 
@@ -46,7 +61,8 @@
 			align-items: center;
 
 			.slide {
-				width: 33%;
+				width: 33.333%;
+				height: 30vh;
 				background-color: var(--white);
 				cursor: pointer;
 				border-radius: var(--border-radius);

@@ -6,24 +6,26 @@ fragment SectionFragment on SectionRecord {
 		value
 	}
 	text {
-		blocks
+		blocks {
+			__typename
+			id
+			... on ExpandableListRecord {
+				items {
+					id
+					title
+					text {
+						blocks
+						links
+						value
+					}
+				}
+			}
+		}
 		links
 		value
 	}
+
 	referenceProject {
-		... on ProjectRecord {
-			client {
-				... on ClientRecord {
-					logo {
-						...ImageFragment
-					}
-					name
-				}
-			}
-			image {
-				...ImageFragment
-			}
-			title
-		}
+		...ProjectLightFragment
 	}
 }

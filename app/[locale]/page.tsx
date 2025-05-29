@@ -1,5 +1,5 @@
 import s from './page.module.scss';
-import { StartDocument, AllProjectsDocument } from '@/graphql';
+import { StartDocument, AllProjectsDocument, AllProjectsShowcaseDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
@@ -21,15 +21,14 @@ export default async function Home({ params }: PageProps) {
 		},
 	});
 
-	const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
-		AllProjectsDocument,
-		{
-			variables: {
-				locale,
-				first: 2,
-			},
-		}
-	);
+	const { allProjects } = await apiQuery<
+		AllProjectsShowcaseQuery,
+		AllProjectsShowcaseQueryVariables
+	>(AllProjectsShowcaseDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	if (!start) return notFound();
 
