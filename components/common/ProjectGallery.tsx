@@ -62,7 +62,7 @@ export default function ProjectGallery({ projects }: Props) {
 									</div>
 								</div>
 								<h4>{project.title}</h4>
-								<Content content={project.header.text} className={cn(s.text, 'mid')} />
+								<Content content={project.text} className={cn(s.text, 'mid')} />
 							</Link>
 						</SwiperSlide>
 					))}

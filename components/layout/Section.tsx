@@ -6,7 +6,7 @@ import cn from 'classnames';
 import { Image } from 'react-datocms';
 
 type Props = {
-	headline: any;
+	headline: any | string;
 	text: any;
 	project?: ProjectRecord;
 };
@@ -15,7 +15,8 @@ export default function Header({ headline, text, project }: Props) {
 	return (
 		<section className={cn(s.section)}>
 			<div className={s.header}>
-				{headline && <Content content={headline} className={s.headline} />}
+				{typeof headline === 'object' && <Content content={headline} className={s.headline} />}
+				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
 				{project && (
 					<div className={s.project}>
 						<div>

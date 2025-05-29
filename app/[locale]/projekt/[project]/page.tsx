@@ -1,3 +1,4 @@
+import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { AllProjectsShowcaseDocument, ProjectDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
@@ -5,6 +6,9 @@ import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'next';
 import ProjectGallery from '@/components/common/ProjectGallery';
+import { Image } from 'react-datocms';
+import Content from '@/components/common/Content';
+import Section from '@/components/layout/Section';
 
 export type ProjectProps = {
 	params: Promise<{ project: string; locale: SiteLocale }>;
@@ -32,13 +36,44 @@ export default async function ProjectPage({ params }: ProjectProps) {
 
 	if (!project) return notFound();
 
-	const { title, header, client, result, what, why } = project;
+	const { title, headline, text, client, result, what, why, image } = project;
 
 	return (
 		<>
-			<Article title={title} header={header as HeaderRecord}>
+			<Article title={title} className={s.page}>
+				<header className={s.header}>
+					<div className={s.image}>
+						{image?.responsiveImage && <Image data={image.responsiveImage} />}
+					</div>
+					<div className={s.content}>
+						<img className={s.logo} src={client?.logo?.url} alt={client?.name} />
+						<Content content={headline} className={s.headline} />
+						<Content content={text} className={s.text} />
+					</div>
+				</header>
+				<section className={s.section}>
+					<div className={s.header}>
+						<h4>Utgångspunkt</h4>
+						<h3>Vad behövdes för projektet</h3>
+					</div>
+					<Content content={why} className={s.content} />
+				</section>
+				<section className={s.section}>
+					<div className={s.header}>
+						<h4>Lösningen</h4>
+						<h3>Vad gjorde vi?</h3>
+					</div>
+					<Content content={what} className={s.content} />
+				</section>
+				<section className={s.section}>
+					<div className={s.header}>
+						<h4>Resultat</h4>
+						<h3>Vad belev effekten?</h3>
+					</div>
+					<Content content={result} className={s.content} />
+				</section>
 				<section>
-					<ProjectGallery projects={allProjects.filter(({ slug }) => slug !== project.slug)} />
+					<ProjectGallery projects={allProjects} />
 				</section>
 			</Article>
 			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />

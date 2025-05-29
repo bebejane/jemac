@@ -8,8 +8,8 @@ fragment SectionFragment on SectionRecord {
 	text {
 		blocks {
 			__typename
-			id
 			... on ExpandableListRecord {
+				id
 				items {
 					id
 					title
@@ -18,6 +18,12 @@ fragment SectionFragment on SectionRecord {
 						links
 						value
 					}
+				}
+			}
+			... on ImageGalleryRecord {
+				id
+				images {
+					...ImageFragment
 				}
 			}
 		}

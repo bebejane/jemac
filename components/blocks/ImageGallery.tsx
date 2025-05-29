@@ -8,21 +8,14 @@ import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms';
 
 export type ImageGalleryBlockProps = {
-	id: string;
-	images: ImageFileField[];
+	data: ImageGalleryRecord;
 	onClick?: Function;
-	editable?: boolean;
 };
 
-export default function ImageGallery({
-	id,
-	images,
-	onClick,
-	editable = false,
-}: ImageGalleryBlockProps) {
+export default function ImageGallery({ data: { id, images }, onClick }: ImageGalleryBlockProps) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
-	const [caption, setCaption] = useState<string | null>(images[0].title);
+	const [caption, setCaption] = useState<string | null>(images?.[0].title);
 	const [index, setIndex] = useState(0);
 
 	useEffect(() => {
@@ -46,7 +39,7 @@ export default function ImageGallery({
 				loop={true}
 				noSwiping={false}
 				simulateTouch={true}
-				slidesPerView={'auto'}
+				slidesPerView={3}
 				autoHeight={true}
 				initialSlide={index}
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
