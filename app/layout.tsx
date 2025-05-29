@@ -11,6 +11,7 @@ import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { Suspense } from 'react';
 
 export type LayoutProps = {
 	children: React.ReactNode;

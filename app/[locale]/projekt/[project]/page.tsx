@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 import ProjectGallery from '@/components/common/ProjectGallery';
 import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
-import Section from '@/components/layout/Section';
+import { setRequestLocale } from 'next-intl/server';
 
 export type ProjectProps = {
 	params: Promise<{ project: string; locale: SiteLocale }>;
@@ -16,6 +16,8 @@ export type ProjectProps = {
 
 export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug, locale } = await params;
+	setRequestLocale(locale);
+
 	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(
 		ProjectDocument,
 		{
