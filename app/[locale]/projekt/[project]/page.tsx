@@ -22,6 +22,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 		ProjectDocument,
 		{
 			variables: {
+				locale,
 				slug,
 			},
 		}
@@ -95,10 +96,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
-	const { project: slug } = await params;
+	const { project: slug, locale } = await params;
+
+	setRequestLocale(locale);
+
 	const { project } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
 		variables: {
 			slug,
+			locale,
 		},
 	});
 
