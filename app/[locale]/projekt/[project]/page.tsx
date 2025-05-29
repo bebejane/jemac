@@ -14,6 +14,8 @@ export type ProjectProps = {
 	params: Promise<{ project: string; locale: SiteLocale }>;
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug, locale } = await params;
 	setRequestLocale(locale);

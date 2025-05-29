@@ -8,8 +8,6 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import ProjectGallery from '@/components/common/ProjectGallery';
 
-export const dynamic = 'force-dynamic';
-
 export default async function ShowcasePage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
