@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server"
 
-
 export type MenuItem = {
   id: string,
   title: string,

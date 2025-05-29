@@ -14,7 +14,7 @@ import ProjectGallery from '@/components/common/ProjectGallery';
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
-
+	console.log(locale);
 	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
 		variables: {
 			locale,

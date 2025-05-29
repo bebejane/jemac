@@ -20,7 +20,9 @@ export default function Header({ headline, text, project }: Props) {
 				{project && (
 					<div className={s.project}>
 						<div>
-							<Image data={project.image.responsiveImage} imgClassName={s.image} />
+							{project.image && (
+								<Image data={project.image.responsiveImage} imgClassName={s.image} />
+							)}
 						</div>
 						<div>
 							<h4>{project.client?.name}</h4>

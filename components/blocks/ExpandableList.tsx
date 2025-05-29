@@ -44,18 +44,10 @@ export default function ExpandableList({ data }: ExpandableListProps) {
 					style={{ maxHeight: toggles[item.id]?.open ? `${toggles[item.id]?.height}px` : '0px' }}
 				>
 					<div className={s.item}>
-						<div className={s.title}>
-							<p>
-								<strong>{item.title}</strong>
-							</p>
-						</div>
-						<div className={s.icon}>
-							<p>
-								<strong>{item[item.id]?.open ? '-' : '+'}</strong>
-							</p>
-						</div>
+						<div className={s.title}>{item.title}</div>
+						<div className={s.icon}>{toggles[item.id]?.open ? '-' : '+'}</div>
 					</div>
-					<Content content={item.text} className={cn(s.text, s.open)} />
+					<Content content={item.text} className={cn(s.content, s.open)} />
 				</li>
 			))}
 		</ul>
