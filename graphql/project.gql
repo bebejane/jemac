@@ -90,6 +90,9 @@ fragment ProjectFragment on ProjectRecord {
 
 fragment ProjectLightFragment on ProjectRecord {
 	title
+	image {
+		...ImageSquareFragment
+	}
 	headline {
 		blocks
 		links

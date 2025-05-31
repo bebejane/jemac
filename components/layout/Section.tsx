@@ -11,7 +11,7 @@ type Props = {
 	project?: ProjectRecord;
 };
 
-export default function Header({ headline, text, project }: Props) {
+export default function Section({ headline, text, project }: Props) {
 	return (
 		<section className={cn(s.section)}>
 			<div className={s.header}>
@@ -19,12 +19,12 @@ export default function Header({ headline, text, project }: Props) {
 				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
 				{project && (
 					<div className={s.project}>
-						<div>
+						<div className={s.imageWrap}>
 							{project.image && (
 								<Image data={project.image.responsiveImage} imgClassName={s.image} />
 							)}
 						</div>
-						<div>
+						<div className={s.projectInfo}>
 							<h4>{project.client?.name}</h4>
 							<span>{project.title}</span>
 						</div>

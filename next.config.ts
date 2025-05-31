@@ -5,7 +5,7 @@ const withNextIntl = createNextIntlPlugin()
 
 const nextConfig: NextConfig = {
 	sassOptions: {
-		includePaths: ["./components", "./pages", "./app"],
+		includePaths: ["./components", "./app"],
 		silenceDeprecations: ['legacy-js-api', 'import'],
 		prependData: `
 			@use "sass:math";

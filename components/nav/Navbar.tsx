@@ -3,7 +3,7 @@
 import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
+import Link from '@/components/nav/Link';
 import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import { useWindowSize } from 'rooks';

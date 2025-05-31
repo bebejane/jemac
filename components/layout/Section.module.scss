@@ -16,15 +16,23 @@
 		}
 		.project {
 			flex: 0 0;
-			width: 50%;
 			border-radius: 10px;
 			background-color: var(--gray);
 			display: flex;
 			flex-direction: row;
+			padding: 1rem;
 
-			.image {
-				width: 100px;
-				height: 100px;
+			div:first-child {
+			}
+			div:last-child {
+				padding-left: 1rem;
+				white-space: nowrap;
+			}
+
+			.image,
+			img {
+				width: 100px !important;
+				height: 100px !important;
 				object-fit: cover;
 			}
 		}

@@ -1,5 +1,5 @@
-import '@/styles/index.scss';
 import s from './layout.module.scss';
+import '@/styles/index.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
@@ -7,8 +7,6 @@ import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import { buildMenu } from '@/lib/menu';
 import Navbar from '@/components/nav/Navbar';
 import NavbarMobile from '@/components/nav/NavbarMobile';
-import { routing } from '@/i18n/routing';
-import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Suspense } from 'react';
@@ -35,6 +33,8 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 							<main className={s.main}>{children}</main>
 						</Suspense>
 					</NextIntlClientProvider>
+					<div id='page-transition' />
+					<div id='page-fade-transition' />
 				</body>
 			</html>
 		</>
