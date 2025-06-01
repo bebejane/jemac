@@ -1,7 +1,7 @@
 'use client';
 
 import s from './Footer.module.scss';
-import Link from 'next/link';
+import Link from '@/components/nav/Link';
 import Content from '@/components/common/Content';
 import classNames from 'classnames';
 

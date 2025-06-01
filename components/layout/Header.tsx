@@ -3,7 +3,7 @@
 import Content from '@/components/common/Content';
 import s from './Header.module.scss';
 import cn from 'classnames';
-import Link from 'next/link';
+import Link from '@/components/nav/Link';
 import { StructuredTextDocument } from 'react-datocms/structured-text';
 import { Image } from 'react-datocms';
 

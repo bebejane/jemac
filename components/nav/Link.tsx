@@ -42,12 +42,10 @@ const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = (props) => {
 		const prevPathname = pt.getAttribute('pathname');
 
 		if (prevPathname !== pathname && prevPathname) {
-			console.log('exit');
-
 			pt.classList.toggle('enter', true);
 			pt.classList.toggle('exit', false);
 			pft.classList.toggle('enter', true);
-		}
+		} else pt.classList.toggle('enter', true);
 	}, [pathname]);
 
 	return (

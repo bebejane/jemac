@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/nav/Link';
 import config from '@/datocms.config';
 
 export type Props = {

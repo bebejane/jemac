@@ -9,7 +9,7 @@ import type { Swiper } from 'swiper';
 import { useRef, useState } from 'react';
 import { useInViewRef } from 'rooks';
 import Content from '@/components/common/Content';
-import { Link } from '@/i18n/routing';
+import Link from '@/components/nav/Link';
 
 type Props = {
 	projects: AllProjectsQuery['allProjects'];
@@ -50,7 +50,7 @@ export default function ProjectGallery({ projects }: Props) {
 							onClick={() => swiperRef.current?.slideNext()}
 							className={s.slide}
 						>
-							<Link href={{ pathname: '/projekt/[project]', params: { project: project.slug } }}>
+							<Link href={`/projekt/${project.slug}`}>
 								<div className={s.bar}>
 									<div className={s.logo}>
 										{project.client?.logo && (

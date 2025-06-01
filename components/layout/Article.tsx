@@ -2,7 +2,7 @@
 
 import s from './Article.module.scss';
 import cn from 'classnames';
-import Link from 'next/link';
+import Link from '@/components/nav/Link';
 import { Image } from 'react-datocms';
 import { Markdown } from 'next-dato-utils/components';
 import Content from '@/components/common/Content';

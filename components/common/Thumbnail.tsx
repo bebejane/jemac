@@ -2,7 +2,7 @@ import s from './Thumbnail.module.scss';
 import cn from 'classnames';
 import { Image } from 'react-datocms';
 import Content from './Content';
-import Link from 'next/link';
+import Link from '@/components/nav/Link';
 import { Markdown } from 'next-dato-utils/components';
 
 export type ThumbnailProps = {

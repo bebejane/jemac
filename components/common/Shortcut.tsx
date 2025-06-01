@@ -3,7 +3,7 @@
 import Content from '@/components/common/Content';
 import s from './Shortcut.module.scss';
 import cn from 'classnames';
-import { Link } from '@/i18n/routing';
+import Link from '@/components/nav/Link';
 import { Image } from 'react-datocms';
 
 type Props = {
