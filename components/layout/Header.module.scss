@@ -14,6 +14,16 @@
 		height: 100%;
 		object-fit: cover;
 		z-index: 0;
+		animation: reveal 1s ease-out forwards;
+
+		@keyframes reveal {
+			0% {
+				transform: scale(1.02);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
 	}
 
 	.fade {
@@ -58,6 +68,16 @@
 	&.right {
 		.text {
 			align-items: flex-end;
+		}
+		animation: reveal 1s ease-out forwards;
+
+		@keyframes reveal {
+			0% {
+				transform: scale(1.02);
+			}
+			100% {
+				transform: scale(1);
+			}
 		}
 		.fade {
 			background: linear-gradient(

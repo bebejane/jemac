@@ -4,6 +4,7 @@ import Content from '@/components/common/Content';
 import s from './Section.module.scss';
 import cn from 'classnames';
 import { Image } from 'react-datocms';
+import Link from '@/components/nav/Link';
 
 type Props = {
 	headline: any | string;
@@ -18,7 +19,7 @@ export default function Section({ headline, text, project }: Props) {
 				{typeof headline === 'object' && <Content content={headline} className={s.headline} />}
 				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
 				{project && (
-					<div className={s.project}>
+					<Link href={`/projekt/${project.slug}`} className={s.project}>
 						<div className={s.imageWrap}>
 							{project.image && (
 								<Image data={project.image.responsiveImage} imgClassName={s.image} />
@@ -28,7 +29,7 @@ export default function Section({ headline, text, project }: Props) {
 							<h4>{project.client?.name}</h4>
 							<span>{project.title}</span>
 						</div>
-					</div>
+					</Link>
 				)}
 			</div>
 			{text && (

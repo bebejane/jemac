@@ -1,7 +1,6 @@
 'use client';
 
 import 'swiper/css';
-import 'swiper/css/autoplay';
 import s from './ProjectGallery.module.scss';
 import cn from 'classnames';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
