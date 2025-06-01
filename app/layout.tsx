@@ -10,6 +10,7 @@ import NavbarMobile from '@/components/nav/NavbarMobile';
 import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Suspense } from 'react';
+import { routing } from '@/i18n/routing';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -39,6 +40,10 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 			</html>
 		</>
 	);
+}
+
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata(): Promise<Metadata> {
