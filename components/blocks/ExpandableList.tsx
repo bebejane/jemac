@@ -24,10 +24,10 @@ export default function ExpandableList({ data }: ExpandableListProps) {
 		const t = {};
 		data.items.forEach(
 			(item) =>
-				(t[item.id] = {
-					...toggles[item.id],
-					height: document.getElementById(`list-${item.id}`)?.scrollHeight ?? 0,
-				})
+			(t[item.id] = {
+				...toggles[item.id],
+				height: document.getElementById(`list-${item.id}`)?.scrollHeight ?? 0,
+			})
 		);
 		setToggles(t);
 	}, [innerHeight, innerWidth]);
@@ -44,8 +44,8 @@ export default function ExpandableList({ data }: ExpandableListProps) {
 					style={{ maxHeight: toggles[item.id]?.open ? `${toggles[item.id]?.height}px` : '0px' }}
 				>
 					<div className={s.item}>
-						<div className={s.title}>{item.title}</div>
-						<div className={s.icon}>{toggles[item.id]?.open ? '-' : '+'}</div>
+						<div className={s.title}><h4>{item.title}</h4></div>
+						<div className={s.icon}><h4>{toggles[item.id]?.open ? '-' : '+'}</h4></div>
 					</div>
 					<Content content={item.text} className={cn(s.content, s.open)} />
 				</li>

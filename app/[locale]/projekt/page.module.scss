@@ -3,3 +3,8 @@
     margin-top: var(--space-big);
   }
 }
+
+.gallery {
+  margin-top: calc(-1 * var(--space-big));
+  margin-bottom: var(--space-big);
+}

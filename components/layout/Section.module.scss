@@ -6,6 +6,10 @@
 	> div {
 		flex: 0 0 50%;
 		width: 50%;
+
+		&:first-of-type {
+			padding-right: var(--outer-margin);
+		}
 	}
 	.header {
 		display: flex;

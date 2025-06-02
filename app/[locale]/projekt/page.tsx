@@ -38,7 +38,7 @@ export default async function ShowcasePage({ params }: PageProps) {
 	return (
 		<>
 			<Article title={title} header={header as HeaderRecord}>
-				<section>
+				<section className={s.gallery}>
 					<ProjectGallery projects={allProjects} />
 				</section>
 				{sections.map((section) => (
@@ -47,7 +47,6 @@ export default async function ShowcasePage({ params }: PageProps) {
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}
 						text={section.text}
-						className={s.desc}
 					/>
 				))}
 			</Article>
