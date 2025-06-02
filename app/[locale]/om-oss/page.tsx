@@ -39,6 +39,7 @@ export default async function AboutPage({ params }: PageProps) {
 						text={section.text}
 					/>
 				))}
+				<h2 className={s.headerStaff}>Människorna bakom</h2>
 				<ul className={s.staff}>
 					{allStaffs.map(({ id, name, image, text }) => (
 						<li key={id}>
