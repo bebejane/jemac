@@ -32,6 +32,14 @@
 			color: var(--white);
 			text-transform: uppercase;
 			cursor: pointer;
+			letter-spacing: 0.1em;
+			&:hover {
+				background-color: var(--gray);
+				color: var(--red);
+				border-top: 1px solid var(--gray);
+				border-bottom: 1px solid var(--gray);
+			}
+			transition: all 0.3s;
 		}
 	}
 	.copyright {

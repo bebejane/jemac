@@ -26,8 +26,9 @@ export default function Section({ headline, text, project }: Props) {
 							)}
 						</div>
 						<div className={s.projectInfo}>
+							<h6>EXEMPEL</h6>
 							<h4>{project.client?.name}</h4>
-							<span>{project.title}</span>
+							<span className="mid">{project.title}</span>
 						</div>
 					</Link>
 				)}

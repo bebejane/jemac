@@ -20,7 +20,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
 	font-family: var(--headline-font);
 	line-height: var(--line-height-headlines);
 	font-weight: normal;
@@ -93,6 +94,27 @@ h4 strong {
 
 h4 strong {
 	color: green;
+}
+
+h5,
+h6 {
+	color: var(--blue);
+	letter-spacing: 0.1em;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	padding-bottom: 0.5em;
+	font-variation-settings: var(--font-weight-bold) !important;
+
+	& strong {
+		color: var(--green);
+	}
+}
+
+h6 {
+	font-size: 0.7rem;
+	margin: 0;
+	padding-bottom: 0.2em;
+	color: var(--green);
 }
 
 p {

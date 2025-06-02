@@ -18,6 +18,7 @@ export default function FilterBar({ shortcut }: Props) {
 	return (
 		<li className={s.shortcut}>
 			<figure>
+				<div className={s.fade}></div>
 				<Image data={image.responsiveImage} className={s.image} />
 			</figure>
 
@@ -26,7 +27,7 @@ export default function FilterBar({ shortcut }: Props) {
 					<Content content={headline} className={s.headline} />
 					<Content content={text} className={s.content} />
 				</div>
-				<span>{linkText}</span>
+				<span className="mid">{linkText} →</span>
 			</Link>
 		</li>
 	);

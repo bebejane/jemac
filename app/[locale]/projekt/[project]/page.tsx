@@ -9,6 +9,7 @@ import ProjectGallery from '@/components/common/ProjectGallery';
 import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
 import { setRequestLocale } from 'next-intl/server';
+import cn from 'classnames';
 
 export type ProjectProps = {
 	params: Promise<{ project: string; locale: SiteLocale }>;
@@ -53,27 +54,27 @@ export default async function ProjectPage({ params }: ProjectProps) {
 					<div className={s.content}>
 						<img className={s.logo} src={client?.logo?.url} alt={client?.name} />
 						<Content content={headline} className={s.headline} />
-						<Content content={text} className={s.text} />
+						<Content content={text} className={cn(s.text, "intro")} />
 					</div>
 				</header>
 				<section className={s.section}>
 					<div className={s.header}>
-						<h4>Utgångspunkt</h4>
+						<h5>Utgångspunkt</h5>
 						<h3>Vad behövdes för projektet</h3>
 					</div>
 					<Content content={why} className={s.content} />
 				</section>
 				<section className={s.section}>
 					<div className={s.header}>
-						<h4>Lösningen</h4>
+						<h5>Lösningen</h5>
 						<h3>Vad gjorde vi?</h3>
 					</div>
 					<Content content={what} className={s.content} />
 				</section>
 				<section className={s.section}>
 					<div className={s.header}>
-						<h4>Resultat</h4>
-						<h3>Vad belev effekten?</h3>
+						<h5>Resultat</h5>
+						<h3>Vad blev effekten?</h3>
 					</div>
 					<Content content={result} className={s.content} />
 				</section>
