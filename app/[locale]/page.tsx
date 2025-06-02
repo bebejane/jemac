@@ -1,5 +1,5 @@
 import s from './page.module.scss';
-import { StartDocument, AllProjectsDocument, AllProjectsShowcaseDocument } from '@/graphql';
+import { StartDocument, AllShowcaseProjectsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
@@ -22,9 +22,9 @@ export default async function Home({ params }: PageProps) {
 	});
 
 	const { allProjects } = await apiQuery<
-		AllProjectsShowcaseQuery,
-		AllProjectsShowcaseQueryVariables
-	>(AllProjectsShowcaseDocument, {
+		AllShowcaseProjectsQuery,
+		AllShowcaseProjectsQueryVariables
+	>(AllShowcaseProjectsDocument, {
 		variables: {
 			locale,
 		},

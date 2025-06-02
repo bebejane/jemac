@@ -13,15 +13,6 @@ query AllProjects($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale
 	}
 }
 
-query AllProjectsShowcase($first: IntType = 10, $skip: IntType = 0, $locale: SiteLocale) {
-	allProjects(first: $first, skip: $skip, locale: $locale) {
-		...ProjectLightFragment
-	}
-	_allProjectsMeta(locale: $locale) {
-		count
-	}
-}
-
 fragment ProjectFragment on ProjectRecord {
 	title
 	headline {

@@ -16,3 +16,17 @@ fragment ShowcaseFragment on ShowcaseRecord {
 		...FooterFragment
 	}
 }
+
+query AllShowcaseProjects(
+	$first: IntType = 10
+	$skip: IntType = 0
+	$locale: SiteLocale
+	$slug: String
+) {
+	allProjects(first: $first, skip: $skip, locale: $locale, filter: { slug: { neq: $slug } }) {
+		...ProjectLightFragment
+	}
+	_allProjectsMeta(locale: $locale, filter: { slug: { neq: $slug } }) {
+		count
+	}
+}

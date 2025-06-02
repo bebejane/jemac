@@ -16,6 +16,8 @@ const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = (props) => {
 	const handleClick = async (e: any) => {
 		e.preventDefault();
 
+		if (pathname === props.href) return router.push(props.href);
+
 		const pt = document.getElementById('page-transition');
 		const pft = document.getElementById('page-fade-transition');
 

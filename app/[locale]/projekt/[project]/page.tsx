@@ -1,6 +1,6 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllProjectsShowcaseDocument, ProjectDocument } from '@/graphql';
+import { AllShowcaseProjectsDocument, ProjectDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
@@ -32,11 +32,12 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	);
 
 	const { allProjects } = await apiQuery<
-		AllProjectsShowcaseQuery,
-		AllProjectsShowcaseQueryVariables
-	>(AllProjectsShowcaseDocument, {
+		AllShowcaseProjectsQuery,
+		AllShowcaseProjectsQueryVariables
+	>(AllShowcaseProjectsDocument, {
 		variables: {
 			locale,
+			slug: project.slug,
 		},
 	});
 
@@ -54,7 +55,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 					<div className={s.content}>
 						<img className={s.logo} src={client?.logo?.url} alt={client?.name} />
 						<Content content={headline} className={s.headline} />
-						<Content content={text} className={cn(s.text, "intro")} />
+						<Content content={text} className={cn(s.text, 'intro')} />
 					</div>
 				</header>
 				<section className={s.section}>
@@ -89,9 +90,9 @@ export default async function ProjectPage({ params }: ProjectProps) {
 
 export async function generateStaticParams() {
 	const { allProjects } = await apiQuery<
-		AllProjectsShowcaseQuery,
-		AllProjectsShowcaseQueryVariables
-	>(AllProjectsShowcaseDocument, {
+		AllShowcaseProjectsQuery,
+		AllShowcaseProjectsQueryVariables
+	>(AllShowcaseProjectsDocument, {
 		all: true,
 	});
 

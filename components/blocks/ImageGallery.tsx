@@ -6,6 +6,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
 import type { Swiper } from 'swiper';
 import { Image } from 'react-datocms';
+import { useStore, useShallow } from '@/lib/store';
 
 export type ImageGalleryBlockProps = {
 	data: ImageGalleryRecord;
@@ -17,9 +18,13 @@ export default function ImageGallery({ data: { id, images }, onClick }: ImageGal
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [caption, setCaption] = useState<string | null>(images?.[0].title);
 	const [index, setIndex] = useState(0);
+	const [setGallery, setGalleryId] = useStore(
+		useShallow((state) => [state.setGallery, state.setGalleryId])
+	);
 
 	useEffect(() => {
 		setCaption(images[index]?.title ?? null);
+		setGallery(images);
 	}, [images, index]);
 
 	return (
@@ -46,12 +51,8 @@ export default function ImageGallery({ data: { id, images }, onClick }: ImageGal
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>
 				{images.map((item, idx) => (
-					<SwiperSlide
-						key={idx}
-						onClick={() => swiperRef.current?.slideNext()}
-						className={cn(s.slide, item.height > item.width && s.portrait)}
-					>
-						<figure id={`${id}-${item.id}`} onClick={() => onClick?.(item.id)}>
+					<SwiperSlide key={idx} className={cn(s.slide, item.height > item.width && s.portrait)}>
+						<figure id={`${id}-${item.id}`} onClick={() => setGalleryId(item.id)}>
 							<Image
 								data={item.responsiveImage}
 								className={s.image}
