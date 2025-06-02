@@ -42,7 +42,6 @@ export default function ImageGallery({ data: { id, images }, onClick }: ImageGal
 				id={`${id}-swiper-wrap`}
 				className={s.swiper}
 				loop={true}
-				noSwiping={false}
 				simulateTouch={true}
 				slidesPerView={3}
 				autoHeight={true}

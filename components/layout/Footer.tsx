@@ -18,7 +18,7 @@ export default function Footer({ footer }: FooterProps) {
 			<div className={s.wrap}>
 				<Content content={headline} className={s.headline} />
 				<Content content={text} className={classNames(s.text, 'intro')} />
-				<Link href='mailto:info@jemac.se'>
+				<Link href='/kontakt'>
 					<button>{buttonText}</button>
 				</Link>
 			</div>
