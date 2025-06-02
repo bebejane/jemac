@@ -7,6 +7,8 @@ import { DraftMode } from 'next-dato-utils/components';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import ProjectGallery from '@/components/common/ProjectGallery';
+import s from './page.module.scss';
+
 
 export default async function ShowcasePage({ params }: PageProps) {
 	const { locale } = await params;
@@ -45,6 +47,7 @@ export default async function ShowcasePage({ params }: PageProps) {
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}
 						text={section.text}
+						className={s.desc}
 					/>
 				))}
 			</Article>
