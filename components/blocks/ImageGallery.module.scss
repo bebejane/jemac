@@ -5,6 +5,7 @@
 	margin-right: calc(-1 * var(--outer-margin));
 	border-top: 1px solid var(--gray);
 	padding-top: var(--space-big);
+	margin-bottom: var(--space);
 
 	.nav {
 		display: flex;
@@ -61,7 +62,7 @@
 			.slide {
 				position: relative;
 				flex: 0 0 33.333333%;
-				//padding-right: var(--gutter);
+				margin-right: var(--gutter);
 
 				> figure {
 					position: relative;
