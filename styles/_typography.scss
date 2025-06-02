@@ -36,7 +36,7 @@ h2 {
 	font-size: 1rem;
 	color: var(--blue);
 	padding-bottom: var(--space);
-	line-height: 1.25;
+	line-height: 1.1;
 	font-variation-settings: var(--font-weight-bold) !important;
 
 	@include mq($from: desktop) {
