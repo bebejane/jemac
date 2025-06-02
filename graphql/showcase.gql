@@ -3,6 +3,13 @@ query Showcase($locale: SiteLocale) {
 		...ShowcaseFragment
 	}
 }
+query ShowcaseFooter($locale: SiteLocale) {
+	showcase(locale: $locale) {
+		footer {
+			...FooterFragment
+		}
+	}
+}
 
 fragment ShowcaseFragment on ShowcaseRecord {
 	title

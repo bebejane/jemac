@@ -164,6 +164,7 @@ declare module '*/showcase.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Showcase: DocumentNode;
+export const ShowcaseFooter: DocumentNode;
 export const ShowcaseFragment: DocumentNode;
 export const AllShowcaseProjects: DocumentNode;
 

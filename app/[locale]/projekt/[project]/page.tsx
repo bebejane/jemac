@@ -1,6 +1,6 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllShowcaseProjectsDocument, ProjectDocument } from '@/graphql';
+import { AllShowcaseProjectsDocument, ProjectDocument, ShowcaseFooterDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
@@ -10,6 +10,7 @@ import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
 import { setRequestLocale } from 'next-intl/server';
 import cn from 'classnames';
+import Footer from '@/components/layout/Footer';
 
 export type ProjectProps = {
 	params: Promise<{ project: string; locale: SiteLocale }>;
@@ -31,6 +32,15 @@ export default async function ProjectPage({ params }: ProjectProps) {
 		}
 	);
 
+	const { showcase } = await apiQuery<ShowcaseFooterQuery, ShowcaseFooterQueryVariables>(
+		ShowcaseFooterDocument,
+		{
+			variables: {
+				locale,
+			},
+		}
+	);
+
 	const { allProjects } = await apiQuery<
 		AllShowcaseProjectsQuery,
 		AllShowcaseProjectsQueryVariables
@@ -44,6 +54,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	if (!project) return notFound();
 
 	const { title, headline, text, client, result, what, why, image } = project;
+	const { footer } = showcase;
 
 	return (
 		<>
@@ -83,6 +94,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 					<ProjectGallery projects={allProjects} />
 				</section>
 			</Article>
+			<Footer footer={footer as FooterRecord} />
 			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />
 		</>
 	);
