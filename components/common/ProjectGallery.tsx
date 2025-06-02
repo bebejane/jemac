@@ -22,7 +22,7 @@ export default function ProjectGallery({ projects }: Props) {
 	return (
 		<>
 			<div className={cn(s.header)}>
-				<h3>Några exempel på vad vi gjort</h3>
+				<h3>Fler exempel på vad vi gjort</h3>
 				<div className={s.arrows}>
 					<button className={cn(s.back)} onClick={() => swiperRef.current?.slidePrev()}>
 						<img src='/images/arrow.svg' alt='‹' />

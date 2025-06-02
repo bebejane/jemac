@@ -11,6 +11,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Suspense } from 'react';
 import { routing } from '@/i18n/routing';
+import FullscreenGallery from '@/components/common/FullscreenGallery';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -32,6 +33,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 							<Navbar menu={menu} />
 							<NavbarMobile menu={menu} />
 							<main className={s.main}>{children}</main>
+							<FullscreenGallery />
 						</Suspense>
 					</NextIntlClientProvider>
 					<div id='page-transition' />

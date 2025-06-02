@@ -10,11 +10,12 @@ type Props = {
 	headline: any | string;
 	text: any;
 	project?: ProjectRecord;
+	className?: string;
 };
 
-export default function Section({ headline, text, project }: Props) {
+export default function Section({ headline, text, project, className }: Props) {
 	return (
-		<section className={cn(s.section)}>
+		<section className={cn(s.section, className)}>
 			<div className={s.header}>
 				{typeof headline === 'object' && <Content content={headline} className={s.headline} />}
 				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
@@ -28,7 +29,7 @@ export default function Section({ headline, text, project }: Props) {
 						<div className={s.projectInfo}>
 							<h6>EXEMPEL</h6>
 							<h4>{project.client?.name}</h4>
-							<span className="mid">{project.title}</span>
+							<span className='mid'>{project.title}</span>
 						</div>
 					</Link>
 				)}

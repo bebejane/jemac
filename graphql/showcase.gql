@@ -3,6 +3,13 @@ query Showcase($locale: SiteLocale) {
 		...ShowcaseFragment
 	}
 }
+query ShowcaseFooter($locale: SiteLocale) {
+	showcase(locale: $locale) {
+		footer {
+			...FooterFragment
+		}
+	}
+}
 
 fragment ShowcaseFragment on ShowcaseRecord {
 	title
@@ -14,5 +21,19 @@ fragment ShowcaseFragment on ShowcaseRecord {
 	}
 	footer {
 		...FooterFragment
+	}
+}
+
+query AllShowcaseProjects(
+	$first: IntType = 10
+	$skip: IntType = 0
+	$locale: SiteLocale
+	$slug: String
+) {
+	allProjects(first: $first, skip: $skip, locale: $locale, filter: { slug: { neq: $slug } }) {
+		...ProjectLightFragment
+	}
+	_allProjectsMeta(locale: $locale, filter: { slug: { neq: $slug } }) {
+		count
 	}
 }
