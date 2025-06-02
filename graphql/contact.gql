@@ -1,13 +1,8 @@
 query Contact($locale: SiteLocale) {
 	contact(locale: $locale) {
 		title
-		intro {
-			blocks
-			links
-			value
-		}
-		image {
-			...ImageFragment
+		header {
+			...HeaderFragment
 		}
 		sections {
 			...SectionFragment

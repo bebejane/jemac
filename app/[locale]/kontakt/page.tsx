@@ -25,18 +25,11 @@ export default async function ContactPage({ params }: PageProps) {
 	);
 
 	if (!contact) return notFound();
-	const { title, image, intro, sections, footer } = contact;
+	const { title, sections, footer, header } = contact;
 
 	return (
 		<>
-			<Article title={title}>
-				<header className={s.header}>
-					<Image data={image.responsiveImage} imgClassName={s.image} />
-					<div className={s.text}>
-						<h1>{title}</h1>
-						<Content content={intro} className={s.intro} />
-					</div>
-				</header>
+			<Article title={title} header={header as HeaderRecord}>
 				{sections.map((section) => (
 					<Section
 						key={section.id}
