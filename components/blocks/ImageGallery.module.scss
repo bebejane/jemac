@@ -1,10 +1,10 @@
 .gallery {
 	position: relative;
-	width: 100%;
-
-	@include mq($from: desktop) {
-		margin-bottom: var(--space-big);
-	}
+	width: calc(100% + var(--outer-margin));
+	margin-top: var(--space);
+	margin-right: calc(-1 * var(--outer-margin));
+	border-top: 1px solid var(--gray);
+	padding-top: var(--space-big);
 
 	.nav {
 		display: flex;
@@ -13,8 +13,9 @@
 		align-items: center;
 		padding-right: var(--outer-margin);
 		position: absolute;
-		bottom: -3.5rem;
-		right: 0;
+		top: 1.5rem;
+		left: 0;
+		z-index: 1;
 
 		@include mq($until: desktop) {
 			display: none;
@@ -40,20 +41,6 @@
 	}
 
 	figcaption {
-		position: absolute;
-		left: var(--ful-margin);
-		width: calc(var(--margin) - var(--outer-margin) - var(--gutter));
-		color: var(--darkred);
-		z-index: 1;
-		font-family: var(--label-font);
-		font-size: 0.7rem;
-
-		@include mq($until: desktop) {
-			top: calc(30vh + var(--space-small));
-			left: 0;
-			width: 100%;
-			padding-right: var(--outer-margin);
-		}
 	}
 
 	.swiper {
@@ -75,10 +62,10 @@
 				position: relative;
 				flex: 1 0 auto;
 				padding-right: var(--gutter);
-				height: 30vh;
+				//height: 30vh;
 
 				@include mq($from: desktop) {
-					height: 30vh;
+					//height: 30vh;
 				}
 
 				> figure {
@@ -96,7 +83,7 @@
 
 					img {
 						height: 100%;
-						aspect-ratio: 1/1;
+						aspect-ratio: 4/3;
 						object-fit: contain;
 
 						@include mq($from: desktop) {

@@ -31,6 +31,9 @@
 
 			&:hover {
 				box-shadow: var(--shadow);
+				h4 {
+					color: var(--red);
+				}
 			}
 
 			h4 {
