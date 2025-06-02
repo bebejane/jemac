@@ -253,6 +253,7 @@ select {
 	pointer-events: none;
 	opacity: 1;
 	transition: height 0.5s ease-out;
+	background-color: rgba(255, 255, 255, 0.454);
 
 	&.enter {
 		opacity: 0;
