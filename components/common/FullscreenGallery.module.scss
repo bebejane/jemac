@@ -40,7 +40,6 @@
 		color: var(--black) !important;
 
 		p {
-			z-index: 100000;
 			padding: 0.5em;
 			padding-left: 1em;
 			padding-right: 1em;
@@ -75,7 +74,7 @@
 		cursor: pointer;
 		font-size: 1.3rem;
 		user-select: none;
-		z-index: 1;
+		z-index: calc(var(--z-modal) + 1);
 
 		img {
 			height: 48px;

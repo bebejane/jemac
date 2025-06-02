@@ -24,8 +24,11 @@ export default function ImageGallery({ data: { id, images }, onClick }: ImageGal
 
 	useEffect(() => {
 		setCaption(images[index]?.title ?? null);
-		setGallery(images);
 	}, [images, index]);
+
+	useEffect(() => {
+		setGallery(images);
+	}, [images]);
 
 	return (
 		<div className={s.gallery} ref={containerRef}>
@@ -45,7 +48,7 @@ export default function ImageGallery({ data: { id, images }, onClick }: ImageGal
 				simulateTouch={true}
 				slidesPerView={3}
 				autoHeight={true}
-				initialSlide={index}
+				initialSlide={0}
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 			>

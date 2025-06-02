@@ -60,13 +60,8 @@
 
 			.slide {
 				position: relative;
-				flex: 1 0 auto;
-				padding-right: var(--gutter);
-				//height: 30vh;
-
-				@include mq($from: desktop) {
-					//height: 30vh;
-				}
+				flex: 0 0 33.333333%;
+				//padding-right: var(--gutter);
 
 				> figure {
 					position: relative;

@@ -34,6 +34,7 @@ export default function FullscreenGallery({}: GalleryProps) {
 				? gallery.findIndex((image) => image.id === galleryId)
 				: 0;
 		swiperRef.current?.slideTo(index, 0, false);
+		console.log(index);
 		setRealIndex(index);
 	}, [galleryId]);
 
@@ -65,14 +66,23 @@ export default function FullscreenGallery({}: GalleryProps) {
 			>
 				<img src='/images/arrow.svg' className={s.arrow} />
 			</div>
-
+			<div
+				role='button'
+				aria-label='Next image'
+				className={s.forward}
+				onClick={() => swiperRef.current?.slideNext()}
+			>
+				<img src='/images/arrow.svg' className={s.arrow} />
+			</div>
+			<div role='button' className={s.close} onClick={() => setGalleryId(null)}>
+				<img src='/images/close.svg' alt='Close' />
+			</div>
 			<Swiper
 				id={`main-gallery`}
+				key={galleryId}
 				loop={true}
-				spaceBetween={500}
-				simulateTouch={!isSingleSlide}
 				slidesPerView={1}
-				initialSlide={0}
+				initialSlide={realIndex}
 				onSlideChange={({ realIndex }) => setRealIndex(realIndex)}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 				onClick={() => swiperRef.current?.slideNext()}
@@ -95,23 +105,9 @@ export default function FullscreenGallery({}: GalleryProps) {
 								/>
 							</div>
 						)}
-						{!loaded[image.id] && initLoaded && <div className={s.loading}>Loading...</div>}
 					</SwiperSlide>
 				))}
 			</Swiper>
-
-			<div
-				role='button'
-				aria-label='Next image'
-				className={s.forward}
-				onClick={() => swiperRef.current?.slideNext()}
-			>
-				<img src='/images/arrow.svg' className={s.arrow} />
-			</div>
-			<div className={s.caption}>{title && <p className='medium'>{title}</p>}</div>
-			<div role='button' className={s.close} onClick={() => setGalleryId(null)}>
-				<img src='/images/close.svg' alt='Close' />
-			</div>
 		</div>
 	);
 }
