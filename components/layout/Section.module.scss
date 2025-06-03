@@ -8,16 +8,13 @@
 		> div {
 			flex: 0 0 50%;
 			width: 50%;
-
-			&:first-of-type {
-				padding-right: var(--outer-margin);
-			}
 		}
 	}
 	.header {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		padding-right: var(--outer-margin);
 
 		.headline {
 			flex: 1 1 auto;

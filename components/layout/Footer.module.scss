@@ -11,13 +11,16 @@
 	margin-right: var(--full-bleed-margin);
 	margin-left: var(--full-bleed-margin);
 
+	h2 {
+		color: var(--blue-light) !important;
+	}
+
 	.wrap {
 		@include mq($from: desktop) {
 			width: 70%;
 		}
 		flex: 1 1 auto;
-		h3 {
-		}
+
 		.text {
 			color: var(--white);
 		}
@@ -53,7 +56,14 @@
 		* {
 			color: var(--white);
 		}
-		span {
+		p {
+			span {
+				@include mq($until: desktop) {
+					display: none;
+				}
+			}
+			white-space: nowrap;
+			padding-bottom: 0;
 			flex: 1 1;
 			&:last-child {
 				text-align: right;
