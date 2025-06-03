@@ -53,7 +53,7 @@ export default async function Home({ params }: PageProps) {
 					</div>
 				</section>
 				<section className={s.projects}>
-					<ProjectGallery projects={allProjects} />
+					<ProjectGallery projects={allProjects} title='Fler exempel på vad vi gjort' />
 				</section>
 				<section className={s.jobs}>
 					<div>

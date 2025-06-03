@@ -23,7 +23,7 @@ export default function Hamburger({ toggled, onToggle, size }: HamburgerProps) {
 	return (
 		<div className={cn(s.hamburger, toggled && s.toggled)} onClick={handleClick}>
 			<div className={s.wrap}>
-				{new Array(3).fill(0).map((_, i) => (
+				{new Array(2).fill(0).map((_, i) => (
 					<div
 						id={`l${i + 1}`}
 						key={`${key}-${i + 1}`}
