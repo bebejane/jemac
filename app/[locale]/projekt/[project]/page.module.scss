@@ -33,8 +33,10 @@
 	margin-bottom: var(--space);
 
 	> div {
-		flex: 0 0 50%;
-		width: 50%;
+		@include mq($from: desktop) {
+			flex: 0 0 50%;
+			width: 50%;
+		}
 	}
 	.header {
 		display: flex;

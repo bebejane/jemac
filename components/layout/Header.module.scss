@@ -2,13 +2,14 @@
 	width: 100vw;
 	margin-right: var(--full-bleed-margin);
 	margin-left: var(--full-bleed-margin);
-	margin-bottom: var(--space-big);
+	margin-bottom: var(--space);
 
 	@include mq($from: desktop) {
 		height: calc(80vh - var(--navbar-height));
 		position: relative;
 		display: flex;
 		justify-content: flex-start;
+		margin-bottom: var(--space-big);
 	}
 
 	.image {

@@ -16,6 +16,7 @@
 
 	h3 {
 		flex: 1 1 auto;
+		padding-bottom: 0;
 	}
 	.arrows {
 		display: flex;
@@ -30,7 +31,8 @@
 			border: 1px solid var(--black);
 			border-radius: 50%;
 			cursor: pointer;
-
+			height: 1.5rem;
+			width: 1.5rem;
 			img {
 				height: 1rem;
 			}
@@ -68,13 +70,19 @@
 			align-items: center;
 
 			.slide {
-				width: 33.333%;
-				height: 30vh;
+				width: 80vw;
+				height: 70vh;
+
 				background-color: var(--white);
 				cursor: pointer;
 				border-radius: var(--border-radius);
 				padding: var(--space);
 				margin-right: var(--gutter);
+
+				@include mq($from: desktop) {
+					width: 33.333%;
+					height: 30vh;
+				}
 
 				&:hover {
 					h4 {

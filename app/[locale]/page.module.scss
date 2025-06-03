@@ -1,42 +1,60 @@
 .shortcuts {
+	@include mq($until: desktop) {
+		border-top: var(--line);
+		padding-top: var(--space-big);
+	}
+
 	ul {
 		position: relative;
 		list-style: none;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		margin: 0;
-		justify-content: space-between;
 		margin-bottom: var(--space-big);
+
+		@include mq($from: desktop) {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin: 0;
+			justify-content: space-between;
+		}
+
+		li:first-of-type {
+			margin-bottom: var(--outer-margin);
+		}
 	}
 }
 
 .text {
 	border-top: var(--line);
 	padding-top: var(--space-big);
-	display: flex;
-	flex-direction: row;
 	margin-bottom: var(--space-big);
 
-	> div:first-child {
-		width: 30%;
-	}
-	> div:last-child {
-		width: 60%;
-		margin-left: 10%;
+	@include mq($from: desktop) {
+		display: flex;
+		flex-direction: row;
+
+		> div:first-child {
+			width: 30%;
+		}
+		> div:last-child {
+			width: 60%;
+			margin-left: 10%;
+		}
 	}
 }
 
 .jobs {
 	margin-top: var(--space-big);
 	margin-bottom: var(--space-big);
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+	@include mq($from: desktop) {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		> div {
+			flex: 0 0 calc(50% - var(--gutter));
+		}
+	}
 	h2 {
 		padding-top: 0.5em;
-	}
-	> div {
-		flex: 0 0 calc(50% - var(--gutter));
 	}
 }
