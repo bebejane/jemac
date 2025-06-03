@@ -33,6 +33,9 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	h2 {
+		padding-top: 0.5em;
+	}
 	> div {
 		flex: 0 0 calc(50% - var(--gutter));
 	}

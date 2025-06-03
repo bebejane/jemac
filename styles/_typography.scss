@@ -35,7 +35,7 @@ h1,
 h2 {
 	font-size: 1rem;
 	color: var(--blue);
-	padding-bottom: var(--space);
+	padding-bottom: 0.5em;
 	line-height: 1.1;
 	font-variation-settings: var(--font-weight-bold) !important;
 
@@ -120,7 +120,7 @@ h6 {
 
 p {
 	line-height: var(--line-height);
-	margin-bottom: 0.5em;
+	margin-bottom: 0.7em;
 }
 
 p.intro,

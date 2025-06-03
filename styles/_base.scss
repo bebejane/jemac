@@ -4,6 +4,7 @@
 :root {
 	--white: #fafafa;
 	--gray: rgb(240, 240, 240);
+	--gray-mid: #d6d6d6;
 	--gray-dark: #5a5a5a;
 	--black: var(--gray-dark);
 	--red: #cd3a00;
@@ -26,8 +27,9 @@
 
 	--blur: blur(25px);
 	--border-radius: 1rem;
-	--line: 1px solid var(--gray);
-	--shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+	--line: 1px solid var(--gray-mid);
+	--shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+	--shadow-dark: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
 
 	--margin: 0rem;
 	--full-margin: calc(-1 * var(--margin));
