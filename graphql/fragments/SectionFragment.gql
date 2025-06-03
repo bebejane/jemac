@@ -1,5 +1,6 @@
 fragment SectionFragment on SectionRecord {
 	id
+	sectionId
 	headline {
 		blocks
 		links

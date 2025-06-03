@@ -25,8 +25,9 @@ export default async function OfferPage({ params }: PageProps) {
 	return (
 		<>
 			<Article title={title} header={header as HeaderRecord}>
-				{sections.map((section) => (
+				{sections.map((section, idx) => (
 					<Section
+						id={section.sectionId}
 						key={section.id}
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}

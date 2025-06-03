@@ -9,6 +9,11 @@
 	padding-right: var(--outer-margin);
 	margin-left: var(--full-bleed-margin);
 	margin-right: var(--full-bleed-margin);
+
+	&.noborder {
+		border-top: 0;
+	}
+
 	h3 {
 		flex: 1 1 auto;
 	}

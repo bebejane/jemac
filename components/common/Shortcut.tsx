@@ -22,12 +22,12 @@ export default function FilterBar({ shortcut }: Props) {
 				<Image data={image.responsiveImage} className={s.image} />
 			</figure>
 
-			<Link href={`/`}>
+			<Link href={`/erbjudande#${shortcut.sectionId}`}>
 				<div className={s.text}>
 					<Content content={headline} className={s.headline} />
 					<Content content={text} className={s.content} />
 				</div>
-				<span className="mid">{linkText} →</span>
+				<span className='mid'>{linkText} →</span>
 			</Link>
 		</li>
 	);

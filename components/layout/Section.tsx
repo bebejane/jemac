@@ -7,15 +7,16 @@ import { Image } from 'react-datocms';
 import Link from '@/components/nav/Link';
 
 type Props = {
+	id?: string;
 	headline: any | string;
 	text: any;
 	project?: ProjectRecord;
 	className?: string;
 };
 
-export default function Section({ headline, text, project, className }: Props) {
+export default function Section({ id, headline, text, project, className }: Props) {
 	return (
-		<section className={cn(s.section, className)}>
+		<section id={id} className={cn(s.section, className)}>
 			<div className={s.header}>
 				{typeof headline === 'object' && <Content content={headline} className={s.headline} />}
 				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
