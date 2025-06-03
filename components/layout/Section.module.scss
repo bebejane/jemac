@@ -1,15 +1,17 @@
 .section {
-	display: flex;
-	flex-direction: row;
 	margin-bottom: var(--space-big);
 	scroll-margin-top: var(--navbar-height);
 
-	> div {
-		flex: 0 0 50%;
-		width: 50%;
+	@include mq($from: desktop) {
+		display: flex;
+		flex-direction: row;
+		> div {
+			flex: 0 0 50%;
+			width: 50%;
 
-		&:first-of-type {
-			padding-right: var(--outer-margin);
+			&:first-of-type {
+				padding-right: var(--outer-margin);
+			}
 		}
 	}
 	.header {

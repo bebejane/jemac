@@ -254,8 +254,8 @@ select {
 	backdrop-filter: var(--blur);
 	pointer-events: none;
 	opacity: 1;
-	transition: height 0.5s ease-out;
-	background-color: rgba(255, 255, 255, 0.454);
+	transition: height 0.3s ease-out;
+	background-color: rgba(255, 255, 255, 0.7);
 
 	&.enter {
 		opacity: 0;
@@ -277,7 +277,7 @@ select {
 	z-index: var(--z-fade-transition);
 	background-color: var(--white);
 	pointer-events: none;
-	transition: opacity 0.5s linear;
+	transition: opacity 1s linear;
 	opacity: 1;
 
 	&.enter {

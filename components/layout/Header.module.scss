@@ -1,12 +1,15 @@
 .header {
-	position: relative;
-	display: flex;
-	justify-content: flex-start;
 	width: 100vw;
-	height: calc(80vh - var(--navbar-height));
 	margin-right: var(--full-bleed-margin);
 	margin-left: var(--full-bleed-margin);
 	margin-bottom: var(--space-big);
+
+	@include mq($from: desktop) {
+		height: calc(80vh - var(--navbar-height));
+		position: relative;
+		display: flex;
+		justify-content: flex-start;
+	}
 
 	.image {
 		position: relative;
@@ -27,6 +30,9 @@
 	}
 
 	.fade {
+		@include mq($until: desktop) {
+			display: none;
+		}
 		--fadeGray: 250;
 		background: rgba(255, 255, 255, 1);
 		background: linear-gradient(
@@ -44,17 +50,21 @@
 	}
 
 	.text {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
 		padding: var(--outer-margin);
 		left: 0;
 		width: 100%;
 		z-index: 100;
+		@include mq($from: desktop) {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
 
 		.wrap {
-			width: 50%;
+			@include mq($from: desktop) {
+				width: 50%;
+			}
 
 			.headline {
 				color: var(--green);

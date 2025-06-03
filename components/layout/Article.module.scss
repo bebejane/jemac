@@ -2,17 +2,12 @@
 	position: relative;
 
 	header {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-
-		h1 {
-			flex: 1 1 auto;
-
-			@include mq($until: desktop) {
-				color: var(--white);
-			}
+		@include mq($from: desktop) {
+			position: relative;
+			display: flex;
+			flex-direction: row;
 		}
+
 		.headerContent {
 			position: absolute;
 			top: 0;

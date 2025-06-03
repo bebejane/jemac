@@ -12,7 +12,9 @@
 	margin-left: var(--full-bleed-margin);
 
 	.wrap {
-		width: 70%;
+		@include mq($from: desktop) {
+			width: 70%;
+		}
 		flex: 1 1 auto;
 		h3 {
 		}

@@ -23,7 +23,7 @@ export default function Footer({ footer }: FooterProps) {
 				</Link>
 			</div>
 			<div className={s.copyright}>
-				<span>Jemac Sweden AB Trångsundsvägen 20F 393 56 Kalmar</span>
+				<span>Jemac Sweden AB&emsp;Trångsundsvägen 20F"&emsp;393 56 Kalmar</span>
 				<span>
 					<Link href='https://www.linkedin.com/company/jemac-sweden-ab'>Följ oss på LinkedIn</Link>
 				</span>
