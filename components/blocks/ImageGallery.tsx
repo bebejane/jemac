@@ -46,7 +46,7 @@ export default function ImageGallery({ data: { id, images }, onClick }: ImageGal
 				className={s.swiper}
 				loop={true}
 				simulateTouch={true}
-				slidesPerView={3}
+				slidesPerView={'auto'}
 				autoHeight={true}
 				initialSlide={0}
 				onSlideChange={({ realIndex }) => setIndex(realIndex)}

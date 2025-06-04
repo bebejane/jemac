@@ -40,17 +40,13 @@ export default function ProjectGallery({ projects, noborder, title }: Props) {
 					className={s.swiper}
 					wrapperClass={s.slideWrap}
 					loop={true}
-					slidesPerView={3}
+					slidesPerView={'auto'}
 					initialSlide={index}
 					onSlideChange={({ realIndex }) => setIndex(realIndex)}
 					onSwiper={(swiper) => (swiperRef.current = swiper)}
 				>
 					{projects.map((project, idx) => (
-						<SwiperSlide
-							key={idx}
-							onClick={() => swiperRef.current?.slideNext()}
-							className={s.slide}
-						>
+						<SwiperSlide key={idx} className={s.slide}>
 							<Link href={`/projekt/${project.slug}`}>
 								<div className={s.bar}>
 									<div className={s.logo}>
