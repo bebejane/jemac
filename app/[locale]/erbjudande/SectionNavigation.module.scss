@@ -2,10 +2,13 @@
 	position: fixed;
 	left: 50%;
 	transform: translateX(-50%) translateY(50%);
-	bottom: var(--outer-margin);
+	bottom: calc(2 * var(--outer-margin));
 	display: flex;
 	flex-direction: row;
 	transition: opacity 0.3s ease-out;
+	@include mq($from: desktop) {
+		bottom: var(--outer-margin);
+	}
 
 	a {
 		display: flex;
