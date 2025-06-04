@@ -54,6 +54,8 @@
 	--sans-font: "Montserrat", Arial, Sans-serif;
 
 	@include mq($until: desktop) {
+		--font-weight-light: "wght" 350;
+
 		--outer-margin: 1.5rem;
 		--margin: var(--outer-margin);
 		--navbar-height: calc(48px + var(--outer-margin));
