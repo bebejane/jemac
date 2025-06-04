@@ -6,7 +6,7 @@ import { useScrollInfo } from 'next-dato-utils/hooks';
 import { useEffect, useState } from 'react';
 
 export default function SectionNavigation() {
-	const { scrolledPosition } = useScrollInfo();
+	const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo();
 	const [hide, setHide] = useState(false);
 	const [sections, setSections] = useState([
 		{ id: 'tjanster', title: 'Tjänster', active: false },
@@ -14,7 +14,8 @@ export default function SectionNavigation() {
 	]);
 
 	useEffect(() => {
-		setHide(scrolledPosition === 0);
+		const atBottom = scrolledPosition >= documentHeight - viewportHeight * 2;
+		setHide(scrolledPosition === 0 || atBottom);
 	}, [scrolledPosition]);
 
 	useEffect(() => {
