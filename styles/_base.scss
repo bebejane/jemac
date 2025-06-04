@@ -3,7 +3,7 @@
 
 :root {
 	--white: #fafafa;
-	--gray: rgb(240, 240, 240);
+	--gray: rgb(238, 238, 238);
 	--gray-mid: #d6d6d6;
 	--gray-dark: #5a5a5a;
 	--black: var(--gray-dark);
@@ -30,7 +30,7 @@
 	--border-radius: 1rem;
 	--line: 1px solid var(--gray-mid);
 	--shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
-	--shadow-dark: 0px 0px 6px 0px rgba(0, 0, 0, 0.15);
+	--shadow-dark: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
 
 	--margin: 0rem;
 	--full-margin: calc(-1 * var(--margin));

@@ -6,11 +6,21 @@
 	border-radius: var(--border-radius);
 	overflow: hidden;
 	background-color: var(--gray);
-	transition: all 0.5s;
-	height: 40vh;
+	transition: all 0.3s;
+	padding-bottom: 2.5rem;
+
+	@include mq($until: desktop) {
+		border-radius: 0;
+		margin-left: calc(-1 * var(--outer-margin));
+		margin-right: calc(-1 * var(--outer-margin));
+		height: auto;
+		padding-bottom: calc(2 * var(--outer-margin));
+	}
 
 	&:hover {
 		box-shadow: var(--shadow-dark);
+		background-color: var(--white);
+
 		cursor: pointer;
 		span {
 			color: var(--red);
@@ -41,7 +51,7 @@
 			position: absolute;
 			left: 0;
 			top: 0;
-			--fadeGray: 233;
+			--fadeGray: 238;
 			background: linear-gradient(
 				270deg,
 				rgba(var(--fadeGray), var(--fadeGray), var(--fadeGray), 0) 0%,

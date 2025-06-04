@@ -1,7 +1,10 @@
 .shortcuts {
 	@include mq($until: desktop) {
-		border-top: var(--line);
-		padding-top: var(--space-big);
+		//border-top: var(--line);
+		//padding-top: var(--space-big);
+	}
+	@include mq($from: desktop) {
+		margin-bottom: var(--space-big);
 	}
 
 	ul {
@@ -16,19 +19,20 @@
 			margin: 0;
 			justify-content: space-between;
 		}
-
-		li:first-of-type {
-			margin-bottom: var(--outer-margin);
+		@include mq($until: desktop) {
+			li:first-of-type {
+				margin-bottom: var(--outer-margin);
+			}
 		}
 	}
 }
 
 .text {
-	border-top: var(--line);
-	padding-top: var(--space-big);
 	margin-bottom: var(--space-big);
 
 	@include mq($from: desktop) {
+		border-top: var(--line);
+		padding-top: var(--space-big);
 		display: flex;
 		flex-direction: row;
 

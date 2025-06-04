@@ -12,6 +12,12 @@
 		margin-bottom: var(--space-big);
 	}
 
+	h1 {
+		@include mq($until: desktop) {
+			padding-top: 0.5em;
+		}
+	}
+
 	.image {
 		position: relative;
 		width: 100%;
