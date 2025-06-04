@@ -91,7 +91,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 					<Content content={result} className={s.content} />
 				</section>
 				<section>
-					<ProjectGallery projects={allProjects} title='Fler exempel...' />
+					<ProjectGallery projects={allProjects} title='Fler exempel på vad vi gjort' />
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />

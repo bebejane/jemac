@@ -72,7 +72,7 @@
 		.slideWrap {
 			.slide {
 				width: calc(100% - var(--gutter));
-				height: 70vh;
+				height: auto;
 				background-color: var(--white);
 				cursor: pointer;
 				border-radius: var(--border-radius);
@@ -83,7 +83,7 @@
 				}
 				@include mq($from: desktop) {
 					width: 33.3333%;
-					height: 50vh;
+					height: auto;
 				}
 
 				&:hover {

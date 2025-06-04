@@ -89,6 +89,10 @@ h4 strong {
 	font-variation-settings: var(--font-weight-bold) !important;
 	font-weight: normal;
 	font-size: 1.3rem;
+
+	@include mq($from: desktop) {
+		font-size: 1.1rem;
+	}
 }
 
 h4,

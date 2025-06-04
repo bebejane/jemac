@@ -41,7 +41,7 @@ export default async function ShowcasePage({ params }: PageProps) {
 					<ProjectGallery
 						projects={allProjects}
 						noborder={true}
-						title='Fler exempel på vad vi gjort'
+						title='Exempel på vad vi gjort'
 					/>
 				</section>
 				{sections.map((section) => (
