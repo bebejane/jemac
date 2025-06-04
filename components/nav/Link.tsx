@@ -7,7 +7,7 @@ import { HTMLProps, FC } from 'react';
 import { sleep } from 'next-dato-utils/utils';
 import { useEffect } from 'react';
 
-const transitionTime = 500;
+const transitionTime = 700;
 
 const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = (props) => {
 	const router = useRouter();
@@ -23,8 +23,8 @@ const Link: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = (props) => {
 
 		if (pt && pft) {
 			pt.setAttribute('pathname', pathname);
-			pt.style.transitionDuration = `${transitionTime}ms`;
-			pft.style.transitionDuration = `${transitionTime}ms`;
+			//pt.style.transitionDuration = `${transitionTime}ms`;
+			//pft.style.transitionDuration = `${transitionTime}ms`;
 			pt.classList.toggle('exit', true);
 			pt.classList.toggle('enter', false);
 			pft.classList.toggle('enter', false);

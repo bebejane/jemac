@@ -20,25 +20,23 @@ export default function Section({ id, headline, text, project, className }: Prop
 			<div className={s.header}>
 				{typeof headline === 'object' && <Content content={headline} className={s.headline} />}
 				{typeof headline === 'string' && <h4 className={s.headline}>{headline}</h4>}
-				{project && (
-					<Link href={`/projekt/${project.slug}`} className={s.project}>
-						<div className={s.imageWrap}>
-							{project.image && (
-								<Image data={project.image.responsiveImage} imgClassName={s.image} />
-							)}
-						</div>
-						<div className={s.projectInfo}>
-							<h6>EXEMPEL</h6>
-							<h4>{project.client?.name}</h4>
-							<span className='mid'>{project.title}</span>
-						</div>
-					</Link>
-				)}
 			</div>
 			{text && (
 				<div className={s.content}>
 					<Content content={text} className={s.content} />
 				</div>
+			)}
+			{project && (
+				<Link href={`/projekt/${project.slug}`} className={s.project}>
+					<div className={s.imageWrap}>
+						{project.image && <Image data={project.image.responsiveImage} imgClassName={s.image} />}
+					</div>
+					<div className={s.projectInfo}>
+						<h6>EXEMPEL</h6>
+						<h4>{project.client?.name}</h4>
+						<span className='mid'>{project.title}</span>
+					</div>
+				</Link>
 			)}
 		</section>
 	);

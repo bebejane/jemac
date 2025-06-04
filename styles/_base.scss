@@ -1,5 +1,5 @@
-@use "fonts";
-@use "mediaqueries";
+@use 'fonts';
+@use 'mediaqueries';
 
 :root {
 	--white: #ffffff;
@@ -14,8 +14,8 @@
 	--background: var(--white);
 	--foreground: var(--black);
 
-	--font-weight-light: "wght" 250;
-	--font-weight-bold: "wght" 700;
+	--font-weight-light: 'wght' 250;
+	--font-weight-bold: 'wght' 700;
 	--line-height: 1.4em;
 	--line-height-headlines: 1.2em;
 
@@ -48,13 +48,13 @@
 	--z-page-transition: 900;
 	--z-fade-transition: 901;
 
-	--body-font: "Montserrat", Times, Serif;
-	--headline-font: "Montserrat", Arial, Helvetica, Sans-Serif;
-	--label-font: "Montserrat-Medium", Arial, Sans-serif;
-	--sans-font: "Montserrat", Arial, Sans-serif;
+	--body-font: 'Montserrat', Times, Serif;
+	--headline-font: 'Montserrat', Arial, Helvetica, Sans-Serif;
+	--label-font: 'Montserrat-Medium', Arial, Sans-serif;
+	--sans-font: 'Montserrat', Arial, Sans-serif;
 
 	@include mq($until: desktop) {
-		--font-weight-light: "wght" 350;
+		--font-weight-light: 'wght' 350;
 
 		--outer-margin: 1.5rem;
 		--margin: var(--outer-margin);
@@ -72,13 +72,14 @@ body {
 	background-color: var(--background);
 	font-family: var(--body-font);
 	-webkit-font-smoothing: antialiased;
-	font-feature-settings: "liga", "kern";
+	font-feature-settings: 'liga', 'kern';
 	padding-top: var(--navbar-height);
 	margin-bottom: 100vh;
 }
 
 html {
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 main {
@@ -154,12 +155,12 @@ button {
 	white-space: pre;
 	cursor: pointer;
 
-	&[aria-selected="true"],
-	&[data-selected="true"] {
+	&[aria-selected='true'],
+	&[data-selected='true'] {
 		color: var(--white) !important;
 		background-color: var(--black) !important;
 	}
-	&[data-type="icon"] {
+	&[data-type='icon'] {
 		border-radius: 50% !important;
 		padding: 1em;
 	}
@@ -178,7 +179,7 @@ button {
 input,
 textarea,
 select,
-[contenteditable="true"] {
+[contenteditable='true'] {
 	padding: var(--form-field-padding);
 	border: 1px solid transparent;
 	background-color: var(--white);
@@ -189,7 +190,7 @@ select,
 	}
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
 	box-sizing: border-box;
 	width: 1.2em;
 	height: 1.2em;
@@ -201,17 +202,17 @@ input[type="checkbox"] {
 	transition: outline 0.1s;
 }
 
-input[type="checkbox"] + label {
+input[type='checkbox'] + label {
 	display: inline-block;
 	margin-left: 0.5em;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
 	background-size: cover;
 	padding: 2px;
 }
 
-input[type="checkbox"]:checked {
+input[type='checkbox']:checked {
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 32 32" xml:space="preserve"><path style="fill: %23274c77" d="M11.941,28.877l-11.941-11.942l5.695-5.696l6.246,6.246l14.364-14.364L32,8.818"/></svg>');
 }
 
@@ -260,9 +261,9 @@ select {
 	pointer-events: none;
 	opacity: 1;
 	transition:
-		height 0.3s ease-out,
-		background-color 0.5s ease-out,
-		backdrop-filter 0.5s ease-out;
+		height 0.7s cubic-bezier(0.25, 0.96, 0.46, 1),
+		background-color 0.5s 0.2s ease-out,
+		backdrop-filter 0.5s 0.2s ease-out;
 
 	&.enter {
 		opacity: 0;
