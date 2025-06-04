@@ -10,8 +10,6 @@
 	padding-bottom: calc(0.5 * var(--outer-margin));
 	width: 100%;
 	z-index: -1;
-	filter: blur(20px);
-	transition: filter 1.5s ease-in-out;
 
 	h2 {
 		color: var(--blue-light) !important;
@@ -73,7 +71,16 @@
 		}
 	}
 
+	.wrap,
+	.copyright {
+		transition: filter 1.5s ease-in-out;
+		filter: blur(20px);
+	}
+
 	&.show {
-		filter: blur(0px);
+		.wrap,
+		.copyright {
+			filter: blur(0px);
+		}
 	}
 }
