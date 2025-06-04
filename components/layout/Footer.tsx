@@ -6,6 +6,8 @@ import Link from '@/components/nav/Link';
 import Content from '@/components/common/Content';
 import classNames from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
+import { use, useEffect, useRef } from 'react';
+import { useWindowSize } from 'rooks';
 
 type FooterProps = {
 	footer?: FooterRecord;
@@ -13,13 +15,20 @@ type FooterProps = {
 
 export default function Footer({ footer }: FooterProps) {
 	const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo();
-
+	const { innerWidth, innerHeight } = useWindowSize();
+	const ref = useRef<HTMLDivElement>(null);
 	if (!footer) return null;
+
 	const { headline, text, buttonText } = footer;
-	const showFooter = scrolledPosition > documentHeight - viewportHeight * 2;
-	//console.log(showFooter, scrolledPosition, documentHeight, viewportHeight);
+	const showFooter =
+		ref.current && scrolledPosition > documentHeight - ref.current.offsetHeight - viewportHeight;
+
+	useEffect(() => {
+		document.body.style.marginBottom = ref.current?.offsetHeight + 'px';
+	}, [innerHeight, innerWidth]);
+
 	return (
-		<footer className={cn(s.footer, showFooter && s.show)}>
+		<footer className={cn(s.footer, showFooter && s.show)} ref={ref}>
 			<div className={s.wrap}>
 				<Content content={headline} className={s.headline} />
 				<Content content={text} className={classNames(s.text, 'intro')} />
