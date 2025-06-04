@@ -2633,6 +2633,33 @@ enum MuxThumbnailFormatType {
   png = 'png'
 }
 
+/** Block of type News (news) */
+type NewsRecord = RecordInterface & {
+  __typename?: 'NewsRecord';
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  text?: Maybe<Scalars['String']['output']>;
+  url: Scalars['String']['output'];
+};
+
+
+/** Block of type News (news) */
+type NewsRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
 /** Record of type Offer (offer) */
 type OfferRecord = RecordInterface & {
   __typename?: 'OfferRecord';
@@ -3734,6 +3761,8 @@ type StartRecord = RecordInterface & {
   jobsHeadline?: Maybe<StartModelJobsHeadlineField>;
   jobsImage?: Maybe<FileField>;
   jobsText?: Maybe<StartModelJobsTextField>;
+  news: Array<NewsRecord>;
+  newsHeadline?: Maybe<Scalars['String']['output']>;
   shortcuts: Array<ShortcutRecord>;
   textHeadline?: Maybe<StartModelTextHeadlineField>;
   textText?: Maybe<StartModelTextTextField>;
