@@ -37,6 +37,12 @@ fragment StartFragment on StartRecord {
 		links
 		value
 	}
+	newsHeadline
+	news {
+		id
+		text
+		url
+	}
 	footer {
 		headline {
 			blocks

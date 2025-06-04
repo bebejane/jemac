@@ -11,6 +11,7 @@ import Content from '@/components/common/Content';
 import Shortcut from '@/components/common/Shortcut';
 import ProjectGallery from '@/components/common/ProjectGallery';
 import { getPathname } from '@/i18n/routing';
+import NewsTicker from '@/components/common/NewsTicker';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -33,8 +34,18 @@ export default async function Home({ params }: PageProps) {
 
 	if (!start) return notFound();
 
-	const { header, footer, shortcuts, textHeadline, textText, jobsHeadline, jobsImage, jobsText } =
-		start;
+	const {
+		header,
+		footer,
+		shortcuts,
+		textHeadline,
+		textText,
+		jobsHeadline,
+		jobsImage,
+		jobsText,
+		newsHeadline,
+		news,
+	} = start;
 
 	return (
 		<>
@@ -46,11 +57,9 @@ export default async function Home({ params }: PageProps) {
 						))}
 					</ul>
 				</section>
-				{/*}
-				<section className={s.projectsMobile}>
-					<ProjectGallery projects={allProjects} title='Fler exempel på vad vi gjort' />
+				<section className={s.news}>
+					<NewsTicker headline={newsHeadline} news={news} />
 				</section>
-				*/}
 				<section className={s.text}>
 					<div>
 						<Content content={textHeadline} className={s.headline} />

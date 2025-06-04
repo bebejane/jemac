@@ -1,0 +1,31 @@
+.news {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100vw;
+	margin-left: var(--full-bleed-margin);
+	margin-right: var(--full-bleed-margin);
+	padding-left: var(--outer-margin);
+	padding-right: var(--outer-margin);
+	padding-top: var(--space-small);
+	padding-bottom: var(--space-small);
+	background-color: var(--gray);
+	h5,
+	h3 {
+		margin: 0;
+		padding: 0;
+	}
+	h3 {
+		flex: 1 1 auto;
+	}
+	h5 {
+		margin-right: 2rem;
+	}
+	a {
+		display: flex;
+		justify-content: flex-end;
+		flex: 0 0;
+		white-space: nowrap;
+		color: var(--blue);
+	}
+}
