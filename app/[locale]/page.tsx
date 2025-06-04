@@ -10,6 +10,7 @@ import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 import Shortcut from '@/components/common/Shortcut';
 import ProjectGallery from '@/components/common/ProjectGallery';
+import { getPathname } from '@/i18n/routing';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
