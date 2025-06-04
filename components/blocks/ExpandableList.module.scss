@@ -41,7 +41,8 @@
 				text-align: center;
 			}
 
-			.title {
+			.title,
+			h4 {
 				flex: 1 1 100%;
 				overflow: hidden;
 				text-overflow: ellipsis;

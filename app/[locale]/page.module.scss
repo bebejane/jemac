@@ -31,7 +31,7 @@
 		}
 		@include mq($until: desktop) {
 			li:first-of-type {
-				margin-bottom: var(--outer-margin);
+				margin-bottom: 1px;
 			}
 		}
 	}

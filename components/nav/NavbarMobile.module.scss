@@ -10,6 +10,7 @@
 	height: var(--navbar-height);
 	padding: var(--outer-margin);
 	z-index: var(--z-hamburger);
+	backdrop-filter: var(--blur);
 
 	.logo {
 		flex: 1 1 auto;

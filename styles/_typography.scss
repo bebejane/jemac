@@ -68,10 +68,13 @@ h2 strong {
 
 h3,
 h3 strong {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
 	color: var(--green);
 	font-variation-settings: var(--font-weight-light) !important;
 	padding-bottom: 1em;
+	@include mq($from: desktop) {
+		font-size: 1.8rem;
+	}
 }
 
 h3 strong {
@@ -85,7 +88,7 @@ h4 strong {
 	padding-top: 0.5em;
 	font-variation-settings: var(--font-weight-bold) !important;
 	font-weight: normal;
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 }
 
 h4,

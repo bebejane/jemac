@@ -10,10 +10,14 @@
 	margin-bottom: var(--space-big);
 	list-style: none;
 	display: grid;
-	column-gap: var(--gutter);
+	column-gap: calc(0.5 * var(--gutter));
 	row-gap: var(--gutter);
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 
+	@include mq($from: desktop) {
+		column-gap: var(--gutter);
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
 	li:nth-child(2n) {
 		h4 {
 			color: var(--green);
