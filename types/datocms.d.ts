@@ -183,7 +183,7 @@ type ColorField = {
   red: Scalars['IntType']['output'];
 };
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecord = RecordInterface & {
   __typename?: 'ContactRecord';
   _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
@@ -211,45 +211,45 @@ type ContactRecord = RecordInterface & {
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecord_allFooterLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecord_allSectionsLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecord_allTitleLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecordfooterArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecordsectionsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
 
-/** Record of type Kontakt (contact) */
+/** Record of type Contakt (contact) */
 type ContactRecordtitleArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
@@ -2727,6 +2727,22 @@ type OrientationFilter = {
   neq?: InputMaybe<UploadOrientation>;
 };
 
+/** Specifies how to filter by position (sorted and tree-like collections) */
+type PositionFilter = {
+  /** Search for records with an exact match */
+  eq?: InputMaybe<Scalars['IntType']['input']>;
+  /** Filter records with a value that's strictly greater than the one specified */
+  gt?: InputMaybe<Scalars['IntType']['input']>;
+  /** Filter records with a value that's greater than or equal to the one specified */
+  gte?: InputMaybe<Scalars['IntType']['input']>;
+  /** Filter records with a value that's less than the one specified */
+  lt?: InputMaybe<Scalars['IntType']['input']>;
+  /** Filter records with a value that's less or equal than the one specified */
+  lte?: InputMaybe<Scalars['IntType']['input']>;
+  /** Exclude records with an exact match */
+  neq?: InputMaybe<Scalars['IntType']['input']>;
+};
+
 type ProjectModelFilter = {
   AND?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
@@ -3546,6 +3562,7 @@ type StaffModelFilter = {
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   name?: InputMaybe<StringFilter>;
+  position?: InputMaybe<PositionFilter>;
   text?: InputMaybe<StructuredTextFilter>;
 };
 
@@ -3569,7 +3586,9 @@ enum StaffModelOrderBy {
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
   name_ASC = 'name_ASC',
-  name_DESC = 'name_DESC'
+  name_DESC = 'name_DESC',
+  position_ASC = 'position_ASC',
+  position_DESC = 'position_DESC'
 }
 
 type StaffModelTextField = {
@@ -3607,6 +3626,7 @@ type StaffRecord = RecordInterface & {
   id: Scalars['ItemId']['output'];
   image?: Maybe<FileField>;
   name?: Maybe<Scalars['String']['output']>;
+  position?: Maybe<Scalars['IntType']['output']>;
   text?: Maybe<StaffModelTextField>;
 };
 

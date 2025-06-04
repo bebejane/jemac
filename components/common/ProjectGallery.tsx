@@ -13,9 +13,10 @@ import Link from '@/components/nav/Link';
 type Props = {
 	projects: AllProjectsQuery['allProjects'];
 	noborder?: boolean;
+	title: string;
 };
 
-export default function ProjectGallery({ projects, noborder }: Props) {
+export default function ProjectGallery({ projects, noborder, title }: Props) {
 	const swiperRef = useRef<Swiper | null>(null);
 	const [index, setIndex] = useState(0);
 	const [ref, inView] = useInViewRef({ threshold: 0.4 });
@@ -23,7 +24,7 @@ export default function ProjectGallery({ projects, noborder }: Props) {
 	return (
 		<>
 			<div className={cn(s.header, noborder && s.noborder)}>
-				<h3>Fler exempel på vad vi gjort</h3>
+				<h3>{title}</h3>
 				<div className={s.arrows}>
 					<button className={cn(s.back)} onClick={() => swiperRef.current?.slidePrev()}>
 						<img src='/images/arrow.svg' alt='‹' />

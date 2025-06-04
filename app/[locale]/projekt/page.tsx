@@ -38,7 +38,11 @@ export default async function ShowcasePage({ params }: PageProps) {
 		<>
 			<Article title={title} header={header as HeaderRecord}>
 				<section className={s.gallery}>
-					<ProjectGallery projects={allProjects} noborder={true} />
+					<ProjectGallery
+						projects={allProjects}
+						noborder={true}
+						title='Fler exempel på vad vi gjort'
+					/>
 				</section>
 				{sections.map((section) => (
 					<Section

@@ -72,8 +72,8 @@
 			}
 
 			&.active {
-				> a {
-					color: var(--darkred-light);
+				* {
+					color: var(--green) !important;
 				}
 			}
 		}
@@ -99,6 +99,11 @@
 				li {
 					padding-top: 0.5em;
 					padding-bottom: 0.5em;
+					&.active {
+						> a {
+							color: var(--gray);
+						}
+					}
 				}
 			}
 		}
