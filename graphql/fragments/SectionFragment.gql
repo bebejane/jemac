@@ -4,6 +4,7 @@ fragment SectionFragment on SectionRecord {
 	headline {
 		blocks
 		links
+		inlineBlocks
 		value
 	}
 	text {

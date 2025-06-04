@@ -35,6 +35,9 @@ importers:
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
+      datocms-structured-text-to-plain-text:
+        specifier: ^5.0.0
+        version: 5.0.0
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
@@ -1897,6 +1900,12 @@ packages:
 
   datocms-structured-text-generic-html-renderer@4.1.2:
     resolution: {integrity: sha512-VsyVnqG/5iio3LHGd09Pk27n3hu2YcAujgTcgtv8CXapYd13r7OkfMkrsbiuJCO+xYBzPNHhI62PL6QOoI6BGA==}
+
+  datocms-structured-text-generic-html-renderer@5.0.0:
+    resolution: {integrity: sha512-WVVWFO2dMx9ILmZKKV22QTbuV4bjoms9PqdUSSWCcGpJmWnVIiZhSzqsXZ41ijvyGYNBtUo35N1y5hB9ROl6bw==}
+
+  datocms-structured-text-to-plain-text@5.0.0:
+    resolution: {integrity: sha512-VDXSBe+yJXRuUdkfqpqOp7fjaFijZ9EJ24uYROBlGHf+7IDRG0/LQhfrD+klDJHwTl/gZlLgkZrOFRjCHf3AGw==}
 
   datocms-structured-text-utils@4.1.2:
     resolution: {integrity: sha512-xyBG7ZAXedv8wytTR1JqfHx8uuUogg6I9brQmK1uR3y14gQqTRLvAeoY3unp5xcBDm8YXYHdS2W+Bg9AWgdhLQ==}
@@ -6268,6 +6277,15 @@ snapshots:
   datocms-structured-text-generic-html-renderer@4.1.2:
     dependencies:
       datocms-structured-text-utils: 4.1.2
+
+  datocms-structured-text-generic-html-renderer@5.0.0:
+    dependencies:
+      datocms-structured-text-utils: 5.0.0
+
+  datocms-structured-text-to-plain-text@5.0.0:
+    dependencies:
+      datocms-structured-text-generic-html-renderer: 5.0.0
+      datocms-structured-text-utils: 5.0.0
 
   datocms-structured-text-utils@4.1.2:
     dependencies:

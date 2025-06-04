@@ -1,0 +1,33 @@
+.nav {
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%) translateY(50%);
+	bottom: 20vh;
+	display: flex;
+	flex-direction: row;
+	transition: opacity 0.3s ease-out;
+
+	a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 1 0;
+		background-color: rgba(255, 255, 255, 0.5);
+		white-space: nowrap;
+		padding: 1rem;
+
+		&:first-child {
+			border-top-left-radius: 1rem;
+			border-bottom-left-radius: 1rem;
+		}
+		&:last-child {
+			border-top-right-radius: 1rem;
+			border-bottom-right-radius: 1rem;
+		}
+	}
+
+	&.hide {
+		opacity: 0;
+		pointer-events: none;
+	}
+}

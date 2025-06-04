@@ -1,3 +1,13 @@
+.projects {
+	@include mq($until: desktop) {
+		//display: none;
+	}
+}
+.projectsMobile {
+	@include mq($from: desktop) {
+		display: none;
+	}
+}
 .shortcuts {
 	@include mq($until: desktop) {
 		//border-top: var(--line);

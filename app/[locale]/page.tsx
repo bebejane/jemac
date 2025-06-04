@@ -34,6 +34,7 @@ export default async function Home({ params }: PageProps) {
 
 	const { header, footer, shortcuts, textHeadline, textText, jobsHeadline, jobsImage, jobsText } =
 		start;
+
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
@@ -44,6 +45,11 @@ export default async function Home({ params }: PageProps) {
 						))}
 					</ul>
 				</section>
+				{/*}
+				<section className={s.projectsMobile}>
+					<ProjectGallery projects={allProjects} title='Fler exempel på vad vi gjort' />
+				</section>
+				*/}
 				<section className={s.text}>
 					<div>
 						<Content content={textHeadline} className={s.headline} />
