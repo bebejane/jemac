@@ -2,7 +2,7 @@
 	--line-height: 0.22rem;
 	--line-height-half: calc(var(--line-height) / 2);
 	--height: 28px;
-	--width: 38px;
+	--width: 32px;
 	z-index: var(--z-hamburger);
 	top: 0;
 	right: 0;
@@ -37,13 +37,11 @@
 			}
 
 			&:nth-child(1) {
-				transform: translateY(calc(calc(var(--height) * 0.25) - var(--line-height-half)))
-					rotate(0deg);
+				transform: translateY(calc(calc(var(--height) * 0.25) - var(--line-height-half))) rotate(0deg);
 			}
 
 			&:nth-child(2) {
-				transform: translateY(calc(calc(var(--height) * 0.75) - var(--line-height-half)))
-					rotate(0deg);
+				transform: translateY(calc(calc(var(--height) * 0.75) - var(--line-height-half))) rotate(0deg);
 			}
 
 			&.init {

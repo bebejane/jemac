@@ -43,7 +43,7 @@
 	flex-direction: column;
 	height: 100vh;
 	width: 100%;
-	background-color: var(--blue);
+	background-color: var(--green);
 	padding: var(--outer-margin);
 	font-size: 1.5rem;
 	color: var(--white);
@@ -73,7 +73,7 @@
 
 			&.active {
 				* {
-					color: var(--green) !important;
+					color: var(--black) !important;
 				}
 			}
 		}
