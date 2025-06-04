@@ -70,21 +70,20 @@
 		overflow: visible;
 
 		.slideWrap {
-			align-items: center;
-
 			.slide {
-				width: 80vw;
+				width: calc(100% - var(--gutter));
 				height: 70vh;
-
 				background-color: var(--white);
 				cursor: pointer;
 				border-radius: var(--border-radius);
-				padding: var(--space);
 				margin-right: var(--gutter);
-
+				a {
+					display: block;
+					padding: var(--space);
+				}
 				@include mq($from: desktop) {
-					width: 33.333%;
-					height: 30vh;
+					width: 33.3333%;
+					height: 50vh;
 				}
 
 				&:hover {

@@ -23,6 +23,10 @@ export default function FullscreenGallery({}: GalleryProps) {
 	);
 	const isSingleSlide = gallery?.length === 1;
 	const isHidden = !gallery || !galleryId;
+	const initIndex =
+		gallery?.findIndex((image) => image.id === galleryId) > -1
+			? gallery.findIndex((image) => image.id === galleryId)
+			: 0;
 
 	useEffect(() => {
 		if (gallery) setTitle(gallery[realIndex]?.title);
@@ -34,7 +38,6 @@ export default function FullscreenGallery({}: GalleryProps) {
 				? gallery.findIndex((image) => image.id === galleryId)
 				: 0;
 		swiperRef.current?.slideTo(index, 0, false);
-		console.log(index);
 		setRealIndex(index);
 	}, [galleryId]);
 
@@ -62,7 +65,10 @@ export default function FullscreenGallery({}: GalleryProps) {
 				role='button'
 				aria-label='Previous image'
 				className={s.back}
-				onClick={() => swiperRef.current?.slidePrev()}
+				onClick={(e) => {
+					e.stopPropagation();
+					swiperRef.current?.slidePrev();
+				}}
 			>
 				<img src='/images/arrow.svg' className={s.arrow} />
 			</div>
@@ -70,7 +76,10 @@ export default function FullscreenGallery({}: GalleryProps) {
 				role='button'
 				aria-label='Next image'
 				className={s.forward}
-				onClick={() => swiperRef.current?.slideNext()}
+				onClick={(e) => {
+					e.stopPropagation();
+					swiperRef.current?.slideNext();
+				}}
 			>
 				<img src='/images/arrow.svg' className={s.arrow} />
 			</div>
@@ -82,7 +91,7 @@ export default function FullscreenGallery({}: GalleryProps) {
 				key={galleryId}
 				loop={true}
 				slidesPerView={1}
-				initialSlide={realIndex}
+				initialSlide={initIndex}
 				onSlideChange={({ realIndex }) => setRealIndex(realIndex)}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
 				onClick={() => swiperRef.current?.slideNext()}
