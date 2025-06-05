@@ -41,7 +41,6 @@
 	margin-bottom: var(--space-big);
 
 	@include mq($from: desktop) {
-		border-top: var(--line);
 		padding-top: var(--space-big);
 		display: flex;
 		flex-direction: row;

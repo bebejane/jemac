@@ -20,6 +20,7 @@
 	}
 	h5 {
 		margin-right: 2rem;
+		padding-top: 0.1em;
 	}
 	a {
 		display: flex;
@@ -27,5 +28,9 @@
 		flex: 0 0;
 		white-space: nowrap;
 		color: var(--blue);
+		margin-right: 1em;
+		&:hover {
+			color: var(--red);
+		}
 	}
 }

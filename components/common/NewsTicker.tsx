@@ -24,7 +24,9 @@ export default function NewsTicker({ headline, news }: Props) {
 		<div className={s.news}>
 			<h5>{headline}</h5>
 			<h3>{newsItem?.text}</h3>
-			{newsItem?.url && <Link href={newsItem?.url}>Läs mer →</Link>}
+			{newsItem?.url && <Link target="_blank"
+				rel="noopener noreferrer"
+				className="mid" href={newsItem?.url}>Läs mer →</Link>}
 		</div>
 	);
 }

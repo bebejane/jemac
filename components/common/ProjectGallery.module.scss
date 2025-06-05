@@ -71,7 +71,7 @@
 
 		.slideWrap {
 			.slide {
-				width: calc(100% - var(--gutter));
+				width: calc(100% - (3 * var(--gutter)));
 				height: auto;
 				background-color: var(--white);
 				cursor: pointer;
