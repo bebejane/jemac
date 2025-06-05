@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import s from './NewsTicker.module.scss';
-import cn from 'classnames';
 import Link from 'next/link';
 import { useIntervalWhen } from 'rooks';
+import { AnimatePresence, motion } from 'motion/react';
+import useIsDesktop from '@/lib/hooks/useIsDesktop';
 
 export type Props = {
 	headline: string;
@@ -13,6 +14,7 @@ export type Props = {
 
 export default function NewsTicker({ headline, news }: Props) {
 	const [index, setIndex] = useState(0);
+	const isDesktop = useIsDesktop();
 
 	useIntervalWhen(() => {
 		setIndex((index) => (index >= news.length - 1 ? 0 : index + 1));
@@ -20,13 +22,35 @@ export default function NewsTicker({ headline, news }: Props) {
 
 	const newsItem = news[index];
 
+	const variants = isDesktop
+		? {
+				initial: { translateY: 100 },
+				exit: { translateY: -100 },
+				animate: { translateY: 0 },
+			}
+		: {
+				initial: { translateX: `100%` },
+				exit: { translateX: `-100%` },
+				animate: { translateX: 0 },
+			};
+
 	return (
-		<div className={s.news}>
+		<Link className={s.news} target='_blank' rel='noopener noreferrer' href={newsItem?.url}>
 			<h5>{headline}</h5>
-			<h3>{newsItem?.text}</h3>
-			{newsItem?.url && <Link target="_blank"
-				rel="noopener noreferrer"
-				className="mid" href={newsItem?.url}>Läs mer →</Link>}
-		</div>
+			<AnimatePresence mode={'wait'}>
+				<motion.h3
+					key={index}
+					layout
+					variants={variants}
+					initial='initial'
+					animate='animate'
+					exit='exit'
+					transition={{ duration: 0.3, type: 'spring' }}
+				>
+					{newsItem?.text}
+				</motion.h3>
+			</AnimatePresence>
+			{newsItem?.url && <span className='mid'>Läs mer →</span>}
+		</Link>
 	);
 }

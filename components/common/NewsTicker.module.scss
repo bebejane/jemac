@@ -7,6 +7,7 @@
 	padding-top: var(--space);
 	padding-bottom: var(--space);
 	background-color: var(--gray);
+	overflow: hidden;
 
 	@include mq($from: desktop) {
 		display: flex;
@@ -33,7 +34,7 @@
 			padding-bottom: 0.5em;
 		}
 	}
-	a {
+	span {
 		white-space: nowrap;
 		color: var(--blue);
 		margin-right: 1em;
