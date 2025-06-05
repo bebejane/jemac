@@ -1,15 +1,20 @@
 .news {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
 	width: 100vw;
 	margin-left: var(--full-bleed-margin);
 	margin-right: var(--full-bleed-margin);
 	padding-left: var(--outer-margin);
 	padding-right: var(--outer-margin);
-	padding-top: var(--space-small);
-	padding-bottom: var(--space-small);
+	padding-top: var(--space);
+	padding-bottom: var(--space);
 	background-color: var(--gray);
+
+	@include mq($from: desktop) {
+		display: flex;
+
+		flex-direction: row;
+		align-items: center;
+	}
+
 	h5,
 	h3 {
 		margin: 0;
@@ -17,18 +22,28 @@
 	}
 	h3 {
 		flex: 1 1 auto;
+		@include mq($until: desktop) {
+			padding-bottom: 0.2em;
+		}
 	}
 	h5 {
 		margin-right: 2rem;
 		padding-top: 0.1em;
+		@include mq($until: desktop) {
+			padding-bottom: 0.5em;
+		}
 	}
 	a {
-		display: flex;
-		justify-content: flex-end;
-		flex: 0 0;
 		white-space: nowrap;
 		color: var(--blue);
 		margin-right: 1em;
+
+		@include mq($from: desktop) {
+			display: flex;
+			justify-content: flex-end;
+			flex: 0 0;
+		}
+
 		&:hover {
 			color: var(--red);
 		}
