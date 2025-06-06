@@ -41,7 +41,7 @@ export default function Thumbnail({
 					<ul className={s.meta}>
 						{meta.map(({ label, text, href }, idx) => (
 							<li key={idx}>
-								<span>{label}</span>
+								<span className="very-small">{label}</span>
 								{href ? <Link href={href}>{text}</Link> : <span>{text}</span>}
 							</li>
 						))}
