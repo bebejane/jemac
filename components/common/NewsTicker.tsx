@@ -24,15 +24,15 @@ export default function NewsTicker({ headline, news }: Props) {
 
 	const variants = isDesktop
 		? {
-				initial: { translateY: 100 },
-				exit: { translateY: -100 },
-				animate: { translateY: 0 },
-			}
+			initial: { translateY: 100 },
+			exit: { translateY: -100 },
+			animate: { translateY: 0 },
+		}
 		: {
-				initial: { translateX: `100%` },
-				exit: { translateX: `-100%` },
-				animate: { translateX: 0 },
-			};
+			initial: { translateX: `100%` },
+			exit: { translateX: `-100%` },
+			animate: { translateX: 0 },
+		};
 
 	return (
 		<Link className={s.news} target='_blank' rel='noopener noreferrer' href={newsItem?.url}>
@@ -45,7 +45,7 @@ export default function NewsTicker({ headline, news }: Props) {
 					initial='initial'
 					animate='animate'
 					exit='exit'
-					transition={{ duration: 0.3, type: 'spring' }}
+					transition={{ duration: 0.3, type: 'ease' }}
 				>
 					{newsItem?.text}
 				</motion.h3>
