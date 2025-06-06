@@ -1,9 +1,12 @@
 import { DatoCmsConfig } from 'next-dato-utils/config';
 import client from './lib/client';
-import { getPathname } from "@/i18n/routing"
+import { getPathname, defaultLocale } from "@/i18n/routing"
 
 const routes: DatoCmsConfig['routes'] = {
-  "start": async (record, locale) => [getPathname({ locale, href: '/' })],
+  "start": async (record, locale) => {
+    console.log(locale)
+    return [getPathname({ locale, href: '/' })]
+  },
   "about": async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
   "contact": async (record, locale) => [getPathname({ locale, href: '/kontakt' })],
   "offer": async (record, locale) => [getPathname({ locale, href: '/erbjudande' })],
@@ -24,8 +27,8 @@ const routes: DatoCmsConfig['routes'] = {
 }
 
 export default {
-  description: 'Kollektiva konstnärsverkstäders Riksorganisation, KKV-Riks, har som syfte att, på olika sätt, stödja sina kollektiva medlemsverkstäder runt om i Sverige.',
-  name: 'KKV-Riks',
+  description: 'Jemac description',
+  name: 'JEMAC',
   url: {
     dev: 'http://localhost:3000',
     public: 'https://kkv-riks.vercel.app',
@@ -33,6 +36,10 @@ export default {
   theme: {
     background: '#efefef',
     color: '#cd3a00',
+  },
+  i18n: {
+    defaultLocale: 'sv',
+    locales: ['sv', 'en'],
   },
   routes,
   sitemap: async () => {
