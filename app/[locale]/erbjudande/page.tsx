@@ -27,7 +27,10 @@ export default async function OfferPage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article title={title} header={header as HeaderRecord}>
+			<Article
+				title={title}
+				header={header as HeaderRecord}
+			>
 				<SectionNavigation />
 				{sections.map((section, idx) => (
 					<Section
@@ -36,11 +39,15 @@ export default async function OfferPage({ params }: PageProps) {
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}
 						text={section.text}
+						image={section.image as FileField}
 					/>
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode
+				url={draftUrl}
+				path={`/`}
+			/>
 		</>
 	);
 }

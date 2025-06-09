@@ -32,7 +32,9 @@ fragment SectionFragment on SectionRecord {
 		links
 		value
 	}
-
+	image {
+		...ImageFragment
+	}
 	referenceProject {
 		...ProjectLightFragment
 	}
