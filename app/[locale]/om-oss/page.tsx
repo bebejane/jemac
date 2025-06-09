@@ -15,14 +15,11 @@ export default async function AboutPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { about, allStaffs, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(
-		AboutDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { about, allStaffs, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	if (!about) return notFound();
 
@@ -30,28 +27,41 @@ export default async function AboutPage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article title={title} header={header as HeaderRecord}>
+			<Article
+				title={title}
+				header={header as HeaderRecord}
+			>
 				{sections.map((section) => (
 					<Section
 						key={section.id}
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}
 						text={section.text}
+						image={section.image as FileField}
 					/>
 				))}
 				<h2 className={s.headerStaff}>Människorna bakom</h2>
 				<ul className={s.staff}>
 					{allStaffs.map(({ id, name, image, text }) => (
 						<li key={id}>
-							<Image data={image.responsiveImage} imgClassName={s.image} />
+							<Image
+								data={image.responsiveImage}
+								imgClassName={s.image}
+							/>
 							<h4>{name}</h4>
-							<Content content={text} className={classNames("mid", s.content)} />
+							<Content
+								content={text}
+								className={classNames('mid', s.content)}
+							/>
 						</li>
 					))}
 				</ul>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode
+				url={draftUrl}
+				path={`/`}
+			/>
 		</>
 	);
 }

@@ -13,19 +13,13 @@ export default async function ShowcasePage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { showcase, draftUrl } = await apiQuery<ShowcaseQuery, ShowcaseQueryVariables>(
-		ShowcaseDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { showcase, draftUrl } = await apiQuery<ShowcaseQuery, ShowcaseQueryVariables>(ShowcaseDocument, {
+		variables: {
+			locale,
+		},
+	});
 
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(AllShowcaseProjectsDocument, {
 		variables: {
 			locale,
 		},
@@ -36,7 +30,10 @@ export default async function ShowcasePage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article title={title} header={header as HeaderRecord}>
+			<Article
+				title={title}
+				header={header as HeaderRecord}
+			>
 				<section className={s.gallery}>
 					<ProjectGallery
 						projects={allProjects}
@@ -50,11 +47,15 @@ export default async function ShowcasePage({ params }: PageProps) {
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}
 						text={section.text}
+						image={section.image as FileField}
 					/>
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode
+				url={draftUrl}
+				path={`/`}
+			/>
 		</>
 	);
 }

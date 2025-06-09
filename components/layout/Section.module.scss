@@ -14,7 +14,6 @@
 	.header {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
 
 		@include mq($from: desktop) {
 			padding-right: var(--outer-margin);
@@ -22,6 +21,11 @@
 
 		.headline {
 			flex: 1 1 auto;
+		}
+		.image {
+			height: 30vh;
+			object-fit: contain;
+			width: 100%;
 		}
 	}
 	.content {

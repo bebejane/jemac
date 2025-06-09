@@ -23,18 +23,25 @@ export default async function JoinPage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article title={title} header={header as HeaderRecord}>
+			<Article
+				title={title}
+				header={header as HeaderRecord}
+			>
 				{sections.map((section) => (
 					<Section
 						key={section.id}
 						project={section.referenceProject as ProjectRecord}
 						headline={section.headline}
 						text={section.text}
+						image={section.image as FileField}
 					/>
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode
+				url={draftUrl}
+				path={`/`}
+			/>
 		</>
 	);
 }
