@@ -11,7 +11,7 @@ fragment HeaderFragment on HeaderRecord {
 		value
 	}
 	image {
-		...ImageFragment
+		...ImageWideFragment
 	}
 	align
 }
