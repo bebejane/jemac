@@ -3382,6 +3382,7 @@ type SectionRecord = RecordInterface & {
   _updatedAt: Scalars['DateTime']['output'];
   headline?: Maybe<SectionModelHeadlineField>;
   id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
   referenceProject?: Maybe<ProjectRecord>;
   sectionId?: Maybe<Scalars['String']['output']>;
   text?: Maybe<SectionModelTextField>;
