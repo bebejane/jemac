@@ -9,7 +9,7 @@ fragment ImageFragment on FileFieldInterface {
 	size
 	title
 	url
-	responsiveImage(imgixParams: { w: 4000, auto: format, ar: "4:3", fit: crop }) {
+	responsiveImage(imgixParams: { w: 4000, auto: format, ar: "16:9", fit: crop }) {
 		width
 		height
 		alt
