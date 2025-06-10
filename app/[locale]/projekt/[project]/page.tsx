@@ -1,6 +1,6 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllShowcaseProjectsDocument, ProjectDocument, ShowcaseFooterDocument } from '@/graphql';
+import { AllShowcaseProjectsDocument, ProjectDocument, ProjectFooterDocument, ShowcaseFooterDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
@@ -22,29 +22,20 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug, locale } = await params;
 	setRequestLocale(locale);
 
-	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(
-		ProjectDocument,
-		{
-			variables: {
-				locale,
-				slug,
-			},
-		}
-	);
+	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
+		variables: {
+			locale,
+			slug,
+		},
+	});
 
-	const { showcase } = await apiQuery<ShowcaseFooterQuery, ShowcaseFooterQueryVariables>(
-		ShowcaseFooterDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { projectFooter } = await apiQuery<ProjectFooterQuery, ProjectFooterQueryVariables>(ProjectFooterDocument, {
+		variables: {
+			locale,
+		},
+	});
 
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(AllShowcaseProjectsDocument, {
 		variables: {
 			locale,
 			slug: project.slug,
@@ -54,19 +45,30 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	if (!project) return notFound();
 
 	const { title, headline, text, client, result, what, why, image } = project;
-	const { footer } = showcase;
+	const { footer } = projectFooter;
 
 	return (
 		<>
-			<Article title={title} className={s.page}>
+			<Article
+				title={title}
+				className={s.page}
+			>
 				<header className={s.header}>
-					<div className={s.image}>
-						{image?.responsiveImage && <Image data={image.responsiveImage} />}
-					</div>
+					<div className={s.image}>{image?.responsiveImage && <Image data={image.responsiveImage} />}</div>
 					<div className={s.content}>
-						<img className={s.logo} src={client?.logo?.url} alt={client?.name} />
-						<Content content={headline} className={s.headline} />
-						<Content content={text} className={cn(s.text, 'intro')} />
+						<img
+							className={s.logo}
+							src={client?.logo?.url}
+							alt={client?.name}
+						/>
+						<Content
+							content={headline}
+							className={s.headline}
+						/>
+						<Content
+							content={text}
+							className={cn(s.text, 'intro')}
+						/>
 					</div>
 				</header>
 				<section className={s.section}>
@@ -74,37 +76,49 @@ export default async function ProjectPage({ params }: ProjectProps) {
 						<h5>Utgångspunkt</h5>
 						<h3>Vad behövdes för projektet</h3>
 					</div>
-					<Content content={why} className={s.content} />
+					<Content
+						content={why}
+						className={s.content}
+					/>
 				</section>
 				<section className={s.section}>
 					<div className={s.header}>
 						<h5>Lösningen</h5>
 						<h3>Vad gjorde vi?</h3>
 					</div>
-					<Content content={what} className={s.content} />
+					<Content
+						content={what}
+						className={s.content}
+					/>
 				</section>
 				<section className={s.section}>
 					<div className={s.header}>
 						<h5>Resultat</h5>
 						<h3>Vad blev effekten?</h3>
 					</div>
-					<Content content={result} className={s.content} />
+					<Content
+						content={result}
+						className={s.content}
+					/>
 				</section>
 				<section>
-					<ProjectGallery projects={allProjects} title='Fler exempel på vad vi gjort' />
+					<ProjectGallery
+						projects={allProjects}
+						title='Fler exempel på vad vi gjort'
+					/>
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />
+			<DraftMode
+				url={draftUrl}
+				path={`/projekt/${slug}`}
+			/>
 		</>
 	);
 }
 
 export async function generateStaticParams() {
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(AllShowcaseProjectsDocument, {
 		all: true,
 	});
 

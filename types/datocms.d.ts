@@ -2770,6 +2770,47 @@ type PositionFilter = {
   neq?: InputMaybe<Scalars['IntType']['input']>;
 };
 
+/** Record of type Selected Projects Footer (project_footer) */
+type ProjectFooterRecord = RecordInterface & {
+  __typename?: 'ProjectFooterRecord';
+  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  footer: FooterRecord;
+  id: Scalars['ItemId']['output'];
+};
+
+
+/** Record of type Selected Projects Footer (project_footer) */
+type ProjectFooterRecord_allFooterLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Selected Projects Footer (project_footer) */
+type ProjectFooterRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Selected Projects Footer (project_footer) */
+type ProjectFooterRecordfooterArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
 type ProjectModelFilter = {
   AND?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ProjectModelFilter>>>;
@@ -3124,6 +3165,8 @@ type Query = {
   /** Returns a specific record */
   project?: Maybe<ProjectRecord>;
   /** Returns the single instance record */
+  projectFooter?: Maybe<ProjectFooterRecord>;
+  /** Returns the single instance record */
   showcase?: Maybe<ShowcaseRecord>;
   /** Returns a specific record */
   staff?: Maybe<StaffRecord>;
@@ -3256,6 +3299,13 @@ type QueryprojectArgs = {
   filter?: InputMaybe<ProjectModelFilter>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ProjectModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QueryprojectFooterArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
 };
 
 
@@ -4423,6 +4473,13 @@ type AllProjectsQueryVariables = Exact<{
 
 
 type AllProjectsQuery = { __typename?: 'Query', allProjects: Array<{ __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null }>, _allProjectsMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type ProjectFooterQueryVariables = Exact<{
+  locale?: InputMaybe<SiteLocale>;
+}>;
+
+
+type ProjectFooterQuery = { __typename?: 'Query', projectFooter?: { __typename?: 'ProjectFooterRecord', footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null } } | null };
 
 type ProjectFragment = { __typename?: 'ProjectRecord', title?: string | null, slug: string, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null, what?: { __typename?: 'ProjectModelWhatField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, why?: { __typename?: 'ProjectModelWhyField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, result?: { __typename?: 'ProjectModelResultField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null };
 

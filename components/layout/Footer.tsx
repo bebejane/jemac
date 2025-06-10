@@ -26,17 +26,28 @@ export default function Footer({ footer }: FooterProps) {
 
 	useEffect(() => {
 		document.body.style.marginBottom = ref.current?.offsetHeight + 'px';
-		const show =
-			ref.current && scrolledPosition > documentHeight - ref.current.offsetHeight - viewportHeight;
+		const show = ref.current && scrolledPosition > documentHeight - ref.current.offsetHeight - viewportHeight;
 		setShow(show ? true : false);
-		setHide(scrolledPosition < viewportHeight && !show);
-	}, [innerHeight, innerWidth, scrolledPosition]);
+	}, [innerHeight, innerWidth, documentHeight, scrolledPosition]);
 
+	useEffect(() => {
+		setHide(scrolledPosition < viewportHeight && !show);
+	}, [scrolledPosition, show, viewportHeight]);
+	//console.log()
 	return (
-		<footer className={cn(s.footer, show && s.show, hide && s.hide)} ref={ref}>
+		<footer
+			className={cn(s.footer, show && s.show, hide && s.hide)}
+			ref={ref}
+		>
 			<div className={s.wrap}>
-				<Content content={headline} className={s.headline} />
-				<Content content={text} className={classNames(s.text, 'intro')} />
+				<Content
+					content={headline}
+					className={s.headline}
+				/>
+				<Content
+					content={text}
+					className={classNames(s.text, 'intro')}
+				/>
 				<Link href='/kontakt'>
 					<button>{buttonText}</button>
 				</Link>

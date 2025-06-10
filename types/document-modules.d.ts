@@ -162,6 +162,7 @@ declare module '*/project.gql' {
   const defaultDocument: DocumentNode;
   export const Project: DocumentNode;
 export const AllProjects: DocumentNode;
+export const ProjectFooter: DocumentNode;
 export const ProjectFragment: DocumentNode;
 export const ProjectLightFragment: DocumentNode;
 
