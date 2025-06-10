@@ -1,12 +1,12 @@
+import 'dotenv/config';
 import { DatoCmsConfig } from 'next-dato-utils/config';
 import client from './lib/client';
+import { AllProjectsDocument } from '@/graphql';
+import { apiQuery } from 'next-dato-utils/api';
 import { getPathname, defaultLocale } from '@/i18n/routing';
 
 const routes: DatoCmsConfig['routes'] = {
-	start: async (record, locale) => {
-		console.log(locale);
-		return [getPathname({ locale, href: '/' })];
-	},
+	start: async (record, locale) => [getPathname({ locale, href: '/' })],
 	about: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
 	contact: async (record, locale) => [getPathname({ locale, href: '/kontakt' })],
 	offer: async (record, locale) => [getPathname({ locale, href: '/erbjudande' })],
@@ -14,17 +14,43 @@ const routes: DatoCmsConfig['routes'] = {
 	join: async (record, locale) => [getPathname({ locale, href: '/bli-en-av-oss' })],
 	showcase: async (record, locale) => [getPathname({ locale, href: '/projekt' })],
 	staff: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
-	client: async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
-	project: async ({ slug }, locale) => [
-		getPathname({ locale, href: { pathname: `/projekt/[project]`, params: { project: slug[locale] } } }),
-		getPathname({ locale, href: '/projekt' }),
+	client: async (record, locale) => [
+		getPathname({ locale, href: `/projekt` }),
 		getPathname({ locale, href: '/' }),
 	],
+	project: async ({ slug }, locale) => {
+		console.log('pptest', slug, locale);
+		return [
+			getPathname({
+				locale,
+				href: { pathname: `/projekt/[project]`, params: { project: slug[locale] ?? slug } },
+			}),
+			getPathname({ locale, href: '/projekt' }),
+			getPathname({ locale, href: '/' }),
+		];
+	},
+	project_footer: async (record, locale) => {
+		console.log('project_footer', locale);
+		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
+			AllProjectsDocument,
+			{
+				all: true,
+				variables: { locale: locale as SiteLocale },
+			}
+		);
+		const paths = allProjects.map(({ slug }) =>
+			getPathname({
+				locale,
+				href: { pathname: `/projekt/[project]`, params: { project: slug } },
+			})
+		);
+		return paths;
+	},
 };
 
 export default {
-	description: 'Jemac description',
 	name: 'JEMAC',
+	description: 'Jemac',
 	url: {
 		dev: 'http://localhost:3000',
 		public: 'https://kkv-riks.vercel.app',
@@ -78,7 +104,11 @@ async function references(itemId: string): Promise<string[]> {
 	if (!itemId) throw new Error('Missing reference: itemId');
 	const paths: string[] = [];
 	const itemTypes = await client.itemTypes.list();
-	const items = await client.items.references(itemId, { version: 'published', limit: 500, nested: true });
+	const items = await client.items.references(itemId, {
+		version: 'published',
+		limit: 500,
+		nested: true,
+	});
 
 	for (const item of items) {
 		const itemType = itemTypes.find(({ id }) => id === item.item_type.id);

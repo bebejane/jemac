@@ -6,7 +6,7 @@ query Project($locale: SiteLocale, $slug: String) {
 
 query AllProjects($first: IntType = 500, $skip: IntType = 0, $locale: SiteLocale) {
 	allProjects(first: $first, skip: $skip, locale: $locale) {
-		...ProjectLightFragment
+		...ProjectFragment
 	}
 	_allProjectsMeta(locale: $locale) {
 		count
@@ -83,7 +83,6 @@ fragment ProjectFragment on ProjectRecord {
 		links
 		value
 	}
-
 	slug
 }
 
