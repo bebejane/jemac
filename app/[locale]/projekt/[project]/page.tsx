@@ -1,6 +1,6 @@
 import s from './page.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllShowcaseProjectsDocument, ProjectDocument, ProjectFooterDocument, ShowcaseFooterDocument } from '@/graphql';
+import { AllShowcaseProjectsDocument, ProjectDocument, ProjectFooterDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
