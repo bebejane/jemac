@@ -19,7 +19,6 @@ const routes: DatoCmsConfig['routes'] = {
 		getPathname({ locale, href: '/' }),
 	],
 	project: async ({ slug }, locale) => {
-		console.log('pptest', slug, locale);
 		return [
 			getPathname({
 				locale,
@@ -30,7 +29,6 @@ const routes: DatoCmsConfig['routes'] = {
 		];
 	},
 	project_footer: async (record, locale) => {
-		console.log('project_footer', locale);
 		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
 			AllProjectsDocument,
 			{
