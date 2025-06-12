@@ -133,6 +133,12 @@ a {
 	}
 }
 
+p a {
+	&:hover {
+		color: var(--red);
+	}
+}
+
 form label {
 	display: inline-block;
 	font-weight: bold;
@@ -146,15 +152,17 @@ button {
 	justify-content: center;
 	color: var(--black);
 	background-color: var(--white);
-	padding-left: 2.5em;
-	padding-right: 2.5em;
-	border-radius: 2rem;
 	border-color: transparent;
 	font-family: var(--label-font);
 	text-decoration: none !important;
-	font-size: 0.7rem;
+	font-size: 1rem;
 	white-space: pre;
 	cursor: pointer;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-top: 2rem;
+	border-top: 1px solid var(--black);
+	border-bottom: 1px solid var(--black);
 
 	&[aria-selected="true"],
 	&[data-selected="true"] {
