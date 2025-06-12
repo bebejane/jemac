@@ -10,6 +10,10 @@ query About($locale: SiteLocale) {
 		footer {
 			...FooterFragment
 		}
+		seoMeta {
+			title
+			description
+		}
 	}
 	allStaffs(locale: $locale) {
 		...StaffFragment

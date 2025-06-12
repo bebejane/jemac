@@ -24,4 +24,5 @@ fragment StaffFragment on StaffRecord {
 		links
 		value
 	}
+	email
 }

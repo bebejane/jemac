@@ -11,4 +11,13 @@ fragment FooterFragment on FooterRecord {
 		value
 	}
 	buttonText
+	link {
+		__typename
+		... on AboutRecord {
+			id
+		}
+		... on ContactRecord {
+			id
+		}
+	}
 }

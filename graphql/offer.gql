@@ -15,4 +15,8 @@ fragment OfferFragment on OfferRecord {
 	sections {
 		...SectionFragment
 	}
+	seoMeta {
+		title
+		description
+	}
 }

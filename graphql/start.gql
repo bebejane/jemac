@@ -56,4 +56,8 @@ fragment StartFragment on StartRecord {
 		}
 		buttonText
 	}
+	seoMeta {
+		title
+		description
+	}
 }

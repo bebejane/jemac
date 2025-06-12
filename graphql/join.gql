@@ -15,4 +15,8 @@ fragment JoinFragment on JoinRecord {
 	footer {
 		...FooterFragment
 	}
+	seoMeta {
+		title
+		description
+	}
 }

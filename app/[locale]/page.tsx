@@ -10,8 +10,9 @@ import Article from '@/components/layout/Article';
 import Content from '@/components/common/Content';
 import Shortcut from '@/components/common/Shortcut';
 import ProjectGallery from '@/components/common/ProjectGallery';
-import { getPathname } from '@/i18n/routing';
 import NewsTicker from '@/components/common/NewsTicker';
+import { buildMetadata } from '@/app/layout';
+import { Metadata } from 'next';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -85,4 +86,18 @@ export default async function Home({ params }: PageProps) {
 			<DraftMode url={draftUrl} path={`/`} />
 		</>
 	);
+}
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const { locale } = await params;
+	const { start } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
+		variables: {
+			locale,
+		},
+	});
+
+	return await buildMetadata({
+		title: start.seoMeta.title,
+		description: start.seoMeta.description,
+	});
 }

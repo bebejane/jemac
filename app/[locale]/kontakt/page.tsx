@@ -6,30 +6,29 @@ import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import { Image } from 'react-datocms';
-import Content from '@/components/common/Content';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
+import { buildMetadata } from '@/app/layout';
 
 export default async function ContactPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, {
-		variables: {
-			locale,
-		},
-	});
+	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(
+		ContactDocument,
+		{
+			variables: {
+				locale,
+			},
+		}
+	);
 
 	if (!contact) return notFound();
 	const { title, sections, footer, header } = contact;
 
 	return (
 		<>
-			<Article
-				title={title}
-				header={header as HeaderRecord}
-			>
+			<Article title={title} header={header as HeaderRecord}>
 				{sections.map((section) => (
 					<Section
 						key={section.id}
@@ -41,10 +40,7 @@ export default async function ContactPage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode
-				url={draftUrl}
-				path={'/kontakt'}
-			/>
+			<DraftMode url={draftUrl} path={'/kontakt'} />
 		</>
 	);
 }
