@@ -80,8 +80,13 @@
 
 				a {
 					display: block;
-					padding: var(--space);
+					padding: var(--outer-margin);
+
+					@include mq($from: desktop) {
+						padding: var(--space);
+					}
 				}
+
 				@include mq($from: desktop) {
 					width: 33.3333%;
 					height: auto;

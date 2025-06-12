@@ -8,10 +8,10 @@
 	padding-bottom: var(--space);
 	background-color: var(--gray);
 	overflow: hidden;
+	display: block;
 
 	@include mq($from: desktop) {
 		display: flex;
-
 		flex-direction: row;
 		align-items: center;
 	}

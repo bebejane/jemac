@@ -11,6 +11,7 @@
 			width: 50%;
 		}
 	}
+
 	.header {
 		display: flex;
 		flex-direction: column;
@@ -28,6 +29,7 @@
 			width: 100%;
 		}
 	}
+
 	.content {
 		p:last-child {
 			margin-bottom: 0;
@@ -41,6 +43,9 @@
 		flex-direction: row;
 		padding: 1rem;
 		width: 100%;
+		@include mq($until: desktop) {
+			margin-top: var(--space);
+		}
 		//margin-bottom: var(--space);
 
 		@include mq($from: desktop) {
@@ -68,14 +73,26 @@
 			//white-space: nowrap;
 		}
 
+		.imageWrap {
+			aspect-ratio: 4 / 3;
+			display: flex;
+			height: 5rem;
+		}
+
 		.image,
 		img {
 			object-fit: cover;
-			height: 4rem;
+			//height: 4rem;
 
 			@include mq($from: desktop) {
-				height: 100px !important;
+				//height: 100px !important;
 			}
+		}
+	}
+	.largeImage {
+		padding-bottom: var(--space);
+		@include mq($from: desktop) {
+			padding-right: 30% !important;
 		}
 	}
 }

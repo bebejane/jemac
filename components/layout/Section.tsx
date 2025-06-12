@@ -32,7 +32,7 @@ export default function Section({ id, headline, text, image, project, className 
 				{image && (
 					<Image
 						data={image.responsiveImage}
-						imgClassName={s.image}
+						imgClassName={s.largeImage}
 					/>
 				)}
 			</div>
@@ -58,7 +58,7 @@ export default function Section({ id, headline, text, image, project, className 
 						)}
 					</div>
 					<div className={s.projectInfo}>
-						<h6>EXEMPEL</h6>
+						<h6>UPPDRAG</h6>
 						<h4>{project.client?.name}</h4>
 						<span className='mid'>{project.title}</span>
 					</div>

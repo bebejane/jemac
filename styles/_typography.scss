@@ -33,7 +33,7 @@ h6 {
 
 h1,
 h2 {
-	font-size: 2.2rem;
+	font-size: 2rem;
 	color: var(--blue);
 	padding-bottom: 0.5em;
 	line-height: 1.1;
@@ -192,6 +192,10 @@ b {
 	font-weight: normal;
 	font-weight: normal;
 	font-variation-settings: var(--font-weight-bold) !important;
+}
+
+p strong {
+	font-variation-settings: var(--font-weight-mid) !important;
 }
 
 // För Article
