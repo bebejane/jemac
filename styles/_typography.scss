@@ -179,6 +179,12 @@ figcaption {
 	line-height: var(--line-height);
 }
 
+blockquote {
+	font-size: 1.1rem;
+	font-style: italic;
+	font-variation-settings: "ital" 1;
+}
+
 nav,
 .mid,
 button,
