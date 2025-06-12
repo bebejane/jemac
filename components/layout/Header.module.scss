@@ -5,11 +5,16 @@
 	margin-bottom: var(--space);
 
 	@include mq($from: desktop) {
-		height: calc(80vh - var(--navbar-height));
 		position: relative;
 		display: flex;
 		justify-content: flex-start;
 		margin-bottom: var(--space-big);
+		height: calc(80vh - var(--navbar-height));
+	}
+
+	//Om mer än 800px höjd
+	@media (min-height: 901px) and (orientation: landscape) {
+		height: calc(70vh - var(--navbar-height));
 	}
 
 	h1 {
