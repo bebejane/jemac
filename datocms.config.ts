@@ -44,6 +44,7 @@ const routes: DatoCmsConfig['routes'] = {
 		);
 		return paths;
 	},
+	upload: async (record, locale) => references(record.id, true),
 };
 
 export default {
@@ -98,11 +99,12 @@ export default {
 	},
 } satisfies DatoCmsConfig;
 
-async function references(itemId: string): Promise<string[]> {
+async function references(itemId: string, upload?: boolean): Promise<string[]> {
+	console.log(itemId);
 	if (!itemId) throw new Error('Missing reference: itemId');
 	const paths: string[] = [];
 	const itemTypes = await client.itemTypes.list();
-	const items = await client.items.references(itemId, {
+	const items = await client[upload ? 'uploads' : 'items'].references(itemId, {
 		version: 'published',
 		limit: 500,
 		nested: true,
@@ -111,7 +113,9 @@ async function references(itemId: string): Promise<string[]> {
 	for (const item of items) {
 		const itemType = itemTypes.find(({ id }) => id === item.item_type.id);
 		if (!itemType) continue;
-		const p = await routes[itemType.api_key]?.(item);
+
+		const p = await routes[itemType.api_key]?.(item, defaultLocale);
+
 		p && paths.push.apply(paths, p);
 	}
 	console.log('refs', paths);
