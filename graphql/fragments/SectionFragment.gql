@@ -28,6 +28,11 @@ fragment SectionFragment on SectionRecord {
 					...ImageFragment
 				}
 			}
+			... on ButtonRecord {
+				id
+				text
+				url
+			}
 		}
 		links
 		value
