@@ -22,6 +22,10 @@ fragment ShowcaseFragment on ShowcaseRecord {
 	footer {
 		...FooterFragment
 	}
+	seoMeta {
+		title
+		description
+	}
 }
 
 query AllShowcaseProjects(

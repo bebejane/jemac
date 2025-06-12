@@ -7,9 +7,9 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
-import { render, StructuredTextDocument } from 'datocms-structured-text-to-plain-text';
-import { Link } from '@/i18n/routing';
 import SectionNavigation from '@/app/[locale]/erbjudande/SectionNavigation';
+import { buildMetadata } from '@/app/layout';
+import { Metadata } from 'next';
 
 export default async function OfferPage({ params }: PageProps) {
 	const { locale } = await params;
@@ -27,10 +27,7 @@ export default async function OfferPage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article
-				title={title}
-				header={header as HeaderRecord}
-			>
+			<Article title={title} header={header as HeaderRecord}>
 				<SectionNavigation />
 				{sections.map((section, idx) => (
 					<Section
@@ -44,10 +41,20 @@ export default async function OfferPage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode
-				url={draftUrl}
-				path={`/`}
-			/>
+			<DraftMode url={draftUrl} path={`/`} />
 		</>
 	);
+}
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const { locale } = await params;
+	const { offer } = await apiQuery<OfferQuery, OfferQueryVariables>(OfferDocument, {
+		variables: {
+			locale,
+		},
+	});
+	return await buildMetadata({
+		title: offer.seoMeta.title,
+		description: offer.seoMeta.description,
+	});
 }

@@ -56,47 +56,81 @@ export async function generateMetadata(): Promise<Metadata> {
 		revalidate: 60 * 60,
 	});
 
+	const siteName = globalSeo?.siteName ?? '';
+
 	return {
 		metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL as string),
-		title: {
-			template: `${globalSeo?.siteName} — %s`,
-			default: globalSeo?.siteName,
-		},
-		description: globalSeo?.fallbackSeo?.description,
-		image: globalSeo?.fallbackSeo?.image?.url,
 		icons: faviconMetaTags.map(({ attributes: { rel, sizes, type, href: url } }) => ({
 			rel,
 			url,
 			sizes,
 			type,
 		})) as Icon[],
-		openGraph: {
-			title: globalSeo?.siteName,
-			description: globalSeo?.fallbackSeo?.description,
+		...(await buildMetadata({
+			title: {
+				template: `${siteName} — %s`,
+				default: siteName ?? '',
+			},
+			description: globalSeo?.fallbackSeo?.description?.substring(0, 157),
 			url: process.env.NEXT_PUBLIC_SITE_URL,
-			siteName: globalSeo?.siteName,
-			images: [
-				{
-					url: `${globalSeo?.fallbackSeo?.image?.url}?w=1200&h=630&fit=fill&q=80`,
-					width: 800,
-					height: 600,
-					alt: globalSeo?.siteName,
-				},
-				{
-					url: `${globalSeo?.fallbackSeo?.image?.url}?w=1600&h=800&fit=fill&q=80`,
-					width: 1600,
-					height: 800,
-					alt: globalSeo?.siteName,
-				},
-				{
-					url: `${globalSeo?.fallbackSeo?.image?.url}?w=790&h=627&fit=crop&q=80`,
-					width: 790,
-					height: 627,
-					alt: globalSeo?.siteName,
-				},
-			],
-			locale: 'en_US',
+			image: globalSeo?.fallbackSeo?.image as FileField,
+		})),
+	};
+}
+
+export type BuildMetadataProps = {
+	title?: string | any;
+	description?: string | null | undefined;
+	url?: string;
+	image?: FileField | null | undefined;
+};
+
+export async function buildMetadata({
+	title,
+	description,
+	url,
+	image,
+}: BuildMetadataProps): Promise<Metadata> {
+	description = !description
+		? ''
+		: description.length > 160
+			? `${description.substring(0, 157)}...`
+			: description;
+
+	return {
+		title,
+		alternates: {
+			canonical: url,
+		},
+		description,
+		openGraph: {
+			title: title,
+			description,
+			url,
+			images: image
+				? [
+						{
+							url: `${image?.url}?w=1200&h=630&fit=fill&q=80`,
+							width: 800,
+							height: 600,
+							alt: title,
+						},
+						{
+							url: `${image?.url}?w=1600&h=800&fit=fill&q=80`,
+							width: 1600,
+							height: 800,
+							alt: title,
+						},
+						{
+							url: `${image?.url}?w=790&h=627&fit=crop&q=80`,
+							width: 790,
+							height: 627,
+							alt: title,
+						},
+					]
+				: undefined,
+			locale: 'sv_SE',
 			type: 'website',
 		},
-	} as Metadata;
+	};
 }
