@@ -3668,6 +3668,7 @@ type StaffModelFilter = {
   _status?: InputMaybe<StatusFilter>;
   _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
   _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  email?: InputMaybe<StringFilter>;
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
   name?: InputMaybe<StringFilter>;
@@ -3692,6 +3693,8 @@ enum StaffModelOrderBy {
   _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
   _updatedAt_ASC = '_updatedAt_ASC',
   _updatedAt_DESC = '_updatedAt_DESC',
+  email_ASC = 'email_ASC',
+  email_DESC = 'email_DESC',
   id_ASC = 'id_ASC',
   id_DESC = 'id_DESC',
   name_ASC = 'name_ASC',
@@ -3732,6 +3735,7 @@ type StaffRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
+  email?: Maybe<Scalars['String']['output']>;
   id: Scalars['ItemId']['output'];
   image?: Maybe<FileField>;
   name?: Maybe<Scalars['String']['output']>;
