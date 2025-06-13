@@ -13,7 +13,7 @@
 	}
 
 	//Om mer än 800px höjd
-	@media (min-height: 901px) and (orientation: landscape) {
+	@media (min-height: 930px) and (orientation: landscape) {
 		height: calc(70vh - var(--navbar-height));
 	}
 
