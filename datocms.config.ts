@@ -14,10 +14,7 @@ const routes: DatoCmsConfig['routes'] = {
 	join: async (record, locale) => [getPathname({ locale, href: '/bli-en-av-oss' })],
 	showcase: async (record, locale) => [getPathname({ locale, href: '/projekt' })],
 	staff: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
-	client: async (record, locale) => [
-		getPathname({ locale, href: `/projekt` }),
-		getPathname({ locale, href: '/' }),
-	],
+	client: async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
 	project: async ({ slug }, locale) => {
 		return [
 			getPathname({
@@ -29,13 +26,10 @@ const routes: DatoCmsConfig['routes'] = {
 		];
 	},
 	project_footer: async (record, locale) => {
-		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(
-			AllProjectsDocument,
-			{
-				all: true,
-				variables: { locale: locale as SiteLocale },
-			}
-		);
+		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(AllProjectsDocument, {
+			all: true,
+			variables: { locale: locale as SiteLocale },
+		});
 		const paths = allProjects.map(({ slug }) =>
 			getPathname({
 				locale,
@@ -44,7 +38,10 @@ const routes: DatoCmsConfig['routes'] = {
 		);
 		return paths;
 	},
-	upload: async (record, locale) => references(record.id, true),
+	upload: async (record, locale) => {
+		console.log(record);
+		return references(record.id, true);
+	},
 };
 
 export default {
@@ -101,8 +98,10 @@ export default {
 
 async function references(itemId: string, upload: boolean = false): Promise<string[]> {
 	if (!itemId) throw new Error('datocms.config: Missing reference: itemId');
+	console.log(itemId, upload);
 	const paths: string[] = [];
 	const itemTypes = await client.itemTypes.list();
+
 	const items = await client[upload ? 'uploads' : 'items'].references(itemId, {
 		version: 'published',
 		limit: 500,

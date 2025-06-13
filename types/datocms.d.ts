@@ -3015,6 +3015,7 @@ type ProjectRecord = RecordInterface & {
   image?: Maybe<FileField>;
   position?: Maybe<Scalars['IntType']['output']>;
   result?: Maybe<ProjectModelResultField>;
+  seoMeta: SeoRecord;
   slug: Scalars['String']['output'];
   text?: Maybe<ProjectModelTextField>;
   thumbHeadline?: Maybe<Scalars['String']['output']>;
