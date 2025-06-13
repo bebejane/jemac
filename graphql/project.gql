@@ -84,6 +84,11 @@ fragment ProjectFragment on ProjectRecord {
 		value
 	}
 	slug
+	seoMeta {
+		id
+		title
+		description
+	}
 }
 
 fragment ProjectLightFragment on ProjectRecord {

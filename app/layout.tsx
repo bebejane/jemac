@@ -1,5 +1,5 @@
-import s from './layout.module.scss';
 import '@/styles/index.scss';
+import s from './layout.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
 import { GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
@@ -10,7 +10,7 @@ import NavbarMobile from '@/components/nav/NavbarMobile';
 import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Suspense } from 'react';
-import { routing } from '@/i18n/routing';
+import { getPathname, routing } from '@/i18n/routing';
 import FullscreenGallery from '@/components/common/FullscreenGallery';
 
 export type LayoutProps = {
@@ -23,11 +23,11 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 	setRequestLocale(locale);
 
 	const menu = await buildMenu(locale);
-
+	console.log('layout', locale);
 	return (
 		<>
-			<html>
-				<body lang={locale}>
+			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'}>
+				<body>
 					<NextIntlClientProvider locale={locale}>
 						<Suspense fallback={null}>
 							<Navbar menu={menu} />
@@ -48,11 +48,12 @@ export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const { locale } = await params;
 	const {
 		site: { globalSeo, faviconMetaTags },
 	} = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, {
-		variables: {},
+		variables: { locale },
 		revalidate: 60 * 60,
 	});
 
@@ -72,8 +73,9 @@ export async function generateMetadata(): Promise<Metadata> {
 				default: siteName ?? '',
 			},
 			description: globalSeo?.fallbackSeo?.description?.substring(0, 157),
-			url: process.env.NEXT_PUBLIC_SITE_URL,
+			pathname: getPathname({ locale, href: '/' }),
 			image: globalSeo?.fallbackSeo?.image as FileField,
+			locale,
 		})),
 	};
 }
@@ -81,21 +83,20 @@ export async function generateMetadata(): Promise<Metadata> {
 export type BuildMetadataProps = {
 	title?: string | any;
 	description?: string | null | undefined;
-	url?: string;
+	pathname?: string;
 	image?: FileField | null | undefined;
+	locale: SiteLocale;
 };
 
 export async function buildMetadata({
 	title,
 	description,
-	url,
+	pathname,
 	image,
+	locale,
 }: BuildMetadataProps): Promise<Metadata> {
-	description = !description
-		? ''
-		: description.length > 160
-			? `${description.substring(0, 157)}...`
-			: description;
+	description = !description ? '' : description.length > 160 ? `${description.substring(0, 157)}...` : description;
+	const url = pathname ? `${process.env.NEXT_PUBLIC_SITE_URL}${pathname}` : undefined;
 
 	return {
 		title,
@@ -104,7 +105,7 @@ export async function buildMetadata({
 		},
 		description,
 		openGraph: {
-			title: title,
+			title,
 			description,
 			url,
 			images: image
@@ -129,7 +130,7 @@ export async function buildMetadata({
 						},
 					]
 				: undefined,
-			locale: 'sv_SE',
+			locale: locale === 'sv' ? 'sv_SE' : 'en_US',
 			type: 'website',
 		},
 	};

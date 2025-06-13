@@ -10,6 +10,7 @@ import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/app/[locale]/erbjudande/SectionNavigation';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
+import { getPathname } from '@/i18n/routing';
 
 export default async function OfferPage({ params }: PageProps) {
 	const { locale } = await params;
@@ -53,8 +54,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 			locale,
 		},
 	});
+	const pathname = getPathname({ locale, href: { pathname: '/erbjudande' } });
 	return await buildMetadata({
 		title: offer.seoMeta.title,
 		description: offer.seoMeta.description,
+		pathname,
+		locale,
 	});
 }

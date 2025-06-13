@@ -9,19 +9,17 @@ import { setRequestLocale } from 'next-intl/server';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
 import { buildMetadata } from '@/app/layout';
+import { getPathname } from '@/i18n/routing';
 
 export default async function ContactPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(
-		ContactDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	if (!contact) return notFound();
 	const { title, sections, footer, header } = contact;
@@ -45,8 +43,11 @@ export default async function ContactPage({ params }: PageProps) {
 	);
 }
 
-export async function generateMetadata({ params }) {
-	return {
-		title: 'Kontakt',
-	} as Metadata;
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const { locale } = await params;
+	const pathname = getPathname({ locale, href: { pathname: '/kontakt' } });
+	return await buildMetadata({
+		pathname,
+		locale,
+	});
 }

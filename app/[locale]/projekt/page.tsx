@@ -10,28 +10,26 @@ import { notFound } from 'next/navigation';
 import ProjectGallery from '@/components/common/ProjectGallery';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
+import { getPathname } from '@/i18n/routing';
 
 export default async function ShowcasePage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { showcase, draftUrl } = await apiQuery<ShowcaseQuery, ShowcaseQueryVariables>(
-		ShowcaseDocument,
+	const { showcase, draftUrl } = await apiQuery<ShowcaseQuery, ShowcaseQueryVariables>(ShowcaseDocument, {
+		variables: {
+			locale,
+		},
+	});
+
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
+		AllShowcaseProjectsDocument,
 		{
 			variables: {
 				locale,
 			},
 		}
 	);
-
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
-		variables: {
-			locale,
-		},
-	});
 
 	if (!showcase) return notFound();
 	const { header, sections, title, footer } = showcase;
@@ -66,8 +64,12 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 		},
 	});
 
+	const pathname = getPathname({ locale, href: { pathname: '/projekt' } });
+
 	return await buildMetadata({
 		title: showcase.seoMeta.title,
 		description: showcase.seoMeta.description,
+		locale,
+		pathname,
 	});
 }

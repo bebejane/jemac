@@ -42,5 +42,6 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 	return await buildMetadata({
 		title: test.title,
+		locale,
 	});
 }

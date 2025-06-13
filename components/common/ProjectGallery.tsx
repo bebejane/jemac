@@ -12,7 +12,7 @@ import Content from '@/components/common/Content';
 import Link from '@/components/nav/Link';
 
 type Props = {
-	projects: AllProjectsQuery['allProjects'];
+	projects: AllShowcaseProjectsQuery['allProjects'];
 	noborder?: boolean;
 	title: string;
 };
@@ -27,30 +27,15 @@ export default function ProjectGallery({ projects, noborder, title }: Props) {
 			<div className={cn(s.header, noborder && s.noborder)}>
 				<h3>{title}</h3>
 				<div className={s.arrows}>
-					<button
-						className={cn(s.back)}
-						onClick={() => swiperRef.current?.slidePrev()}
-					>
-						<img
-							src='/images/arrow.svg'
-							alt='‹'
-						/>
+					<button className={cn(s.back)} onClick={() => swiperRef.current?.slidePrev()}>
+						<img src='/images/arrow.svg' alt='‹' />
 					</button>
-					<button
-						className={cn(s.forward)}
-						onClick={() => swiperRef.current?.slideNext()}
-					>
-						<img
-							src='/images/arrow.svg'
-							alt='‹'
-						/>
+					<button className={cn(s.forward)} onClick={() => swiperRef.current?.slideNext()}>
+						<img src='/images/arrow.svg' alt='‹' />
 					</button>
 				</div>
 			</div>
-			<div
-				className={s.projects}
-				ref={ref}
-			>
+			<div className={s.projects} ref={ref}>
 				<SwiperReact
 					id={`clients-start`}
 					modules={[Mousewheel]}
@@ -72,29 +57,18 @@ export default function ProjectGallery({ projects, noborder, title }: Props) {
 					onSwiper={(swiper) => (swiperRef.current = swiper)}
 				>
 					{projects.map((project, idx) => (
-						<SwiperSlide
-							key={idx}
-							className={s.slide}
-						>
+						<SwiperSlide key={idx} className={s.slide}>
 							<Link href={`/projekt/${project.slug}`}>
 								<div className={s.bar}>
 									<div className={s.logo}>
-										{project.client?.logo && (
-											<img
-												src={project.client?.logo.url}
-												alt={project.client?.name}
-											/>
-										)}
+										{project.client?.logo && <img src={project.client?.logo.url} alt={project.client?.name} />}
 									</div>
 									<div className={s.arrow}>
 										<button>›</button>
 									</div>
 								</div>
 								<h4>{project.title}</h4>
-								<Content
-									content={project.text}
-									className={cn(s.text, 'mid')}
-								/>
+								<Content content={project.text} className={cn(s.text, 'mid')} />
 							</Link>
 						</SwiperSlide>
 					))}

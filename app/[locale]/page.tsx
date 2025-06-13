@@ -13,6 +13,7 @@ import ProjectGallery from '@/components/common/ProjectGallery';
 import NewsTicker from '@/components/common/NewsTicker';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
+import { getPathname } from '@/i18n/routing';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
@@ -24,39 +25,25 @@ export default async function Home({ params }: PageProps) {
 		},
 	});
 
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
-		variables: {
-			locale,
-		},
-	});
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
+		AllShowcaseProjectsDocument,
+		{
+			variables: {
+				locale,
+			},
+		}
+	);
 
 	if (!start) return notFound();
 
-	const {
-		header,
-		footer,
-		shortcuts,
-		textHeadline,
-		textText,
-		jobsHeadline,
-		jobsImage,
-		jobsText,
-		newsHeadline,
-		news,
-	} = start;
+	const { header, footer, shortcuts, textHeadline, textText, jobsHeadline, jobsImage, jobsText, newsHeadline, news } =
+		start;
 
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
 				<section className={s.shortcuts}>
-					<ul>
-						{shortcuts?.map((shortcut) => (
-							<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} />
-						))}
-					</ul>
+					<ul>{shortcuts?.map((shortcut) => <Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} />)}</ul>
 				</section>
 				<section className={s.news}>
 					<NewsTicker headline={newsHeadline} news={news} />
@@ -73,9 +60,7 @@ export default async function Home({ params }: PageProps) {
 					<ProjectGallery projects={allProjects} title='Exempel på vad vi gjort' />
 				</section>
 				<section className={s.jobs}>
-					<div>
-						{jobsImage && <Image data={jobsImage.responsiveImage} imgClassName={s.image} />}
-					</div>
+					<div>{jobsImage && <Image data={jobsImage.responsiveImage} imgClassName={s.image} />}</div>
 					<div>
 						<Content content={jobsHeadline} className={s.headline} />
 						<Content content={jobsText} className={s.jobtext} />
@@ -99,5 +84,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	return await buildMetadata({
 		title: start.seoMeta.title,
 		description: start.seoMeta.description,
+		pathname: getPathname({ locale, href: '/' }),
+		locale,
 	});
 }

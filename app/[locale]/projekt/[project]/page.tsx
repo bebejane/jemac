@@ -12,6 +12,7 @@ import { setRequestLocale } from 'next-intl/server';
 import cn from 'classnames';
 import { buildMetadata } from '@/app/layout';
 import Footer from '@/components/layout/Footer';
+import { getPathname } from '@/i18n/routing';
 
 export type ProjectProps = {
 	params: Promise<{ project: string; locale: SiteLocale }>;
@@ -23,34 +24,28 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug, locale } = await params;
 	setRequestLocale(locale);
 
-	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(
-		ProjectDocument,
-		{
-			variables: {
-				locale,
-				slug,
-			},
-		}
-	);
-
-	const { projectFooter } = await apiQuery<ProjectFooterQuery, ProjectFooterQueryVariables>(
-		ProjectFooterDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
-
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
+	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
 		variables: {
 			locale,
-			slug: project.slug,
+			slug,
 		},
 	});
+
+	const { projectFooter } = await apiQuery<ProjectFooterQuery, ProjectFooterQueryVariables>(ProjectFooterDocument, {
+		variables: {
+			locale,
+		},
+	});
+
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
+		AllShowcaseProjectsDocument,
+		{
+			variables: {
+				locale,
+				slug: project.slug,
+			},
+		}
+	);
 
 	if (!project) return notFound();
 
@@ -61,9 +56,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 		<>
 			<Article title={title} className={s.page}>
 				<header className={s.header}>
-					<div className={s.image}>
-						{image?.responsiveImage && <Image data={image.responsiveImage} />}
-					</div>
+					<div className={s.image}>{image?.responsiveImage && <Image data={image.responsiveImage} />}</div>
 					<div className={s.content}>
 						<img className={s.logo} src={client?.logo?.url} alt={client?.name} />
 						<Content content={headline} className={s.headline} />
@@ -92,7 +85,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 					<Content content={result} className={s.content} />
 				</section>
 				<section>
-					<ProjectGallery projects={allProjects} title='Fler exempel på vad vi gjort' />
+					<ProjectGallery projects={allProjects as ProjectRecord[]} title='Fler exempel på vad vi gjort' />
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
@@ -102,12 +95,12 @@ export default async function ProjectPage({ params }: ProjectProps) {
 }
 
 export async function generateStaticParams() {
-	const { allProjects } = await apiQuery<
-		AllShowcaseProjectsQuery,
-		AllShowcaseProjectsQueryVariables
-	>(AllShowcaseProjectsDocument, {
-		all: true,
-	});
+	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
+		AllShowcaseProjectsDocument,
+		{
+			all: true,
+		}
+	);
 
 	return allProjects.map(({ slug: project }) => ({ project }));
 }
@@ -124,7 +117,12 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
 		},
 	});
 
-	return {
-		title: project?.title,
-	} as Metadata;
+	const pathname = getPathname({ locale, href: { pathname: `/projekt/[project]`, params: { project: slug } } });
+
+	return await buildMetadata({
+		title: project?.seoMeta.title,
+		description: project?.seoMeta.description,
+		pathname,
+		locale,
+	});
 }

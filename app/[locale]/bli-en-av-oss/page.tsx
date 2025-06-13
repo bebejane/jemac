@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import Section from '@/components/layout/Section';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
+import { getPathname } from '@/i18n/routing';
 
 export default async function JoinPage({ params }: PageProps) {
 	const { locale } = await params;
@@ -49,8 +50,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 			locale,
 		},
 	});
+
+	const pathname = getPathname({ locale, href: { pathname: '/bli-en-av-oss' } });
+
 	return await buildMetadata({
 		title: join.seoMeta.title,
 		description: join.seoMeta.description,
+		pathname,
+		locale,
 	});
 }
