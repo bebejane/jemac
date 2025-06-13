@@ -48,7 +48,7 @@ export default async function AboutPage({ params }: PageProps) {
 						<li key={id}>
 							<Image data={image.responsiveImage} imgClassName={s.image} />
 							<h4>{name}</h4>
-							{email && <a href={`mailto:${email}`}>{email}</a>}
+							{email && <a className={classNames(s.email, "mid")} href={`mailto:${email}`}>{email}</a>}
 							<Content content={text} className={classNames('mid', s.content)} />
 						</li>
 					))}

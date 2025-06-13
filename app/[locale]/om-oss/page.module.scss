@@ -24,7 +24,17 @@
 		}
 	}
 
+	.email {
+		padding-bottom: 1em;
+		display: block;
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
 	h4 {
 		margin-top: 0.5rem;
+		padding-bottom: 0;
 	}
 }
