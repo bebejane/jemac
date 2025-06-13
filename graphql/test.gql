@@ -1,0 +1,8 @@
+query Test($locale: SiteLocale!) {
+	test(locale: $locale) {
+		title
+		color {
+			hex
+		}
+	}
+}

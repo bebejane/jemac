@@ -3207,6 +3207,8 @@ type Query = {
   staff?: Maybe<StaffRecord>;
   /** Returns the single instance record */
   start?: Maybe<StartRecord>;
+  /** Returns the single instance record */
+  test?: Maybe<TestRecord>;
   /** Returns a specific asset */
   upload?: Maybe<FileField>;
 };
@@ -3362,6 +3364,13 @@ type QuerystaffArgs = {
 
 /** The query root for this schema */
 type QuerystartArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type QuerytestArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -4054,6 +4063,48 @@ type Tag = {
   tag: Scalars['String']['output'];
 };
 
+/** Record of type Test (test) */
+type TestRecord = RecordInterface & {
+  __typename?: 'TestRecord';
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  color?: Maybe<ColorField>;
+  id: Scalars['ItemId']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type Test (test) */
+type TestRecord_allTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Test (test) */
+type TestRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Test (test) */
+type TestRecordtitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
 /** Specifies how to filter by upload type */
 type TypeFilter = {
   /** Search uploads with the specified type */
@@ -4611,3 +4662,10 @@ type StartQueryVariables = Exact<{
 type StartQuery = { __typename?: 'Query', start?: { __typename?: 'StartRecord', newsHeadline?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, footer?: { __typename?: 'FooterRecord', buttonText?: string | null, id: any, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null, jobsImage?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, jobsText?: { __typename?: 'StartModelJobsTextField', blocks: Array<string>, links: Array<string>, value: any } | null, jobsHeadline?: { __typename?: 'StartModelJobsHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, shortcuts: Array<{ __typename?: 'ShortcutRecord', id: any, linkText?: string | null, sectionId?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, headline?: { __typename?: 'ShortcutModelHeadlineField', value: any, blocks: Array<string>, links: Array<string> } | null, text?: { __typename?: 'ShortcutModelTextField', value: any, blocks: Array<string>, links: Array<string> } | null }>, textHeadline?: { __typename?: 'StartModelTextHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, textText?: { __typename?: 'StartModelTextTextField', blocks: Array<string>, links: Array<string>, value: any } | null, news: Array<{ __typename?: 'NewsRecord', id: any, text?: string | null, url: string }>, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
 
 type StartFragment = { __typename?: 'StartRecord', newsHeadline?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, footer?: { __typename?: 'FooterRecord', buttonText?: string | null, id: any, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } | null, jobsImage?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, jobsText?: { __typename?: 'StartModelJobsTextField', blocks: Array<string>, links: Array<string>, value: any } | null, jobsHeadline?: { __typename?: 'StartModelJobsHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, shortcuts: Array<{ __typename?: 'ShortcutRecord', id: any, linkText?: string | null, sectionId?: string | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, headline?: { __typename?: 'ShortcutModelHeadlineField', value: any, blocks: Array<string>, links: Array<string> } | null, text?: { __typename?: 'ShortcutModelTextField', value: any, blocks: Array<string>, links: Array<string> } | null }>, textHeadline?: { __typename?: 'StartModelTextHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, textText?: { __typename?: 'StartModelTextTextField', blocks: Array<string>, links: Array<string>, value: any } | null, news: Array<{ __typename?: 'NewsRecord', id: any, text?: string | null, url: string }>, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
+
+type TestQueryVariables = Exact<{
+  locale: SiteLocale;
+}>;
+
+
+type TestQuery = { __typename?: 'Query', test?: { __typename?: 'TestRecord', title?: string | null, color?: { __typename?: 'ColorField', hex: string } | null } | null };

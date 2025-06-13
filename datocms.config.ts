@@ -4,6 +4,7 @@ import client from './lib/client';
 import { AllProjectsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { getPathname, defaultLocale } from '@/i18n/routing';
+import test from 'node:test';
 
 const routes: DatoCmsConfig['routes'] = {
 	start: async (record, locale) => [getPathname({ locale, href: '/' })],
@@ -41,6 +42,9 @@ const routes: DatoCmsConfig['routes'] = {
 	upload: async (record, locale) => {
 		console.log(record);
 		return references(record.id, true);
+	},
+	test: async (record, locale) => {
+		return [getPathname({ locale, href: '/test' })];
 	},
 };
 
