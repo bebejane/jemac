@@ -27,7 +27,7 @@ export default async function Home({ params }: PageProps) {
 				<div className={s.container} style={{ backgroundColor: test.color.hex, width: '100px', height: '100px' }} />
 			</Article>
 
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={`/test`} />
 		</>
 	);
 }
