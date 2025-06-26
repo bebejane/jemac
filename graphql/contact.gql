@@ -10,5 +10,10 @@ query Contact($locale: SiteLocale) {
 		footer {
 			...FooterFragment
 		}
+		seoMeta {
+			id
+			title
+			description
+		}
 	}
 }

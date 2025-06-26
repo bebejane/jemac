@@ -46,7 +46,14 @@ export default async function ContactPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 	const pathname = getPathname({ locale, href: { pathname: '/kontakt' } });
+	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, {
+		variables: {
+			locale,
+		},
+	});
 	return await buildMetadata({
+		title: contact.seoMeta.title,
+		description: contact.seoMeta.description,
 		pathname,
 		locale,
 	});
