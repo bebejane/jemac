@@ -11,6 +11,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { Suspense } from 'react';
 import { getPathname, routing } from '@/i18n/routing';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import FullscreenGallery from '@/components/common/FullscreenGallery';
 
 export type LayoutProps = {
@@ -39,6 +40,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 					<div id='page-transition' />
 					<div id='page-fade-transition' />
 				</body>
+				<GoogleAnalytics gaId='G-3YJRN86MF7' />
 			</html>
 		</>
 	);
