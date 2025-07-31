@@ -69,6 +69,9 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 			sizes,
 			type,
 		})) as Icon[],
+		other: {
+			'google-site-verification': '8zHB8V5fJkIiqCFbKPgHN1HM4DbTKNrYL5nVJeHOmWU',
+		},
 		...(await buildMetadata({
 			title: {
 				template: `${siteName} — %s`,
@@ -112,25 +115,25 @@ export async function buildMetadata({
 			url,
 			images: image
 				? [
-						{
-							url: `${image?.url}?w=1200&h=630&fit=fill&q=80`,
-							width: 800,
-							height: 600,
-							alt: title,
-						},
-						{
-							url: `${image?.url}?w=1600&h=800&fit=fill&q=80`,
-							width: 1600,
-							height: 800,
-							alt: title,
-						},
-						{
-							url: `${image?.url}?w=790&h=627&fit=crop&q=80`,
-							width: 790,
-							height: 627,
-							alt: title,
-						},
-					]
+					{
+						url: `${image?.url}?w=1200&h=630&fit=fill&q=80`,
+						width: 800,
+						height: 600,
+						alt: title,
+					},
+					{
+						url: `${image?.url}?w=1600&h=800&fit=fill&q=80`,
+						width: 1600,
+						height: 800,
+						alt: title,
+					},
+					{
+						url: `${image?.url}?w=790&h=627&fit=crop&q=80`,
+						width: 790,
+						height: 627,
+						alt: title,
+					},
+				]
 				: undefined,
 			locale: locale === 'sv' ? 'sv_SE' : 'en_US',
 			type: 'website',
