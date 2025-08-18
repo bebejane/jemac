@@ -4,7 +4,6 @@ import client from './lib/client';
 import { AllProjectsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { getPathname, defaultLocale } from '@/i18n/routing';
-import test from 'node:test';
 
 const routes: DatoCmsConfig['routes'] = {
 	start: async (record, locale) => [getPathname({ locale, href: '/' })],
@@ -43,9 +42,6 @@ const routes: DatoCmsConfig['routes'] = {
 		console.log(record);
 		return references(record.id, true);
 	},
-	test: async (record, locale) => {
-		return [getPathname({ locale, href: '/test' })];
-	},
 };
 
 export default {
@@ -69,31 +65,31 @@ export default {
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
 				lastmod: new Date().toISOString(),
-				changefreq: 'daily',
+				changeFrequency: 'daily',
 				priority: 1,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/kontakt`,
 				lastmod: new Date().toISOString(),
-				changefreq: 'monthly',
+				changeFrequency: 'monthly',
 				priority: 0.7,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/erbjudande`,
 				lastmod: new Date().toISOString(),
-				changefreq: 'weekly',
+				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/om-oss`,
 				lastmod: new Date().toISOString(),
-				changefreq: 'weekly',
+				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/bli-en-av-oss`,
 				lastmod: new Date().toISOString(),
-				changefreq: 'weekly',
+				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
 		];
@@ -102,7 +98,7 @@ export default {
 
 async function references(itemId: string, upload: boolean = false): Promise<string[]> {
 	if (!itemId) throw new Error('datocms.config: Missing reference: itemId');
-	console.log(itemId, upload);
+
 	const paths: string[] = [];
 	const itemTypes = await client.itemTypes.list();
 
