@@ -27,7 +27,9 @@ type Scalars = {
 type AboutRecord = RecordInterface & {
   __typename?: 'AboutRecord';
   _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
+  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
   _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
@@ -58,7 +60,19 @@ type AboutRecord_allFooterLocalesArgs = {
 
 
 /** Record of type About (about) */
+type AboutRecord_allHeaderLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type About (about) */
 type AboutRecord_allSectionsLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type About (about) */
+type AboutRecord_allSeoMetaLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
@@ -77,7 +91,21 @@ type AboutRecordfooterArgs = {
 
 
 /** Record of type About (about) */
+type AboutRecordheaderArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type About (about) */
 type AboutRecordsectionsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type About (about) */
+type AboutRecordseoMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -215,7 +243,9 @@ type ColorField = {
 type ContactRecord = RecordInterface & {
   __typename?: 'ContactRecord';
   _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
+  _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
   _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
@@ -247,7 +277,19 @@ type ContactRecord_allFooterLocalesArgs = {
 
 
 /** Record of type Contact (contact) */
+type ContactRecord_allHeaderLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Contact (contact) */
 type ContactRecord_allSectionsLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Contact (contact) */
+type ContactRecord_allSeoMetaLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
@@ -272,7 +314,21 @@ type ContactRecordfooterArgs = {
 
 
 /** Record of type Contact (contact) */
+type ContactRecordheaderArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Contact (contact) */
 type ContactRecordsectionsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Contact (contact) */
+type ContactRecordseoMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -2555,6 +2611,7 @@ type JoinRecord = RecordInterface & {
   _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
   _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
   _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
@@ -2598,6 +2655,12 @@ type JoinRecord_allSectionsLocalesArgs = {
 
 
 /** Record of type Join us (join) */
+type JoinRecord_allSeoMetaLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Join us (join) */
 type JoinRecord_allTitleLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
@@ -2625,6 +2688,13 @@ type JoinRecordheaderArgs = {
 
 /** Record of type Join us (join) */
 type JoinRecordsectionsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Join us (join) */
+type JoinRecordseoMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -2693,12 +2763,19 @@ type NewsRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
+type NewsRecordListListNonNullMultiLocaleField = {
+  __typename?: 'NewsRecordListListNonNullMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value: Array<NewsRecord>;
+};
+
 /** Record of type Offer (offer) */
 type OfferRecord = RecordInterface & {
   __typename?: 'OfferRecord';
   _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
   _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
   _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
@@ -2742,6 +2819,12 @@ type OfferRecord_allSectionsLocalesArgs = {
 
 
 /** Record of type Offer (offer) */
+type OfferRecord_allSeoMetaLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Offer (offer) */
 type OfferRecord_allTitleLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
@@ -2769,6 +2852,13 @@ type OfferRecordheaderArgs = {
 
 /** Record of type Offer (offer) */
 type OfferRecordsectionsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Offer (offer) */
+type OfferRecordseoMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -2988,6 +3078,7 @@ type ProjectRecord = RecordInterface & {
   __typename?: 'ProjectRecord';
   _allHeadlineLocales?: Maybe<Array<ProjectModelHeadlineFieldMultiLocaleField>>;
   _allResultLocales?: Maybe<Array<ProjectModelResultFieldMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allTextLocales?: Maybe<Array<ProjectModelTextFieldMultiLocaleField>>;
   _allThumbHeadlineLocales?: Maybe<Array<StringMultiLocaleField>>;
@@ -3034,6 +3125,12 @@ type ProjectRecord_allHeadlineLocalesArgs = {
 
 /** Record of type Project (project) */
 type ProjectRecord_allResultLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Project (project) */
+type ProjectRecord_allSeoMetaLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
@@ -3095,6 +3192,13 @@ type ProjectRecordheadlineArgs = {
 
 /** Record of type Project (project) */
 type ProjectRecordresultArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Project (project) */
+type ProjectRecordseoMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -3536,6 +3640,12 @@ type SeoRecorddescriptionArgs = {
   markdown?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+type SeoRecordNonNullMultiLocaleField = {
+  __typename?: 'SeoRecordNonNullMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value: SeoRecord;
+};
+
 type ShortcutModelHeadlineField = {
   __typename?: 'ShortcutModelHeadlineField';
   blocks: Array<Scalars['String']['output']>;
@@ -3582,12 +3692,19 @@ type ShortcutRecord_seoMetaTagsArgs = {
   locale?: InputMaybe<SiteLocale>;
 };
 
+type ShortcutRecordListListNonNullMultiLocaleField = {
+  __typename?: 'ShortcutRecordListListNonNullMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value: Array<ShortcutRecord>;
+};
+
 /** Record of type Our projects (showcase) */
 type ShowcaseRecord = RecordInterface & {
   __typename?: 'ShowcaseRecord';
   _allFooterLocales?: Maybe<Array<FooterRecordMultiLocaleField>>;
   _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
   _allSectionsLocales?: Maybe<Array<SectionRecordListListNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
@@ -3632,6 +3749,12 @@ type ShowcaseRecord_allSectionsLocalesArgs = {
 
 
 /** Record of type Our projects (showcase) */
+type ShowcaseRecord_allSeoMetaLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Our projects (showcase) */
 type ShowcaseRecord_allTitleLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
@@ -3659,6 +3782,13 @@ type ShowcaseRecordheaderArgs = {
 
 /** Record of type Our projects (showcase) */
 type ShowcaseRecordsectionsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Our projects (showcase) */
+type ShowcaseRecordseoMetaArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -3876,6 +4006,10 @@ type StartRecord = RecordInterface & {
   _allHeaderLocales?: Maybe<Array<HeaderRecordNonNullMultiLocaleField>>;
   _allJobsHeadlineLocales?: Maybe<Array<StartModelJobsHeadlineFieldMultiLocaleField>>;
   _allJobsTextLocales?: Maybe<Array<StartModelJobsTextFieldMultiLocaleField>>;
+  _allNewsHeadlineLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _allNewsLocales?: Maybe<Array<NewsRecordListListNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
+  _allShortcutsLocales?: Maybe<Array<ShortcutRecordListListNonNullMultiLocaleField>>;
   _allTextHeadlineLocales?: Maybe<Array<StartModelTextHeadlineFieldMultiLocaleField>>;
   _allTextTextLocales?: Maybe<Array<StartModelTextTextFieldMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
@@ -3932,6 +4066,30 @@ type StartRecord_allJobsTextLocalesArgs = {
 
 
 /** Record of type Start (start) */
+type StartRecord_allNewsHeadlineLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecord_allNewsLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecord_allSeoMetaLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecord_allShortcutsLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type Start (start) */
 type StartRecord_allTextHeadlineLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
@@ -3972,6 +4130,34 @@ type StartRecordjobsHeadlineArgs = {
 
 /** Record of type Start (start) */
 type StartRecordjobsTextArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecordnewsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecordnewsHeadlineArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecordseoMetaArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type Start (start) */
+type StartRecordshortcutsArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };

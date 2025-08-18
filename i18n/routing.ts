@@ -29,9 +29,6 @@ export const routing = defineRouting({
 		'/bli-en-av-oss': {
 			en: '/join-us',
 		},
-		'/test': {
-			en: '/test',
-		},
 	},
 });
 

@@ -18,6 +18,20 @@ const nextConfig: NextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	async redirects() {
+		return [
+			{
+				source: '/careers',
+				destination: '/bli-en-av-oss',
+				permanent: true,
+			},
+			{
+				source: '/temp-start',
+				destination: '/',
+				permanent: true,
+			},
+		];
+	},
 	async headers() {
 		return [
 			{
@@ -28,7 +42,8 @@ const nextConfig: NextConfig = {
 					{ key: 'Access-Control-Allow-Methods', value: 'POST,OPTIONS' },
 					{
 						key: 'Access-Control-Allow-Headers',
-						value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+						value:
+							'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
 					},
 				],
 			},
@@ -40,7 +55,8 @@ const nextConfig: NextConfig = {
 					{ key: 'Access-Control-Allow-Methods', value: 'POST,OPTIONS' },
 					{
 						key: 'Access-Control-Allow-Headers',
-						value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+						value:
+							'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
 					},
 				],
 			},
