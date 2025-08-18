@@ -64,31 +64,31 @@ export default {
 		return [
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
-				lastmod: new Date().toISOString(),
+				lastModified: new Date().toISOString(),
 				changeFrequency: 'daily',
 				priority: 1,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/kontakt`,
-				lastmod: new Date().toISOString(),
+				lastModified: new Date().toISOString(),
 				changeFrequency: 'monthly',
 				priority: 0.7,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/erbjudande`,
-				lastmod: new Date().toISOString(),
+				lastModified: new Date().toISOString(),
 				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/om-oss`,
-				lastmod: new Date().toISOString(),
+				lastModified: new Date().toISOString(),
 				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}/bli-en-av-oss`,
-				lastmod: new Date().toISOString(),
+				lastModified: new Date().toISOString(),
 				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
