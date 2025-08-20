@@ -60,7 +60,12 @@ export default {
 		locales: ['sv', 'en'],
 	},
 	routes,
-	sitemap: async () => {
+	sitemap: async (locale = 'sv') => {
+		const { allProjects } = await apiQuery<AllProjectsQuery, AllProjectsQueryVariables>(AllProjectsDocument, {
+			all: true,
+			variables: { locale: locale as SiteLocale },
+		});
+
 		return [
 			{
 				url: `${process.env.NEXT_PUBLIC_SITE_URL}`,
@@ -92,6 +97,25 @@ export default {
 				changeFrequency: 'weekly',
 				priority: 0.8,
 			},
+			{
+				url: `${process.env.NEXT_PUBLIC_SITE_URL}/projekt`,
+				lastModified: new Date().toISOString(),
+				changeFrequency: 'weekly',
+				priority: 0.8,
+			},
+			...allProjects
+				.map(({ slug }) =>
+					getPathname({
+						locale,
+						href: { pathname: `/projekt/[project]`, params: { project: slug } },
+					})
+				)
+				.map((p) => ({
+					url: `${process.env.NEXT_PUBLIC_SITE_URL}${p}`,
+					lastModified: new Date().toISOString(),
+					changeFrequency: 'weekly',
+					priority: 0.8,
+				})),
 		];
 	},
 } satisfies DatoCmsConfig;
