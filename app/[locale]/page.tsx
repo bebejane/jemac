@@ -13,10 +13,13 @@ import ProjectGallery from '@/components/common/ProjectGallery';
 import NewsTicker from '@/components/common/NewsTicker';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
-import { getPathname } from '@/i18n/routing';
+import { getPathname, locales } from '@/i18n/routing';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
+
+	if (!locales.includes(locale)) return notFound();
+
 	setRequestLocale(locale);
 
 	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
@@ -75,6 +78,7 @@ export default async function Home({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
+
 	const { start } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
 		variables: {
 			locale,
