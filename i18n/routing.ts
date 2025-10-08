@@ -29,6 +29,15 @@ export const routing = defineRouting({
 		'/bli-en-av-oss': {
 			en: '/join-us',
 		},
+		'/nyheter': {
+			en: '/news',
+		},
+		'/nyheter/[category]': {
+			en: '/news/[category]',
+		},
+		'/nyheter/[category]/[newsitem]': {
+			en: '/news/[category]/[newsitem]',
+		},
 	},
 });
 

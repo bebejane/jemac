@@ -1,0 +1,56 @@
+query AllNewsItems($first: IntType, $skip: IntType, $locale: SiteLocale!) {
+	allNewsItems(locale: $locale, first: $first, skip: $skip) {
+		...NewsItemFragment
+	}
+	_allNewsItemsMeta {
+		count
+	}
+}
+
+query NewsItem($slug: String, $locale: SiteLocale!) {
+	newsItem(locale: $locale, filter: { slug: { eq: $slug } }) {
+		...NewsItemFragment
+	}
+}
+
+fragment NewsItemFragment on NewsItemRecord {
+	id
+	slug
+	title
+	headline {
+		blocks
+		links
+		value
+	}
+	text {
+		blocks
+		links
+		value
+	}
+	image {
+		...ImageFragment
+	}
+	category {
+		...NewsCategoryFragment
+	}
+	seoMeta {
+		title
+		description
+	}
+	_publishedAt
+}
+
+query AllNewsCategories($first: IntType, $skip: IntType, $locale: SiteLocale!) {
+	allNewsCategories(locale: $locale, first: $first, skip: $skip) {
+		...NewsCategoryFragment
+	}
+	_allNewsCategoriesMeta {
+		count
+	}
+}
+
+fragment NewsCategoryFragment on NewsCategoryRecord {
+	id
+	title
+	slug
+}

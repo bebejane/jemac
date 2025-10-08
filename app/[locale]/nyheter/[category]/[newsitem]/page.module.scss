@@ -1,0 +1,72 @@
+.header {
+	margin-bottom: var(--space-big);
+
+	@include mq($from: desktop) {
+		display: flex;
+		flex-direction: row;
+		> div {
+			flex: 0 0 calc(50% - var(--outer-margin));
+			margin-right: var(--outer-margin);
+		}
+	}
+	.image {
+		//padding: 4rem;
+		padding-top: 1rem;
+		img {
+			aspect-ratio: 6/5;
+			object-fit: cover;
+		}
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		.logo {
+			margin-top: var(--space);
+			margin-bottom: var(--space-small);
+			height: 1rem;
+		}
+	}
+}
+
+.section {
+	margin-bottom: var(--space);
+
+	@include mq($from: desktop) {
+		display: flex;
+		flex-direction: row;
+		> div {
+			@include mq($from: desktop) {
+				flex: 0 0 50%;
+				width: 50%;
+			}
+		}
+	}
+	.header {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0;
+
+		@include mq($from: desktop) {
+			padding-right: var(--outer-margin);
+		}
+
+		.headline {
+			flex: 1 1 auto;
+		}
+		.project {
+			flex: 0 0;
+			width: 50%;
+			border-radius: 10px;
+			background-color: var(--gray);
+			display: flex;
+			flex-direction: row;
+
+			.image {
+				width: 100px;
+				height: 100px;
+				object-fit: cover;
+			}
+		}
+	}
+}

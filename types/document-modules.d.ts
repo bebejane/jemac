@@ -147,6 +147,19 @@ export const JoinFragment: DocumentNode;
 }
     
 
+declare module '*/news.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllNewsItems: DocumentNode;
+export const NewsItem: DocumentNode;
+export const NewsItemFragment: DocumentNode;
+export const AllNewsCategories: DocumentNode;
+export const NewsCategoryFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/offer.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

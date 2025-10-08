@@ -1,0 +1,37 @@
+.wrap {
+	display: flex;
+	flex-direction: row;
+	margin-right: var(--full-margin);
+	margin-left: var(--full-margin);
+}
+
+.header {
+	margin-top: var(--space-big);
+	border-top: var(--line);
+	margin-top: var(--space-big);
+	padding-top: var(--space-big);
+	padding-bottom: var(--space);
+	flex: 0 0 50%;
+	width: 50%;
+	ul {
+		list-style: none;
+	}
+}
+
+.news {
+	margin-bottom: var(--space-big);
+	list-style: none;
+	flex: 0 0 50%;
+	width: 50%;
+
+	li:nth-child(2n) {
+		h4 {
+			color: var(--green);
+		}
+	}
+
+	h4 {
+		margin-top: 0.5rem;
+		padding-bottom: 0;
+	}
+}

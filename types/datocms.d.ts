@@ -2736,6 +2736,281 @@ enum MuxThumbnailFormatType {
   png = 'png'
 }
 
+type NewsCategoryModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<NewsCategoryModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<NewsCategoryModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _locales?: InputMaybe<LocalesFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+enum NewsCategoryModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
+}
+
+/** Record of type News category (news_category) */
+type NewsCategoryRecord = RecordInterface & {
+  __typename?: 'NewsCategoryRecord';
+  _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  id: Scalars['ItemId']['output'];
+  slug: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type News category (news_category) */
+type NewsCategoryRecord_allSlugLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News category (news_category) */
+type NewsCategoryRecord_allTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News category (news_category) */
+type NewsCategoryRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News category (news_category) */
+type NewsCategoryRecordslugArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News category (news_category) */
+type NewsCategoryRecordtitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+type NewsItemModelFilter = {
+  AND?: InputMaybe<Array<InputMaybe<NewsItemModelFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<NewsItemModelFilter>>>;
+  _createdAt?: InputMaybe<CreatedAtFilter>;
+  _firstPublishedAt?: InputMaybe<PublishedAtFilter>;
+  _isValid?: InputMaybe<BooleanFilter>;
+  _locales?: InputMaybe<LocalesFilter>;
+  _publicationScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _publishedAt?: InputMaybe<PublishedAtFilter>;
+  _status?: InputMaybe<StatusFilter>;
+  _unpublishingScheduledAt?: InputMaybe<PublishedAtFilter>;
+  _updatedAt?: InputMaybe<UpdatedAtFilter>;
+  category?: InputMaybe<LinkFilter>;
+  headline?: InputMaybe<StructuredTextFilter>;
+  id?: InputMaybe<ItemIdFilter>;
+  image?: InputMaybe<FileFilter>;
+  position?: InputMaybe<PositionFilter>;
+  slug?: InputMaybe<SlugFilter>;
+  text?: InputMaybe<StructuredTextFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+type NewsItemModelHeadlineField = {
+  __typename?: 'NewsItemModelHeadlineField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+type NewsItemModelHeadlineFieldMultiLocaleField = {
+  __typename?: 'NewsItemModelHeadlineFieldMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value?: Maybe<NewsItemModelHeadlineField>;
+};
+
+enum NewsItemModelOrderBy {
+  _createdAt_ASC = '_createdAt_ASC',
+  _createdAt_DESC = '_createdAt_DESC',
+  _firstPublishedAt_ASC = '_firstPublishedAt_ASC',
+  _firstPublishedAt_DESC = '_firstPublishedAt_DESC',
+  _isValid_ASC = '_isValid_ASC',
+  _isValid_DESC = '_isValid_DESC',
+  _publicationScheduledAt_ASC = '_publicationScheduledAt_ASC',
+  _publicationScheduledAt_DESC = '_publicationScheduledAt_DESC',
+  _publishedAt_ASC = '_publishedAt_ASC',
+  _publishedAt_DESC = '_publishedAt_DESC',
+  _status_ASC = '_status_ASC',
+  _status_DESC = '_status_DESC',
+  _unpublishingScheduledAt_ASC = '_unpublishingScheduledAt_ASC',
+  _unpublishingScheduledAt_DESC = '_unpublishingScheduledAt_DESC',
+  _updatedAt_ASC = '_updatedAt_ASC',
+  _updatedAt_DESC = '_updatedAt_DESC',
+  id_ASC = 'id_ASC',
+  id_DESC = 'id_DESC',
+  position_ASC = 'position_ASC',
+  position_DESC = 'position_DESC',
+  title_ASC = 'title_ASC',
+  title_DESC = 'title_DESC'
+}
+
+type NewsItemModelTextField = {
+  __typename?: 'NewsItemModelTextField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+type NewsItemModelTextFieldMultiLocaleField = {
+  __typename?: 'NewsItemModelTextFieldMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value?: Maybe<NewsItemModelTextField>;
+};
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord = RecordInterface & {
+  __typename?: 'NewsItemRecord';
+  _allHeadlineLocales?: Maybe<Array<NewsItemModelHeadlineFieldMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
+  _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
+  _allTextLocales?: Maybe<Array<NewsItemModelTextFieldMultiLocaleField>>;
+  _allTitleLocales?: Maybe<Array<StringMultiLocaleField>>;
+  _createdAt: Scalars['DateTime']['output'];
+  /** Editing URL */
+  _editingUrl?: Maybe<Scalars['String']['output']>;
+  _firstPublishedAt: Scalars['DateTime']['output'];
+  _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
+  _modelApiKey: Scalars['String']['output'];
+  _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _publishedAt: Scalars['DateTime']['output'];
+  /** Generates SEO and Social card meta tags to be used in your frontend */
+  _seoMetaTags: Array<Tag>;
+  _status: ItemStatus;
+  _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
+  _updatedAt: Scalars['DateTime']['output'];
+  category?: Maybe<NewsCategoryRecord>;
+  headline?: Maybe<NewsItemModelHeadlineField>;
+  id: Scalars['ItemId']['output'];
+  image?: Maybe<FileField>;
+  position?: Maybe<Scalars['IntType']['output']>;
+  seoMeta: SeoRecord;
+  slug: Scalars['String']['output'];
+  text?: Maybe<NewsItemModelTextField>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_allHeadlineLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_allSeoMetaLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_allSlugLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_allTextLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_allTitleLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecordheadlineArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecordseoMetaArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecordslugArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecordtextArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecordtitleArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
 /** Block of type News (news) */
 type NewsRecord = RecordInterface & {
   __typename?: 'NewsRecord';
@@ -3276,6 +3551,10 @@ type Query = {
   /** Returns meta information regarding a record collection */
   _allClientsMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
+  _allNewsCategoriesMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
+  _allNewsItemsMeta: CollectionMetadata;
+  /** Returns meta information regarding a record collection */
   _allProjectsMeta: CollectionMetadata;
   /** Returns meta information regarding a record collection */
   _allStaffsMeta: CollectionMetadata;
@@ -3288,6 +3567,10 @@ type Query = {
   /** Returns a collection of records */
   allClients: Array<ClientRecord>;
   /** Returns a collection of records */
+  allNewsCategories: Array<NewsCategoryRecord>;
+  /** Returns a collection of records */
+  allNewsItems: Array<NewsItemRecord>;
+  /** Returns a collection of records */
   allProjects: Array<ProjectRecord>;
   /** Returns a collection of records */
   allStaffs: Array<StaffRecord>;
@@ -3299,6 +3582,10 @@ type Query = {
   contact?: Maybe<ContactRecord>;
   /** Returns the single instance record */
   join?: Maybe<JoinRecord>;
+  /** Returns a specific record */
+  newsCategory?: Maybe<NewsCategoryRecord>;
+  /** Returns a specific record */
+  newsItem?: Maybe<NewsItemRecord>;
   /** Returns the single instance record */
   offer?: Maybe<OfferRecord>;
   /** Returns a specific record */
@@ -3321,6 +3608,20 @@ type Query = {
 /** The query root for this schema */
 type Query_allClientsMetaArgs = {
   filter?: InputMaybe<ClientModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type Query_allNewsCategoriesMetaArgs = {
+  filter?: InputMaybe<NewsCategoryModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type Query_allNewsItemsMetaArgs = {
+  filter?: InputMaybe<NewsItemModelFilter>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -3367,6 +3668,28 @@ type QueryallClientsArgs = {
   first?: InputMaybe<Scalars['IntType']['input']>;
   locale?: InputMaybe<SiteLocale>;
   orderBy?: InputMaybe<Array<InputMaybe<ClientModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
+type QueryallNewsCategoriesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<NewsCategoryModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<NewsCategoryModelOrderBy>>>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+};
+
+
+/** The query root for this schema */
+type QueryallNewsItemsArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<NewsItemModelFilter>;
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<NewsItemModelOrderBy>>>;
   skip?: InputMaybe<Scalars['IntType']['input']>;
 };
 
@@ -3424,6 +3747,24 @@ type QuerycontactArgs = {
 type QueryjoinArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** The query root for this schema */
+type QuerynewsCategoryArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<NewsCategoryModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<NewsCategoryModelOrderBy>>>;
+};
+
+
+/** The query root for this schema */
+type QuerynewsItemArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  filter?: InputMaybe<NewsItemModelFilter>;
+  locale?: InputMaybe<SiteLocale>;
+  orderBy?: InputMaybe<Array<InputMaybe<NewsItemModelOrderBy>>>;
 };
 
 
@@ -4758,6 +5099,36 @@ type JoinQueryVariables = Exact<{
 type JoinQuery = { __typename?: 'Query', join?: { __typename?: 'JoinRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
 
 type JoinFragment = { __typename?: 'JoinRecord', title?: string | null, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, sections: Array<{ __typename?: 'SectionRecord', id: any, sectionId?: string | null, headline?: { __typename?: 'SectionModelHeadlineField', blocks: Array<string>, links: Array<string>, inlineBlocks: Array<string>, value: any } | null, text?: { __typename?: 'SectionModelTextField', links: Array<string>, value: any, blocks: Array<{ __typename: 'ButtonRecord', id: any, text?: string | null, url?: string | null } | { __typename: 'ExpandableListRecord', id: any, items: Array<{ __typename?: 'ExpandableListItemRecord', id: any, title?: string | null, text?: { __typename?: 'ExpandableListItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null }> } | { __typename: 'ImageGalleryRecord', id: any, images: Array<{ __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null }> }> } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, referenceProject?: { __typename?: 'ProjectRecord', title?: string | null, slug: string, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null } | null, headline?: { __typename?: 'ProjectModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'ProjectModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, client?: { __typename?: 'ClientRecord', name?: string | null, logo?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null } | null } | null }>, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
+
+type AllNewsItemsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+  locale: SiteLocale;
+}>;
+
+
+type AllNewsItemsQuery = { __typename?: 'Query', allNewsItems: Array<{ __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category?: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } }>, _allNewsItemsMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type NewsItemQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']['input']>;
+  locale: SiteLocale;
+}>;
+
+
+type NewsItemQuery = { __typename?: 'Query', newsItem?: { __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category?: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
+
+type NewsItemFragment = { __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category?: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
+
+type AllNewsCategoriesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+  locale: SiteLocale;
+}>;
+
+
+type AllNewsCategoriesQuery = { __typename?: 'Query', allNewsCategories: Array<{ __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string }>, _allNewsCategoriesMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type NewsCategoryFragment = { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string };
 
 type OfferQueryVariables = Exact<{
   locale?: InputMaybe<SiteLocale>;
