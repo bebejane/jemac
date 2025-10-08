@@ -1,4 +1,4 @@
-.wrap {
+.news {
 	display: flex;
 	flex-direction: row;
 	margin-right: var(--full-margin);
@@ -6,11 +6,6 @@
 }
 
 .header {
-	margin-top: var(--space-big);
-	border-top: var(--line);
-	margin-top: var(--space-big);
-	padding-top: var(--space-big);
-	padding-bottom: var(--space);
 	flex: 0 0 50%;
 	width: 50%;
 	ul {
@@ -18,8 +13,7 @@
 	}
 }
 
-.news {
-	margin-bottom: var(--space-big);
+.newsItems {
 	list-style: none;
 	flex: 0 0 50%;
 	width: 50%;
@@ -34,4 +28,15 @@
 		margin-top: 0.5rem;
 		padding-bottom: 0;
 	}
+	.date {
+		display: inline;
+	}
+	.content {
+		display: inline;
+	}
+}
+
+.empty {
+	flex: 0 0 50%;
+	width: 50%;
 }

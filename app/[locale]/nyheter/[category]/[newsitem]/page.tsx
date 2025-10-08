@@ -14,6 +14,7 @@ import Footer from '@/components/layout/Footer';
 import { getPathname, Link } from '@/i18n/routing';
 import { format } from 'date-fns';
 import { sv, enUS } from 'date-fns/locale';
+import { formatDate } from '@/lib/utils';
 
 export type NewsItemProps = {
 	params: Promise<{ category: string; newsitem: string; locale: SiteLocale }>;
@@ -51,11 +52,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 
 					<div className={s.content}>
 						<h5>
-							{category.title} —{' '}
-							{format(new Date(_publishedAt), 'd MMM yyyy', { locale: locale === 'sv' ? sv : enUS }).replaceAll(
-								'.',
-								''
-							)}
+							{category.title} — {formatDate(_publishedAt, locale)}
 						</h5>
 						<Content content={headline} className={s.headline} />
 						<Content content={text} className={cn(s.text, 'intro')} />

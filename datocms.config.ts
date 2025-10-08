@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { DatoCmsConfig } from 'next-dato-utils/config';
 import client from './lib/client';
-import { AllProjectsDocument } from '@/graphql';
+import { AllProjectsDocument, NewsItemDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { getPathname, defaultLocale } from '@/i18n/routing';
 
@@ -15,6 +15,43 @@ const routes: DatoCmsConfig['routes'] = {
 	showcase: async (record, locale) => [getPathname({ locale, href: '/projekt' })],
 	staff: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
 	client: async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
+	news_item_category: async ({ id, slug }, locale) => {
+		const refs = await references(id, false);
+		return [
+			getPathname({
+				locale,
+				href: { pathname: `/nyheter/[category]`, params: { category: slug } },
+			}),
+			getPathname({
+				locale,
+				href: { pathname: `/nyheter` },
+			}),
+			...refs,
+		];
+	},
+	news_item: async ({ id, slug }, locale) => {
+		const { newsItem } = await apiQuery<NewsItemQuery, NewsItemQueryVariables>(NewsItemDocument, {
+			variables: {
+				locale: locale as SiteLocale,
+				slug,
+			},
+		});
+
+		if (!newsItem) return [];
+
+		return [
+			getPathname({
+				locale,
+				href: {
+					pathname: `/nyheter/[category]/[newsitem]`,
+					params: { category: newsItem.category.slug, newsitem: newsItem.slug },
+				},
+			}),
+			getPathname({ locale, href: { pathname: '/nyheter/[category]', params: { category: newsItem.category.slug } } }),
+			getPathname({ locale, href: '/nyheter' }),
+			getPathname({ locale, href: '/' }),
+		];
+	},
 	project: async ({ slug }, locale) => {
 		return [
 			getPathname({
@@ -39,7 +76,7 @@ const routes: DatoCmsConfig['routes'] = {
 		return paths;
 	},
 	upload: async (record, locale) => {
-		console.log(record);
+		//console.log(record);
 		return references(record.id, true);
 	},
 };

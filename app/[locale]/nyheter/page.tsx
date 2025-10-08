@@ -12,6 +12,9 @@ import classNames from 'classnames';
 import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname, Link } from '@/i18n/routing';
+import { format } from 'path';
+import { sv } from 'date-fns/locale';
+import { formatDate } from '@/lib/utils';
 
 export default async function NewsPage({ params }: PageProps) {
 	const { locale, category } = await params;
@@ -36,10 +39,12 @@ export default async function NewsPage({ params }: PageProps) {
 		}
 	);
 
+	const news = allNewsItems.filter((item) => !category || item.category.slug === category);
+
 	return (
 		<>
 			<Article title={'News'}>
-				<section className={s.wrap}>
+				<section className={s.news}>
 					<div className={s.header}>
 						<h3>Senaste nytt</h3>
 						<ul>
@@ -50,10 +55,9 @@ export default async function NewsPage({ params }: PageProps) {
 							))}
 						</ul>
 					</div>
-					<ul className={s.news}>
-						{allNewsItems
-							.filter((item) => !category || item.category.slug === category)
-							.map((item) => (
+					{news.length > 0 && (
+						<ul className={s.newsItems}>
+							{news.map((item) => (
 								<li key={item.id}>
 									<Link
 										href={{
@@ -63,11 +67,14 @@ export default async function NewsPage({ params }: PageProps) {
 									>
 										{item.image?.responsiveImage && <Image data={item.image.responsiveImage} imgClassName={s.image} />}
 										<h4>{item.title}</h4>
+										<span className={s.date}>{formatDate(item._publishedAt, locale)}</span>
 										<Content content={item.headline} className={classNames('mid', s.content)} />
 									</Link>
 								</li>
 							))}
-					</ul>
+						</ul>
+					)}
+					{news.length === 0 && <p className={s.empty}>Det finns inga nyheter i denna kategori</p>}
 				</section>
 			</Article>
 			<DraftMode url={draftUrl} path={`/`} />
