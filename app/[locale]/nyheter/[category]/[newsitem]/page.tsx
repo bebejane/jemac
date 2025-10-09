@@ -35,8 +35,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 
 	if (!newsItem) return notFound();
 
-	const { id, title, headline, text, image, category, _publishedAt } = newsItem;
-	//const { footer } = newsItemFooter;
+	const { id, title, headline, intro, text, image, category, _publishedAt } = newsItem;
 
 	return (
 		<>
@@ -44,8 +43,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 				<header className={s.header}>
 					<div className={s.image}>
 						{image?.responsiveImage && <Image data={image.responsiveImage} />}
-
-						<Link className={s.back} href={{ pathname: '/nyheter/[category]', params: { category: category.slug } }}>
+						<Link className={s.back} href={{ pathname: '/nyheter' }}>
 							Alla {category.title}
 						</Link>
 					</div>
@@ -55,6 +53,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 							{category.title} — {formatDate(_publishedAt, locale)}
 						</h5>
 						<Content content={headline} className={s.headline} />
+						<Content content={intro} className={s.intro} />
 						<Content content={text} className={s.text} />
 					</div>
 				</header>

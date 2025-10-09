@@ -8,29 +8,18 @@ import { Markdown } from 'next-dato-utils/components';
 import Content from '@/components/common/Content';
 import Header from '@/components/layout/Header';
 
+export type HeaderProps = HeaderRecord & { date?: string; link?: { href: string; text: string } };
 export type ArticleProps = {
 	title?: string;
-	header?: HeaderRecord;
+	header?: HeaderProps;
 	intro?: any;
 	content?: any;
 	markdown?: boolean;
-	link?: {
-		href: string;
-		text: string;
-	};
 	className?: string;
 	children?: React.ReactNode | React.ReactNode[];
 };
 
-export default function Article({
-	title,
-	header,
-	intro,
-	content,
-	link,
-	className,
-	children,
-}: ArticleProps) {
+export default function Article({ header, content, className, children }: ArticleProps) {
 	return (
 		<article className={cn(s.article, className)}>
 			{header && <Header header={header} />}

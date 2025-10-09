@@ -15,6 +15,9 @@
 
 .subnav {
 	line-height: 2;
+	a.active {
+		color: var(--green);
+	}
 }
 
 .newsItems {

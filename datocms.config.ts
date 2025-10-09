@@ -15,6 +15,7 @@ const routes: DatoCmsConfig['routes'] = {
 	showcase: async (record, locale) => [getPathname({ locale, href: '/projekt' })],
 	staff: async (record, locale) => [getPathname({ locale, href: '/om-oss' })],
 	client: async (record, locale) => [getPathname({ locale, href: `/projekt` }), getPathname({ locale, href: '/' })],
+	news_start: async (record, locale) => [getPathname({ locale, href: '/nyheter' })],
 	news_item_category: async ({ id, slug }, locale) => {
 		const refs = await references(id, false);
 		return [

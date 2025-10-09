@@ -1,3 +1,19 @@
+query NewsStart($locale: SiteLocale!) {
+	newsStart(locale: $locale) {
+		id
+		header {
+			...HeaderFragment
+		}
+		seoMeta {
+			title
+			description
+		}
+		footer {
+			...FooterFragment
+		}
+	}
+}
+
 query AllNewsItems($first: IntType, $skip: IntType, $locale: SiteLocale!) {
 	allNewsItems(locale: $locale, first: $first, skip: $skip) {
 		...NewsItemFragment
@@ -21,6 +37,11 @@ fragment NewsItemFragment on NewsItemRecord {
 		blocks
 		links
 		value
+	}
+	intro {
+		links
+		value
+		blocks
 	}
 	text {
 		blocks
