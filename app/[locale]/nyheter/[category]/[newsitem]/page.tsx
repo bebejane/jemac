@@ -77,13 +77,27 @@ export async function generateStaticParams({ params }) {
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {
-	const { locale } = await params;
+	const { locale, newsitem, category } = await params;
 
-	const pathname = getPathname({ locale, href: { pathname: '/nyheter' } });
+	const { newsItem } = await apiQuery<NewsItemQuery, NewsItemQueryVariables>(NewsItemDocument, {
+		variables: {
+			locale,
+			slug: newsitem,
+		},
+	});
+
+	if (!newsItem) return notFound();
+
 	return await buildMetadata({
-		//title: about.seoMeta.title,
-		//description: about.seoMeta.description,
-		pathname,
+		title: newsItem.seoMeta?.title,
+		description: newsItem.seoMeta?.description,
+		pathname: getPathname({
+			locale,
+			href: {
+				pathname: '/nyheter/[category]/[newsitem]',
+				params: { category, newsitem },
+			},
+		}),
 		locale,
 	});
 }

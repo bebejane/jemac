@@ -114,11 +114,16 @@ export default async function NewsPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, category } = await params;
 
-	const pathname = getPathname({ locale, href: { pathname: '/nyheter' } });
+	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+		variables: {
+			locale,
+		},
+	});
+
 	return await buildMetadata({
-		title: 'Nyheter',
-		description: 'Nyheter',
-		pathname,
+		title: newsStart?.seoMeta.title,
+		description: newsStart?.seoMeta.description,
+		pathname: getPathname({ locale, href: { pathname: '/nyheter' } }),
 		locale,
 	});
 }

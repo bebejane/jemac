@@ -1,5 +1,5 @@
 import { buildMetadata } from '@/app/layout';
-import { AllNewsCategoriesDocument } from '@/graphql';
+import { AllNewsCategoriesDocument, NewsStartDocument } from '@/graphql';
 import { getPathname } from '@/i18n/routing';
 import { Metadata } from 'next';
 import { apiQuery } from 'next-dato-utils/api';
@@ -12,11 +12,16 @@ export default async function NewsCategoryPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, category } = await params;
 
-	const pathname = getPathname({ locale, href: { pathname: '/nyheter/[category]', params: { category } } });
+	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+		variables: {
+			locale,
+		},
+	});
+
 	return await buildMetadata({
-		//title: about.seoMeta.title,
-		//description: about.seoMeta.description,
-		pathname,
+		title: newsStart?.seoMeta.title,
+		description: newsStart?.seoMeta.description,
+		pathname: getPathname({ locale, href: { pathname: '/nyheter/[category]', params: { category } } }),
 		locale,
 	});
 }
