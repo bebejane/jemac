@@ -47,7 +47,7 @@ export default async function NewsPage({ params }: PageProps) {
 				<section className={s.news}>
 					<div className={s.header}>
 						<h3>Senaste nytt</h3>
-						<ul>
+						<ul className={s.subnav}>
 							{allNewsCategories.map(({ id, title, slug }) => (
 								<li key={id}>
 									<Link href={{ pathname: '/nyheter/[category]', params: { category: slug } }}>{title}</Link>
@@ -65,10 +65,9 @@ export default async function NewsPage({ params }: PageProps) {
 											params: { category: item.category.slug, newsitem: item.slug },
 										}}
 									>
-										{item.image?.responsiveImage && <Image data={item.image.responsiveImage} imgClassName={s.image} />}
-										<h4>{item.title}</h4>
-										<span className={s.date}>{formatDate(item._publishedAt, locale)}</span>
-										<Content content={item.headline} className={classNames('mid', s.content)} />
+										<h5><span className={s.date}>{formatDate(item._publishedAt, locale)}</span></h5>
+
+										<h2 className="smaller">{item.title}</h2>
 									</Link>
 								</li>
 							))}

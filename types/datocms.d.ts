@@ -2848,6 +2848,7 @@ type NewsItemModelFilter = {
   headline?: InputMaybe<StructuredTextFilter>;
   id?: InputMaybe<ItemIdFilter>;
   image?: InputMaybe<FileFilter>;
+  intro?: InputMaybe<StructuredTextFilter>;
   position?: InputMaybe<PositionFilter>;
   slug?: InputMaybe<SlugFilter>;
   text?: InputMaybe<StructuredTextFilter>;
@@ -2866,6 +2867,20 @@ type NewsItemModelHeadlineFieldMultiLocaleField = {
   __typename?: 'NewsItemModelHeadlineFieldMultiLocaleField';
   locale?: Maybe<SiteLocale>;
   value?: Maybe<NewsItemModelHeadlineField>;
+};
+
+type NewsItemModelIntroField = {
+  __typename?: 'NewsItemModelIntroField';
+  blocks: Array<Scalars['String']['output']>;
+  inlineBlocks: Array<Scalars['String']['output']>;
+  links: Array<Scalars['String']['output']>;
+  value: Scalars['JsonField']['output'];
+};
+
+type NewsItemModelIntroFieldMultiLocaleField = {
+  __typename?: 'NewsItemModelIntroFieldMultiLocaleField';
+  locale?: Maybe<SiteLocale>;
+  value?: Maybe<NewsItemModelIntroField>;
 };
 
 enum NewsItemModelOrderBy {
@@ -2911,6 +2926,7 @@ type NewsItemModelTextFieldMultiLocaleField = {
 type NewsItemRecord = RecordInterface & {
   __typename?: 'NewsItemRecord';
   _allHeadlineLocales?: Maybe<Array<NewsItemModelHeadlineFieldMultiLocaleField>>;
+  _allIntroLocales?: Maybe<Array<NewsItemModelIntroFieldMultiLocaleField>>;
   _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _allSlugLocales?: Maybe<Array<StringNonNullMultiLocaleField>>;
   _allTextLocales?: Maybe<Array<NewsItemModelTextFieldMultiLocaleField>>;
@@ -2929,10 +2945,11 @@ type NewsItemRecord = RecordInterface & {
   _status: ItemStatus;
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
-  category?: Maybe<NewsCategoryRecord>;
+  category: NewsCategoryRecord;
   headline?: Maybe<NewsItemModelHeadlineField>;
   id: Scalars['ItemId']['output'];
   image?: Maybe<FileField>;
+  intro?: Maybe<NewsItemModelIntroField>;
   position?: Maybe<Scalars['IntType']['output']>;
   seoMeta: SeoRecord;
   slug: Scalars['String']['output'];
@@ -2943,6 +2960,12 @@ type NewsItemRecord = RecordInterface & {
 
 /** Record of type News Item (news_item) */
 type NewsItemRecord_allHeadlineLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecord_allIntroLocalesArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
 };
 
@@ -2979,6 +3002,13 @@ type NewsItemRecord_seoMetaTagsArgs = {
 
 /** Record of type News Item (news_item) */
 type NewsItemRecordheadlineArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News Item (news_item) */
+type NewsItemRecordintroArgs = {
   fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
@@ -5107,7 +5137,7 @@ type AllNewsItemsQueryVariables = Exact<{
 }>;
 
 
-type AllNewsItemsQuery = { __typename?: 'Query', allNewsItems: Array<{ __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category?: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } }>, _allNewsItemsMeta: { __typename?: 'CollectionMetadata', count: any } };
+type AllNewsItemsQuery = { __typename?: 'Query', allNewsItems: Array<{ __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } }>, _allNewsItemsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
 type NewsItemQueryVariables = Exact<{
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -5115,9 +5145,9 @@ type NewsItemQueryVariables = Exact<{
 }>;
 
 
-type NewsItemQuery = { __typename?: 'Query', newsItem?: { __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category?: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
+type NewsItemQuery = { __typename?: 'Query', newsItem?: { __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } } | null };
 
-type NewsItemFragment = { __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category?: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string } | null, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
+type NewsItemFragment = { __typename?: 'NewsItemRecord', id: any, slug: string, title?: string | null, _publishedAt: any, headline?: { __typename?: 'NewsItemModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'NewsItemModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null, category: { __typename?: 'NewsCategoryRecord', id: any, title?: string | null, slug: string }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null } };
 
 type AllNewsCategoriesQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']['input']>;

@@ -1,5 +1,6 @@
 .header {
 	margin-bottom: var(--space-big);
+	position: relative;
 
 	@include mq($from: desktop) {
 		display: flex;
@@ -11,22 +12,42 @@
 	}
 	.image {
 		//padding: 4rem;
+		position: sticky;
+		top: var(--navbar-height);
 		padding-top: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between; /* Tryck ut elementen till topp och botten */
+
 		img {
-			aspect-ratio: 6/5;
-			object-fit: cover;
+			//aspect-ratio: 6/5;
+			//object-fit: cover;
+		}
+		@include mq($from: desktop) {
+			height: calc(100vh - var(--navbar-height));
+		}
+
+		.back {
+			position: fixed;
+			bottom: var(--space);
+			padding-bottom: var(--space);
 		}
 	}
 	.content {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		.logo {
+
+		h5 {
 			margin-top: var(--space);
 			margin-bottom: var(--space-small);
-			height: 1rem;
+			color: var(--green);
 		}
 	}
+}
+
+.back {
+	position: sticky;
 }
 
 .section {

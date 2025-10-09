@@ -13,10 +13,31 @@
 	}
 }
 
+.subnav {
+	line-height: 2;
+}
+
 .newsItems {
 	list-style: none;
 	flex: 0 0 50%;
 	width: 50%;
+
+	li {
+		border-bottom: 1px solid var(--gray-mid);
+		padding-top: var(--space);
+		padding-bottom: var(--space);
+
+		&:hover {
+			h2 {
+				color: var(--red);
+			}
+		}
+
+		h2 {
+			padding-top: 1em;
+			//color: var(--blue) !important;
+		}
+	}
 
 	li:nth-child(2n) {
 		h4 {

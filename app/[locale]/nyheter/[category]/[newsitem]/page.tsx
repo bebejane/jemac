@@ -45,7 +45,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 					<div className={s.image}>
 						{image?.responsiveImage && <Image data={image.responsiveImage} />}
 
-						<Link href={{ pathname: '/nyheter/[category]', params: { category: category.slug } }}>
+						<Link className={s.back} href={{ pathname: '/nyheter/[category]', params: { category: category.slug } }}>
 							Alla {category.title}
 						</Link>
 					</div>
@@ -55,7 +55,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 							{category.title} — {formatDate(_publishedAt, locale)}
 						</h5>
 						<Content content={headline} className={s.headline} />
-						<Content content={text} className={cn(s.text, 'intro')} />
+						<Content content={text} className={cn(s.text)} />
 					</div>
 				</header>
 			</Article>
