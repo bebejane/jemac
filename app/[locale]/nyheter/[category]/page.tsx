@@ -12,7 +12,7 @@ export default async function NewsCategoryPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, category } = await params;
 
-	const pathname = getPathname({ locale, href: { pathname: '/nyheter', query: { category: 'nyheter' } } });
+	const pathname = getPathname({ locale, href: { pathname: '/nyheter/[category]', params: { category } } });
 	return await buildMetadata({
 		//title: about.seoMeta.title,
 		//description: about.seoMeta.description,

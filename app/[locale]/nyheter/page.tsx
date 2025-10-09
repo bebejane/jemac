@@ -65,9 +65,11 @@ export default async function NewsPage({ params }: PageProps) {
 											params: { category: item.category.slug, newsitem: item.slug },
 										}}
 									>
-										<h5><span className={s.date}>{formatDate(item._publishedAt, locale)}</span></h5>
+										<h5>
+											<span className={s.date}>{formatDate(item._publishedAt, locale)}</span>
+										</h5>
 
-										<h2 className="smaller">{item.title}</h2>
+										<h2 className='smaller'>{item.title}</h2>
 									</Link>
 								</li>
 							))}
@@ -76,7 +78,7 @@ export default async function NewsPage({ params }: PageProps) {
 					{news.length === 0 && <p className={s.empty}>Det finns inga nyheter i denna kategori</p>}
 				</section>
 			</Article>
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={`/nyheter`} />
 		</>
 	);
 }

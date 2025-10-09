@@ -55,11 +55,11 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 							{category.title} — {formatDate(_publishedAt, locale)}
 						</h5>
 						<Content content={headline} className={s.headline} />
-						<Content content={text} className={cn(s.text)} />
+						<Content content={text} className={s.text} />
 					</div>
 				</header>
 			</Article>
-			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />
+			<DraftMode url={draftUrl} path={`/nyheter/${category.slug}/${slug}`} />
 		</>
 	);
 }
