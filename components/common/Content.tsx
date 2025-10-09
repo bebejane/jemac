@@ -9,9 +9,12 @@ export type Props = {
 	styles?: any;
 	className?: string;
 	blocks?: any;
+	options?: {
+		unwrapParagraphs?: boolean;
+	};
 };
 
-export default function Content({ id, content, styles, blocks, className }: Props) {
+export default function Content({ id, content, styles, blocks, className, options = {} }: Props) {
 	if (!content) return null;
 
 	return (
@@ -23,6 +26,7 @@ export default function Content({ id, content, styles, blocks, className }: Prop
 					...styles,
 				}}
 				content={content}
+				options={options}
 			/>
 		</div>
 	);
