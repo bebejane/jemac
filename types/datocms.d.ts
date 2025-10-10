@@ -3091,7 +3091,6 @@ type NewsStartRecord = RecordInterface & {
   _unpublishingScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _updatedAt: Scalars['DateTime']['output'];
   footer: FooterRecord;
-  header: HeaderRecord;
   id: Scalars['ItemId']['output'];
   seoMeta: SeoRecord;
 };
@@ -5172,7 +5171,7 @@ type NewsStartQueryVariables = Exact<{
 }>;
 
 
-type NewsStartQuery = { __typename?: 'Query', newsStart?: { __typename?: 'NewsStartRecord', id: any, header: { __typename?: 'HeaderRecord', id: any, align: string, headline?: { __typename?: 'HeaderModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'HeaderModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, image?: { __typename?: 'FileField', id: any, width?: any | null, height?: any | null, alt?: string | null, basename: string, format: string, mimeType: string, size: any, title?: string | null, url: string, responsiveImage?: { __typename?: 'ResponsiveImage', width: any, height: any, alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null } | null } | null }, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null }, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } } | null };
+type NewsStartQuery = { __typename?: 'Query', newsStart?: { __typename?: 'NewsStartRecord', id: any, seoMeta: { __typename?: 'SeoRecord', title?: string | null, description?: string | null }, footer: { __typename?: 'FooterRecord', id: any, buttonText?: string | null, headline?: { __typename?: 'FooterModelHeadlineField', blocks: Array<string>, links: Array<string>, value: any } | null, text?: { __typename?: 'FooterModelTextField', blocks: Array<string>, links: Array<string>, value: any } | null, link?: { __typename: 'AboutRecord', id: any } | { __typename: 'ContactRecord', id: any } | null } } | null };
 
 type AllNewsItemsQueryVariables = Exact<{
   first?: InputMaybe<Scalars['IntType']['input']>;
