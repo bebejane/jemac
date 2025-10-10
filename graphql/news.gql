@@ -1,9 +1,6 @@
 query NewsStart($locale: SiteLocale!) {
 	newsStart(locale: $locale) {
 		id
-		header {
-			...HeaderFragment
-		}
 		seoMeta {
 			title
 			description
