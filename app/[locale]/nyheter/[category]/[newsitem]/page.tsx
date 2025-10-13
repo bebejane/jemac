@@ -1,7 +1,7 @@
 import s from './page.module.scss';
 import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllNewsItemsDocument, NewsItemDocument } from '@/graphql';
+import { AllNewsItemsDocument, NewsItemDocument, NewsStartDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
 import Article from '@/components/layout/Article';
 import { DraftMode } from 'next-dato-utils/components';
@@ -33,9 +33,15 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 		},
 	});
 
+	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+		variables: {
+			locale,
+		},
+	});
+
 	if (!newsItem) return notFound();
 
-	const { id, title, headline, intro, text, image, category, _publishedAt } = newsItem;
+	const { id, title, headline, intro, text, image, category, _createdAt } = newsItem;
 
 	return (
 		<>
@@ -50,7 +56,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 
 					<div className={s.content}>
 						<h5>
-							{category.title} — {formatDate(_publishedAt, locale)}
+							{category.title} — {formatDate(_createdAt, locale)}
 						</h5>
 						<Content content={headline} className={s.headline} />
 						<Content content={intro} className={s.intro} />
@@ -59,9 +65,8 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 							Alla {category.title}
 						</Link>
 					</div>
-
 				</header>
-
+				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
 			<DraftMode url={draftUrl} path={`/nyheter/${category.slug}/${slug}`} />
 		</>

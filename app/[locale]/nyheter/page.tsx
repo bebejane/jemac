@@ -48,7 +48,7 @@ export default async function NewsPage({ params }: PageProps) {
 				text: news[0].intro,
 				image: news[0].image,
 				align: 'left',
-				date: formatDate(news[0]._publishedAt, locale),
+				date: formatDate(news[0]._createdAt, locale),
 				link: {
 					href: getPathname({
 						locale,
@@ -69,11 +69,11 @@ export default async function NewsPage({ params }: PageProps) {
 					<div className={s.header}>
 						<h3>Senaste nytt</h3>
 						<ul className={s.subnav}>
-							{allNewsCategories.map(({ id, title, slug }) => (
+							{[{ id: 'all', title: 'Alla', slug: null }, ...allNewsCategories].map(({ id, title, slug }) => (
 								<li key={id}>
 									<Link
-										className={category === slug ? s.active : null}
-										href={{ pathname: '/nyheter/[category]', params: { category: slug } }}
+										className={category === slug || (id === 'all' && !category) ? s.active : null}
+										href={{ pathname: id === 'all' ? '/nyheter' : '/nyheter/[category]', params: { category: slug } }}
 									>
 										{title}
 									</Link>
@@ -92,7 +92,7 @@ export default async function NewsPage({ params }: PageProps) {
 										}}
 									>
 										<h5>
-											<span className={s.date}>{formatDate(item._publishedAt, locale)}</span>
+											<span className={s.date}>{formatDate(item._createdAt, locale)}</span>
 										</h5>
 
 										<h2 className='smaller'>{item.title}</h2>
