@@ -12,8 +12,10 @@
 	}
 	.image {
 		//padding: 4rem;
-		position: sticky;
-		top: var(--navbar-height);
+		@include mq($from: desktop) {
+			position: sticky;
+			top: var(--navbar-height);
+		}
 		padding-top: 1rem;
 		display: flex;
 		flex-direction: column;
@@ -28,9 +30,14 @@
 		}
 
 		.back {
-			position: fixed;
-			bottom: var(--space);
-			padding-bottom: var(--space);
+			@include mq($from: desktop) {
+				position: fixed;
+				bottom: var(--space);
+				padding-bottom: var(--space);
+			}
+			@include mq($until: desktop) {
+				display: none;
+			}
 		}
 	}
 	.content {
@@ -43,11 +50,20 @@
 			margin-bottom: var(--space-small);
 			color: var(--green);
 		}
+
+		.back {
+			margin-top: var(--space-big);
+			@include mq($from: desktop) {
+				display: none;
+			}
+		}
 	}
 }
 
 .back {
-	position: sticky;
+	@include mq($from: desktop) {
+		position: sticky;
+	}
 }
 
 .section {

@@ -55,8 +55,13 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 						<Content content={headline} className={s.headline} />
 						<Content content={intro} className={s.intro} />
 						<Content content={text} className={s.text} />
+						<Link className={s.back} href={{ pathname: '/nyheter' }}>
+							Alla {category.title}
+						</Link>
 					</div>
+
 				</header>
+
 			</Article>
 			<DraftMode url={draftUrl} path={`/nyheter/${category.slug}/${slug}`} />
 		</>

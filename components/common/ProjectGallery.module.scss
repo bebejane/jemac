@@ -63,6 +63,7 @@
 	background-color: var(--gray);
 	margin-left: var(--full-bleed-margin);
 	margin-right: var(--full-bleed-margin);
+	overflow-x: hidden;
 
 	.swiper {
 		width: 100%;

@@ -1,6 +1,6 @@
 .section {
 	position: relative;
-	margin-bottom: var(--space-big);
+	padding-bottom: var(--space-big);
 	scroll-margin-top: var(--navbar-height);
 
 	@include mq($from: desktop) {
@@ -50,7 +50,7 @@
 
 		@include mq($from: desktop) {
 			position: absolute;
-			bottom: 0;
+			bottom: var(--space-big);
 			left: 0;
 			width: 30%;
 		}

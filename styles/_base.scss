@@ -88,7 +88,8 @@ main {
 	min-height: 100vh;
 	padding-left: var(--outer-margin);
 	padding-right: var(--outer-margin);
-	overflow-x: hidden;
+	//overflow-x: hidden;
+	padding-bottom: var(--margin);
 	background-color: var(--background);
 }
 

@@ -15,14 +15,15 @@ export default function Header({ header }: Props) {
 	const { headline, image, text, align, link, date } = header;
 	return (
 		<header className={cn(s.header, s[align])}>
-			{image?.responsiveImage && <Image data={image.responsiveImage} imgClassName={s.image} fadeInDuration={0} />}
+			{image?.responsiveImage && <Image data={image.responsiveImage} className={s.imageWrapper} imgClassName={s.image} layout="fill"
+				objectFit="cover" fadeInDuration={0} />}
 			<div className={s.fade} />
 			<div className={s.text}>
 				<div className={s.wrap}>
 					{headline && <Content content={headline} className={s.headline} />}
 					{text && (
 						<>
-							{date && <span className={s.date}>{date}</span>}
+							{date && <h5 className={s.date}>{date}</h5>}
 							<Content content={text} className={cn(s.content, 'intro')} />
 							{link && (
 								<Link className={s.more} href={link.href}>

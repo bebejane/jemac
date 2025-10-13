@@ -1,15 +1,28 @@
 .news {
 	display: flex;
-	flex-direction: row;
-	margin-right: var(--full-margin);
-	margin-left: var(--full-margin);
+	flex-direction: column;
+	@include mq($from: desktop) {
+		flex-direction: row;
+		margin-right: var(--full-margin);
+		margin-left: var(--full-margin);
+	}
+
+	position: relative;
+	align-items: flex-start;
 }
 
 .header {
-	flex: 0 0 50%;
-	width: 50%;
+	@include mq($from: desktop) {
+		flex: 0 0 50%;
+		width: 50%;
+		align-items: flex-start;
+	}
 	ul {
 		list-style: none;
+	}
+	@include mq($from: desktop) {
+		position: sticky;
+		top: calc(var(--space) + (var(--navbar-height)));
 	}
 }
 
@@ -22,13 +35,20 @@
 
 .newsItems {
 	list-style: none;
-	flex: 0 0 50%;
-	width: 50%;
+	@include mq($from: desktop) {
+		flex: 0 0 50%;
+		width: 50%;
+	}
+	margin-bottom: var(--space-big);
 
 	li {
 		border-bottom: 1px solid var(--gray-mid);
 		padding-top: var(--space);
 		padding-bottom: var(--space);
+
+		&:first-of-type {
+			padding-top: 1rem;
+		}
 
 		&:hover {
 			h2 {

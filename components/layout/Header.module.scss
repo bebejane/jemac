@@ -3,18 +3,21 @@
 	margin-right: var(--full-bleed-margin);
 	margin-left: var(--full-bleed-margin);
 	margin-bottom: var(--space);
+	position: relative;
 
 	@include mq($from: desktop) {
+		width: calc(100% + 2 * var(--outer-margin));
+
 		position: relative;
-		display: flex;
-		justify-content: flex-start;
+		//display: flex;
+		//justify-content: flex-start;
 		margin-bottom: var(--space-big);
-		height: calc(85vh - var(--navbar-height));
+		min-height: calc(85vh - var(--navbar-height));
 	}
 
 	//Om mer än 800px höjd
 	@media (min-height: 930px) and (orientation: landscape) {
-		height: calc(70vh - var(--navbar-height));
+		min-height: calc(70vh - var(--navbar-height));
 	}
 
 	h1 {
@@ -23,11 +26,18 @@
 		}
 	}
 
+	.imageWrapper {
+		max-width: none !important;
+		position: absolute !important;
+		inset: 0;
+		z-index: 0;
+		display: flex;
+	}
+
 	.image {
-		position: relative;
+		object-fit: cover;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
 		z-index: 0;
 		animation: reveal 1s ease-out forwards;
 
@@ -57,7 +67,7 @@
 		top: 0;
 		left: 0;
 		width: 75%;
-		height: 100%;
+		height: calc(100% + 1px);
 		z-index: 1;
 	}
 
@@ -67,10 +77,14 @@
 		width: 100%;
 		z-index: 100;
 		@include mq($from: desktop) {
-			position: absolute;
+			//position: absolute;
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
+		}
+
+		.more {
+			color: var(--blue);
 		}
 
 		.wrap {
