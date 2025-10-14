@@ -230,6 +230,11 @@ article {
 
 	ul p {
 		padding-left: 0;
+		margin-bottom: 0;
+	}
+
+	ul {
+		margin-bottom: var(--space-small);
 	}
 
 	p + h3,

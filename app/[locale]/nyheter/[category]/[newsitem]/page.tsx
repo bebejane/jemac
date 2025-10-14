@@ -50,7 +50,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 					<div className={s.image}>
 						{image?.responsiveImage && <Image data={image.responsiveImage} />}
 						<Link className={s.back} href={{ pathname: '/nyheter' }}>
-							Alla {category.title}
+							Alla Nyheter
 						</Link>
 					</div>
 
@@ -62,7 +62,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 						<Content content={intro} className={s.intro} />
 						<Content content={text} className={s.text} />
 						<Link className={s.back} href={{ pathname: '/nyheter' }}>
-							Alla {category.title}
+							Alla Nyheter
 						</Link>
 					</div>
 				</header>

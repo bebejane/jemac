@@ -19,6 +19,7 @@
 	}
 	ul {
 		list-style: none;
+		display: none; //Temporärt
 	}
 	@include mq($from: desktop) {
 		position: sticky;
