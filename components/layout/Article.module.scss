@@ -1,6 +1,6 @@
 .article {
 	position: relative;
-	padding-bottom: var(--space);
+	//padding-bottom: var(--space);
 
 	header {
 		@include mq($from: desktop) {
