@@ -24,28 +24,25 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug, locale } = await params;
 	setRequestLocale(locale);
 
-	const { project, draftUrl } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
+	const { project, draftUrl } = await apiQuery(ProjectDocument, {
 		variables: {
 			locale,
 			slug,
 		},
 	});
 
-	const { projectFooter } = await apiQuery<ProjectFooterQuery, ProjectFooterQueryVariables>(ProjectFooterDocument, {
+	const { projectFooter } = await apiQuery(ProjectFooterDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
-		AllShowcaseProjectsDocument,
-		{
-			variables: {
-				locale,
-				slug: project.slug,
-			},
-		}
-	);
+	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
+		variables: {
+			locale,
+			slug: project.slug,
+		},
+	});
 
 	if (!project) return notFound();
 
@@ -95,12 +92,9 @@ export default async function ProjectPage({ params }: ProjectProps) {
 }
 
 export async function generateStaticParams() {
-	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
-		AllShowcaseProjectsDocument,
-		{
-			all: true,
-		}
-	);
+	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
+		all: true,
+	});
 
 	return allProjects.map(({ slug: project }) => ({ project }));
 }
@@ -110,7 +104,7 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
 
 	setRequestLocale(locale);
 
-	const { project } = await apiQuery<ProjectQuery, ProjectQueryVariables>(ProjectDocument, {
+	const { project } = await apiQuery(ProjectDocument, {
 		variables: {
 			slug,
 			locale,

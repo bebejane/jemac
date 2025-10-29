@@ -15,7 +15,7 @@ export default async function JoinPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { join, draftUrl } = await apiQuery<JoinQuery, JoinQueryVariables>(JoinDocument, {
+	const { join, draftUrl } = await apiQuery(JoinDocument, {
 		variables: {
 			locale,
 		},
@@ -45,7 +45,7 @@ export default async function JoinPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { join } = await apiQuery<JoinQuery, JoinQueryVariables>(JoinDocument, {
+	const { join } = await apiQuery(JoinDocument, {
 		variables: {
 			locale,
 		},

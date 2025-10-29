@@ -26,14 +26,14 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 	const { newsitem: slug, locale } = await params;
 	setRequestLocale(locale);
 
-	const { newsItem, draftUrl } = await apiQuery<NewsItemQuery, NewsItemQueryVariables>(NewsItemDocument, {
+	const { newsItem, draftUrl } = await apiQuery(NewsItemDocument, {
 		variables: {
 			locale,
 			slug,
 		},
 	});
 
-	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+	const { newsStart } = await apiQuery(NewsStartDocument, {
 		variables: {
 			locale,
 		},
@@ -76,7 +76,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 export async function generateStaticParams({ params }) {
 	const { locale, category } = await params;
 
-	const { allNewsItems } = await apiQuery<AllNewsItemsQuery, AllNewsItemsQueryVariables>(AllNewsItemsDocument, {
+	const { allNewsItems } = await apiQuery(AllNewsItemsDocument, {
 		all: true,
 		variables: {
 			locale: 'sv' as SiteLocale,
@@ -89,7 +89,7 @@ export async function generateStaticParams({ params }) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, newsitem, category } = await params;
 
-	const { newsItem } = await apiQuery<NewsItemQuery, NewsItemQueryVariables>(NewsItemDocument, {
+	const { newsItem } = await apiQuery(NewsItemDocument, {
 		variables: {
 			locale,
 			slug: newsitem,

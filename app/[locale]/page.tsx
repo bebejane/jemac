@@ -22,20 +22,17 @@ export default async function Home({ params }: PageProps) {
 
 	setRequestLocale(locale);
 
-	const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
+	const { start, draftUrl } = await apiQuery(StartDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
-		AllShowcaseProjectsDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	if (!start) return notFound();
 
@@ -79,7 +76,7 @@ export default async function Home({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 
-	const { start } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, {
+	const { start } = await apiQuery(StartDocument, {
 		variables: {
 			locale,
 		},

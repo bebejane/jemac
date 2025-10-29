@@ -12,7 +12,7 @@ export default async function NewsCategoryPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, category } = await params;
 
-	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+	const { newsStart } = await apiQuery(NewsStartDocument, {
 		variables: {
 			locale,
 		},
@@ -28,15 +28,12 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export async function generateStaticParams({ params }) {
 	const { locale } = await params;
-	const { allNewsCategories } = await apiQuery<AllNewsCategoriesQuery, AllNewsCategoriesQueryVariables>(
-		AllNewsCategoriesDocument,
-		{
-			all: true,
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { allNewsCategories } = await apiQuery(AllNewsCategoriesDocument, {
+		all: true,
+		variables: {
+			locale,
+		},
+	});
 
 	return allNewsCategories.map(({ slug: category }) => ({ category }));
 }

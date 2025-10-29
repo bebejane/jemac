@@ -18,7 +18,7 @@ export default async function AboutPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { about, allStaffs, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+	const { about, allStaffs, draftUrl } = await apiQuery(AboutDocument, {
 		variables: {
 			locale,
 		},
@@ -64,7 +64,7 @@ export default async function AboutPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+	const { about } = await apiQuery(AboutDocument, {
 		variables: {
 			locale,
 		},

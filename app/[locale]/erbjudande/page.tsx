@@ -16,7 +16,7 @@ export default async function OfferPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { offer, draftUrl } = await apiQuery<OfferQuery, OfferQueryVariables>(OfferDocument, {
+	const { offer, draftUrl } = await apiQuery(OfferDocument, {
 		variables: {
 			locale,
 		},
@@ -49,7 +49,7 @@ export default async function OfferPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { offer } = await apiQuery<OfferQuery, OfferQueryVariables>(OfferDocument, {
+	const { offer } = await apiQuery(OfferDocument, {
 		variables: {
 			locale,
 		},

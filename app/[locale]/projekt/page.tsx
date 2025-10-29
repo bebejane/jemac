@@ -16,20 +16,17 @@ export default async function ShowcasePage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { showcase, draftUrl } = await apiQuery<ShowcaseQuery, ShowcaseQueryVariables>(ShowcaseDocument, {
+	const { showcase, draftUrl } = await apiQuery(ShowcaseDocument, {
 		variables: {
 			locale,
 		},
 	});
 
-	const { allProjects } = await apiQuery<AllShowcaseProjectsQuery, AllShowcaseProjectsQueryVariables>(
-		AllShowcaseProjectsDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
+		variables: {
+			locale,
+		},
+	});
 
 	if (!showcase) return notFound();
 	const { header, sections, title, footer } = showcase;
@@ -58,7 +55,7 @@ export default async function ShowcasePage({ params }: PageProps) {
 
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
-	const { showcase } = await apiQuery<ShowcaseQuery, ShowcaseQueryVariables>(ShowcaseDocument, {
+	const { showcase } = await apiQuery(ShowcaseDocument, {
 		variables: {
 			locale,
 		},

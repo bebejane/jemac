@@ -15,7 +15,7 @@ export default async function ContactPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
 
-	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, {
+	const { contact, draftUrl } = await apiQuery(ContactDocument, {
 		variables: {
 			locale,
 		},
@@ -46,7 +46,7 @@ export default async function ContactPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale } = await params;
 	const pathname = getPathname({ locale, href: { pathname: '/kontakt' } });
-	const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, {
+	const { contact, draftUrl } = await apiQuery(ContactDocument, {
 		variables: {
 			locale,
 		},

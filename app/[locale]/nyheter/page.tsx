@@ -15,26 +15,20 @@ export default async function NewsPage({ params }: PageProps) {
 	const { locale, category } = await params;
 	setRequestLocale(locale);
 
-	const { allNewsItems, draftUrl } = await apiQuery<AllNewsItemsQuery, AllNewsItemsQueryVariables>(
-		AllNewsItemsDocument,
-		{
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { allNewsItems, draftUrl } = await apiQuery(AllNewsItemsDocument, {
+		variables: {
+			locale,
+		},
+	});
 
-	const { allNewsCategories } = await apiQuery<AllNewsCategoriesQuery, AllNewsCategoriesQueryVariables>(
-		AllNewsCategoriesDocument,
-		{
-			all: true,
-			variables: {
-				locale,
-			},
-		}
-	);
+	const { allNewsCategories } = await apiQuery(AllNewsCategoriesDocument, {
+		all: true,
+		variables: {
+			locale,
+		},
+	});
 
-	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+	const { newsStart } = await apiQuery(NewsStartDocument, {
 		variables: {
 			locale,
 		},
@@ -114,7 +108,7 @@ export default async function NewsPage({ params }: PageProps) {
 export async function generateMetadata({ params }): Promise<Metadata> {
 	const { locale, category } = await params;
 
-	const { newsStart } = await apiQuery<NewsStartQuery, NewsStartQueryVariables>(NewsStartDocument, {
+	const { newsStart } = await apiQuery(NewsStartDocument, {
 		variables: {
 			locale,
 		},
