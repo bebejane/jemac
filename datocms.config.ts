@@ -44,19 +44,25 @@ export default {
 						pathname: `/nyheter/[category]/[newsitem]`,
 						params: { category: newsItem.category.slug, newsitem: newsItem.slug },
 					},
+					forcePrefix: true,
 				}),
 				getPathname({
 					locale,
 					href: { pathname: '/nyheter/[category]', params: { category: newsItem.category.slug } },
+					forcePrefix: true,
 				}),
-				getPathname({ locale, href: '/nyheter' }),
-				getPathname({ locale, href: '/' }),
+				getPathname({ locale, href: '/nyheter', forcePrefix: true }),
+				getPathname({ locale, href: '/', forcePrefix: true }),
 			];
 		},
 		project: async ({ slug, id }, locale) => [
-			getPathname({ locale, href: { pathname: `/projekt/[project]`, params: { project: slug[locale] ?? slug } } }),
-			getPathname({ locale, href: '/projekt' }),
-			getPathname({ locale, href: '/' }),
+			getPathname({
+				locale,
+				href: { pathname: `/projekt/[project]`, params: { project: slug[locale] ?? slug } },
+				forcePrefix: true,
+			}),
+			getPathname({ locale, href: '/projekt', forcePrefix: true }),
+			getPathname({ locale, href: '/', forcePrefix: true }),
 			...(await getItemReferenceRoutes(id, locales)),
 		],
 		project_footer: async (record, locale) => {
@@ -68,6 +74,7 @@ export default {
 				getPathname({
 					locale,
 					href: { pathname: `/projekt/[project]`, params: { project: slug } },
+					forcePrefix: true,
 				})
 			);
 			return paths;
