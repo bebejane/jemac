@@ -39,6 +39,7 @@ fragment StartFragment on StartRecord {
 	}
 	newsHeadline
 	news {
+		_editingUrl
 		id
 		text
 		url

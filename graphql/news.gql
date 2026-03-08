@@ -27,6 +27,7 @@ query NewsItem($slug: String, $locale: SiteLocale!) {
 }
 
 fragment NewsItemFragment on NewsItemRecord {
+	_editingUrl
 	id
 	slug
 	title

@@ -22,6 +22,7 @@ query ProjectFooter($locale: SiteLocale) {
 }
 
 fragment ProjectFragment on ProjectRecord {
+	_editingUrl
 	title
 	headline {
 		blocks

@@ -39,7 +39,7 @@ export default function SectionNavigation() {
 	return (
 		<nav className={cn(s.nav, hide && s.hide)}>
 			{sections.map(({ id, title, active }) => (
-				<a key={id} href={`#${id}`} className={active ? s.active : undefined}>
+				<a id={id} key={id} href={`#${id}`} className={active ? s.active : undefined}>
 					{title}
 				</a>
 			))}

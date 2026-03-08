@@ -13,6 +13,7 @@ import { Suspense } from 'react';
 import { getPathname, routing } from '@/i18n/routing';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import FullscreenGallery from '@/components/common/FullscreenGallery';
+import { DraftModeContentLink } from 'next-dato-utils/components';
 
 export type LayoutProps = {
 	children: React.ReactNode;
@@ -41,6 +42,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 					<div id='page-fade-transition' />
 				</body>
 				<GoogleAnalytics gaId='G-3YJRN86MF7' />
+				<DraftModeContentLink />
 			</html>
 		</>
 	);
@@ -100,7 +102,11 @@ export async function buildMetadata({
 	image,
 	locale,
 }: BuildMetadataProps): Promise<Metadata> {
-	description = !description ? '' : description.length > 160 ? `${description.substring(0, 157)}...` : description;
+	description = !description
+		? ''
+		: description.length > 160
+			? `${description.substring(0, 157)}...`
+			: description;
 	const url = pathname ? `${process.env.NEXT_PUBLIC_SITE_URL}${pathname}` : undefined;
 
 	return {
