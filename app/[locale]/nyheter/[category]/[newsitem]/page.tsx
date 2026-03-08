@@ -33,7 +33,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 		},
 	});
 
-	const { newsStart } = await apiQuery(NewsStartDocument, {
+	const { newsStart, draftUrl: newsStartDraftUrl } = await apiQuery(NewsStartDocument, {
 		variables: {
 			locale,
 		},
@@ -68,7 +68,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 				</header>
 				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
-			<DraftMode url={draftUrl} path={`/nyheter/${category.slug}/${slug}`} />
+			<DraftMode url={[draftUrl, newsStartDraftUrl]} path={`/nyheter/${category.slug}/${slug}`} />
 		</>
 	);
 }
@@ -83,7 +83,10 @@ export async function generateStaticParams({ params }) {
 		},
 	});
 
-	return allNewsItems.map(({ slug: newsitem, category }) => ({ newsitem, category: category.slug }));
+	return allNewsItems.map(({ slug: newsitem, category }) => ({
+		newsitem,
+		category: category.slug,
+	}));
 }
 
 export async function generateMetadata({ params }): Promise<Metadata> {

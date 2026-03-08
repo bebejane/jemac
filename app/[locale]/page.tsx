@@ -17,9 +17,7 @@ import { getPathname, locales } from '@/i18n/routing';
 
 export default async function Home({ params }: PageProps) {
 	const { locale } = await params;
-
 	if (!locales.includes(locale)) return notFound();
-
 	setRequestLocale(locale);
 
 	const { start, draftUrl } = await apiQuery(StartDocument, {
@@ -28,22 +26,39 @@ export default async function Home({ params }: PageProps) {
 		},
 	});
 
-	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
-		variables: {
-			locale,
+	const { allProjects, draftUrl: allProjectsDraftUrl } = await apiQuery(
+		AllShowcaseProjectsDocument,
+		{
+			variables: {
+				locale,
+			},
 		},
-	});
+	);
 
 	if (!start) return notFound();
 
-	const { header, footer, shortcuts, textHeadline, textText, jobsHeadline, jobsImage, jobsText, newsHeadline, news } =
-		start;
+	const {
+		header,
+		footer,
+		shortcuts,
+		textHeadline,
+		textText,
+		jobsHeadline,
+		jobsImage,
+		jobsText,
+		newsHeadline,
+		news,
+	} = start;
 
 	return (
 		<>
 			<Article header={header as HeaderRecord}>
 				<section className={s.shortcuts}>
-					<ul>{shortcuts?.map((shortcut) => <Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} />)}</ul>
+					<ul>
+						{shortcuts?.map((shortcut) => (
+							<Shortcut key={shortcut.id} shortcut={shortcut as ShortcutRecord} />
+						))}
+					</ul>
 				</section>
 				<section className={s.news}>
 					<NewsTicker headline={newsHeadline} news={news} />
@@ -60,7 +75,9 @@ export default async function Home({ params }: PageProps) {
 					<ProjectGallery projects={allProjects} title='Exempel på vad vi gjort' />
 				</section>
 				<section className={s.jobs}>
-					<div>{jobsImage && <Image data={jobsImage.responsiveImage} imgClassName={s.image} />}</div>
+					<div>
+						{jobsImage && <Image data={jobsImage.responsiveImage} imgClassName={s.image} />}
+					</div>
 					<div>
 						<Content content={jobsHeadline} className={s.headline} />
 						<Content content={jobsText} className={s.jobtext} />
@@ -68,7 +85,7 @@ export default async function Home({ params }: PageProps) {
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={`/`} />
 		</>
 	);
 }

@@ -21,12 +21,15 @@ export default async function NewsPage({ params }: PageProps) {
 		},
 	});
 
-	const { allNewsCategories } = await apiQuery(AllNewsCategoriesDocument, {
-		all: true,
-		variables: {
-			locale,
+	const { allNewsCategories, draftUrl: draftUrlCategories } = await apiQuery(
+		AllNewsCategoriesDocument,
+		{
+			all: true,
+			variables: {
+				locale,
+			},
 		},
-	});
+	);
 
 	const { newsStart } = await apiQuery(NewsStartDocument, {
 		variables: {
@@ -58,21 +61,29 @@ export default async function NewsPage({ params }: PageProps) {
 
 	return (
 		<>
-			<Article title={'News'} header={headerNews !== null ? (headerNews as any as HeaderProps) : undefined}>
+			<Article
+				title={'News'}
+				header={headerNews !== null ? (headerNews as any as HeaderProps) : undefined}
+			>
 				<section className={s.news}>
 					<div className={s.header}>
 						<h3>Senaste nytt</h3>
 						<ul className={s.subnav}>
-							{[{ id: 'all', title: 'Alla', slug: null }, ...allNewsCategories].map(({ id, title, slug }) => (
-								<li key={id}>
-									<Link
-										className={category === slug || (id === 'all' && !category) ? s.active : null}
-										href={{ pathname: id === 'all' ? '/nyheter' : '/nyheter/[category]', params: { category: slug } }}
-									>
-										{title}
-									</Link>
-								</li>
-							))}
+							{[{ id: 'all', title: 'Alla', slug: null }, ...allNewsCategories].map(
+								({ id, title, slug }) => (
+									<li key={id}>
+										<Link
+											className={category === slug || (id === 'all' && !category) ? s.active : null}
+											href={{
+												pathname: id === 'all' ? '/nyheter' : '/nyheter/[category]',
+												params: { category: slug },
+											}}
+										>
+											{title}
+										</Link>
+									</li>
+								),
+							)}
 						</ul>
 					</div>
 					{news.length > 0 && (
@@ -100,7 +111,7 @@ export default async function NewsPage({ params }: PageProps) {
 				</section>
 				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
-			<DraftMode url={draftUrl} path={`/nyheter`} />
+			<DraftMode url={[draftUrl, draftUrlCategories]} path={'/nyheter'} />
 		</>
 	);
 }

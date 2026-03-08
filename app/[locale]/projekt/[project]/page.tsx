@@ -24,25 +24,29 @@ export default async function ProjectPage({ params }: ProjectProps) {
 	const { project: slug, locale } = await params;
 	setRequestLocale(locale);
 
-	const { project, draftUrl } = await apiQuery(ProjectDocument, {
-		variables: {
-			locale,
-			slug,
-		},
-	});
-
-	const { projectFooter } = await apiQuery(ProjectFooterDocument, {
-		variables: {
-			locale,
-		},
-	});
-
-	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
-		variables: {
-			locale,
-			slug: project.slug,
-		},
-	});
+	const [
+		{ project, draftUrl },
+		{ projectFooter, draftUrl: footerDraftUrl },
+		{ allProjects, draftUrl: allProjectsDraftUrl },
+	] = await Promise.all([
+		apiQuery(ProjectDocument, {
+			variables: {
+				locale,
+				slug,
+			},
+		}),
+		apiQuery(ProjectFooterDocument, {
+			variables: {
+				locale,
+			},
+		}),
+		apiQuery(AllShowcaseProjectsDocument, {
+			variables: {
+				locale,
+				slug,
+			},
+		}),
+	]);
 
 	if (!project) return notFound();
 
@@ -53,7 +57,9 @@ export default async function ProjectPage({ params }: ProjectProps) {
 		<>
 			<Article title={title} className={s.page}>
 				<header className={s.header}>
-					<div className={s.image}>{image?.responsiveImage && <Image data={image.responsiveImage} />}</div>
+					<div className={s.image}>
+						{image?.responsiveImage && <Image data={image.responsiveImage} />}
+					</div>
 					<div className={s.content}>
 						<img className={s.logo} src={client?.logo?.url} alt={client?.name} />
 						<Content content={headline} className={s.headline} />
@@ -82,11 +88,14 @@ export default async function ProjectPage({ params }: ProjectProps) {
 					<Content content={result} className={s.content} />
 				</section>
 				<section>
-					<ProjectGallery projects={allProjects as ProjectRecord[]} title='Fler exempel på vad vi gjort' />
+					<ProjectGallery
+						projects={allProjects as ProjectRecord[]}
+						title='Fler exempel på vad vi gjort'
+					/>
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/projekt/${slug}`} />
+			<DraftMode url={[draftUrl, footerDraftUrl, allProjectsDraftUrl]} path={`/projekt/${slug}`} />
 		</>
 	);
 }
@@ -111,7 +120,10 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
 		},
 	});
 
-	const pathname = getPathname({ locale, href: { pathname: `/projekt/[project]`, params: { project: slug } } });
+	const pathname = getPathname({
+		locale,
+		href: { pathname: `/projekt/[project]`, params: { project: slug } },
+	});
 
 	return await buildMetadata({
 		title: project?.seoMeta.title,

@@ -22,11 +22,14 @@ export default async function ShowcasePage({ params }: PageProps) {
 		},
 	});
 
-	const { allProjects } = await apiQuery(AllShowcaseProjectsDocument, {
-		variables: {
-			locale,
+	const { allProjects, draftUrl: allProjectsDraftUrl } = await apiQuery(
+		AllShowcaseProjectsDocument,
+		{
+			variables: {
+				locale,
+			},
 		},
-	});
+	);
 
 	if (!showcase) return notFound();
 	const { header, sections, title, footer } = showcase;
@@ -48,7 +51,7 @@ export default async function ShowcasePage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={`/projekt`} />
 		</>
 	);
 }
