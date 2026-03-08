@@ -51,6 +51,15 @@ const nextConfig: NextConfig = {
 	async headers() {
 		return [
 			{
+				source: '/:path*',
+				headers: [
+					{
+						key: 'Content-Security-Policy',
+						value: `frame-ancestors 'self' https://plugins-cdn.datocms.com/ ${process.env.NEXT_PUBLIC_DATOCMS_BASE_EDITING_URL} ${process.env.NEXT_PUBLIC_SITE_URL}`,
+					},
+				],
+			},
+			{
 				source: '/api/web-previews',
 				headers: [
 					{ key: 'Access-Control-Allow-Credentials', value: 'true' },
