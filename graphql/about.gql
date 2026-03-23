@@ -15,7 +15,7 @@ query About($locale: SiteLocale) {
 			description
 		}
 	}
-	allStaffs(locale: $locale) {
+	allStaffs(locale: $locale, first: 100) {
 		...StaffFragment
 	}
 }
