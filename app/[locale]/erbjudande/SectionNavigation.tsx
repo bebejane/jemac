@@ -3,14 +3,16 @@
 import s from './SectionNavigation.module.scss';
 import cn from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
+import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 export default function SectionNavigation() {
 	const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo();
 	const [hide, setHide] = useState(false);
+	const t = useTranslations('Offer');
 	const [sections, setSections] = useState([
-		{ id: 'tjanster', title: 'Tjänster', active: false },
-		{ id: 'produkter', title: 'Produkter', active: false },
+		{ id: 'services', title: t('services'), active: false },
+		{ id: 'products', title: t('products'), active: false },
 	]);
 
 	useEffect(() => {

@@ -57,7 +57,7 @@ export default async function AboutPage({ params }: PageProps) {
 				</ul>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: { pathname: '/om-oss' } })} />
 		</>
 	);
 }

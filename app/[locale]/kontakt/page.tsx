@@ -38,7 +38,7 @@ export default async function ContactPage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={'/kontakt'} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: { pathname: '/kontakt' } })} />
 		</>
 	);
 }

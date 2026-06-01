@@ -42,7 +42,7 @@ export default async function OfferPage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={`/`} />
+			<DraftMode url={draftUrl} path={getPathname({ locale, href: { pathname: '/erbjudande' } })} />
 		</>
 	);
 }
