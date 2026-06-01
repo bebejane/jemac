@@ -24,10 +24,6 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 		setOpen(false);
 	}, [path, qs]);
 
-	function isSelected(item: MenuItem) {
-		return pathname.startsWith(item.slug) || pathname === item.slug;
-	}
-
 	return (
 		<>
 			<div className={cn(s.topbar, open && s.open)}>
