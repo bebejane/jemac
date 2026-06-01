@@ -23,6 +23,7 @@
 		"@datocms/cma-client-node": "^5.1.26",
 		"@datocms/content-link": "^0.3.18",
 		"@graphql-typed-document-node/core": "^3.2.0",
+		"@mux/mux-player-react": "^3.13.0",
 		"@next/third-parties": "^15.3.4",
 		"@u-wave/react-vimeo": "^0.9.12",
 		"classnames": "^2.5.1",
