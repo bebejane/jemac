@@ -1,4 +1,3 @@
-import s from './page.module.scss';
 import Article from '@/components/layout/Article';
 import { OfferDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
