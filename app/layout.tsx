@@ -28,7 +28,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 
 	return (
 		<>
-			<html lang={locale === 'sv' ? 'se-SE' : 'en-US'}>
+			<html lang={locale === 'sv' ? 'se-SE' : locale === 'en' ? 'en-US' : 'fi-FI'}>
 				<body>
 					<NextIntlClientProvider locale={locale}>
 						<Suspense fallback={null}>

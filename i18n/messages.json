@@ -139,10 +139,10 @@
 			"sv": "Läs mer",
 			"fi": "Lue lisää"
 		},
-		"readmore": {
-			"en": "Read more",
-			"sv": "Läs mer",
-			"fi": "Lue lisää"
+		"showAll": {
+			"en": "Show all",
+			"sv": "Visa alla",
+			"fi": "Näytä kaikki"
 		},
 		"examples": {
 			"sv": "Exempel på vad vi gjort",
