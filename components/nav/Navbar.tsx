@@ -4,10 +4,9 @@ import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Link from '@/components/nav/Link';
-import { CSSProperties, useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
-import { useWindowSize } from 'rooks';
-import { useScrollInfo } from 'next-dato-utils/hooks';
+import { getPathname, locales } from '@/i18n/routing';
 
 export type NavbarProps = {
 	menu: Menu;
@@ -22,7 +21,10 @@ export default function Navbar({ menu, bottom }: NavbarProps) {
 	const logoRef = useRef<HTMLImageElement>(null);
 
 	function isSelected(item: MenuItem) {
-		return pathname.startsWith(item.slug) || pathname === item.slug;
+		return locales.find((l) => {
+			const path = getPathname({ locale: l, href: { pathname: item.slug as any } });
+			return pathname.startsWith(path) || pathname === path;
+		});
 	}
 
 	function handleLeave() {

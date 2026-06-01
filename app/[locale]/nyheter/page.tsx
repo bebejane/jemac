@@ -75,6 +75,7 @@ export default async function NewsPage({ params }: PageProps) {
 									<li key={id}>
 										<Link
 											className={category === slug || (id === 'all' && !category) ? s.active : null}
+											locale={locale}
 											href={{
 												pathname: id === 'all' ? '/nyheter' : '/nyheter/[category]',
 												params: { category: slug },
@@ -92,6 +93,7 @@ export default async function NewsPage({ params }: PageProps) {
 							{news.map((item) => (
 								<li key={item.id}>
 									<Link
+										locale={locale}
 										href={{
 											pathname: '/nyheter/[category]/[newsitem]',
 											params: { category: item.category.slug, newsitem: item.slug },
@@ -112,7 +114,10 @@ export default async function NewsPage({ params }: PageProps) {
 				</section>
 				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
-			<DraftMode url={[draftUrl, draftUrlCategories]} path={getPathname({ locale, href: { pathname: '/nyheter' } })} />
+			<DraftMode
+				url={[draftUrl, draftUrlCategories]}
+				path={getPathname({ locale, href: { pathname: '/nyheter' } })}
+			/>
 		</>
 	);
 }
