@@ -23,6 +23,9 @@ importers:
       '@graphql-typed-document-node/core':
         specifier: ^3.2.0
         version: 3.2.0(graphql@16.11.0)
+      '@mux/mux-player-react':
+        specifier: ^3.13.0
+        version: 3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@next/third-parties':
         specifier: ^15.3.4
         version: 15.3.4(next@15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4))(react@19.2.3)
@@ -52,7 +55,7 @@ importers:
         version: 15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4)
       next-dato-utils:
         specifier: github:bebejane/next-dato-utils
-        version: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/da2705e5acc98da65274eff601e7b33aaca99af0(@datocms/cda-client@0.2.7(graphql@16.11.0))(@datocms/cma-client-browser@5.1.26)(@datocms/cma-client-node@5.1.26)(@datocms/cma-client@5.1.26)(@datocms/content-link@0.3.18)(@types/react@18.3.23)(datocms-structured-text-utils@5.1.7)(graphql@16.11.0)(next@15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4))(postmark@4.0.5)(react-datocms@8.0.0(@mux/mux-player-react@2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4)(zod@3.25.36)
+        version: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/12d5bf2210cf44263f72a4980665e11209886a87(@datocms/cda-client@0.2.7(graphql@16.11.0))(@datocms/cma-client-browser@5.1.26)(@datocms/cma-client-node@5.1.26)(@datocms/cma-client@5.1.26)(@datocms/content-link@0.3.18)(@types/react@18.3.23)(@vercel/functions@3.6.1)(datocms-structured-text-utils@5.1.7)(graphql@16.11.0)(next@15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4))(postmark@4.0.5)(react-datocms@8.0.0(@mux/mux-player-react@3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4)(sharp@0.34.4)(zod@3.25.36)
       next-intl:
         specifier: ^4.4.0
         version: 4.4.0(next@15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4))(react@19.2.3)(typescript@5.8.3)
@@ -61,7 +64,7 @@ importers:
         version: 19.2.3
       react-datocms:
         specifier: 8.0.0
-        version: 8.0.0(@mux/mux-player-react@2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 8.0.0(@mux/mux-player-react@3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-dom:
         specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
@@ -879,27 +882,30 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@mux/mux-player-react@2.9.1':
-    resolution: {integrity: sha512-1BpMs1J7P+d+/QCf9/mkTk/NPYR6sOskR4Ih0uFZjDAqNUN7/C9Q0FEJ6hF3sFXwAXo50RhnfCzsC5uYx3QHbA==}
+  '@mux/mux-data-google-ima@0.3.17':
+    resolution: {integrity: sha512-4wpH6dYybyZhqLn9qGn/+67Z8MZnQRAdqTFEEZw2bx61M9q01uPYYHxd8qwOnYtUGEeafsdTwVHVxKHGD3oc1A==}
+
+  '@mux/mux-player-react@3.13.0':
+    resolution: {integrity: sha512-7IkImo1H3rUYeuWHI/L0L7sGUqBvZCvptx3+4igc+P/V3WgqNFjOyQlcyxzxgXNtNNhGmkn5NaF3TU9DPbOmAQ==}
     peerDependencies:
-      '@types/react': ^17.0.0 || ^18 || ^19
+      '@types/react': ^17.0.0 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
       '@types/react-dom': '*'
-      react: ^17.0.2 || ^18 || ^19
-      react-dom: ^17.0.2 || ^18 || ^19
+      react: ^17.0.2 || ^17.0.0-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
+      react-dom: ^17.0.2 || ^17.0.2-0 || ^18 || ^18.0.0-0 || ^19 || ^19.0.0-0
     peerDependenciesMeta:
       '@types/react':
         optional: true
       '@types/react-dom':
         optional: true
 
-  '@mux/mux-player@2.9.1':
-    resolution: {integrity: sha512-TAyoUSPTV0IXWGMOknL6O+IeGSEJ8aS154DzyzqZgdd3zDJHM8JpkyNHgtowatMHT2lB6h+qMtWfp4u3ijpo2A==}
+  '@mux/mux-player@3.13.0':
+    resolution: {integrity: sha512-vh4CIMahUa29gys+mlfsOFKYKAKXxE07jSWk9WZxkdpGBW1fKfCQXlNxBoAIQlPa9Uk4MZuM3HVgqdW6aTuaZg==}
 
-  '@mux/mux-video@0.20.2':
-    resolution: {integrity: sha512-CqkK9EZZWdQE4U62JKlmWDskirT+D9C4suh2tSqKb2CA/0S4ybbbrVWcCKF7xfadUacfKO1yPsOKbe46F6phVQ==}
+  '@mux/mux-video@0.31.0':
+    resolution: {integrity: sha512-DvO2GynIJhPDc0LMuWvC144lCF+E07NI+chrg/vcRQlCf2fPdNNqCSMoaRdWu2S2v/Orsc85giT9K6GRbjbzgA==}
 
-  '@mux/playback-core@0.25.2':
-    resolution: {integrity: sha512-vrBbCgLHwmPpVxF0QGj+sXHUVXSxgDJJhVm8pxPXEkbw0vjPNHTXgAd/Ty6JA0vZ0ZjoQuAa17AxJ+c02JYeWQ==}
+  '@mux/playback-core@0.35.0':
+    resolution: {integrity: sha512-7Zi1EJ9sQNIUlQVBjJCXV0CB+rUVEsU3vNRElRV4xnD7dbpoioIAhe1SjZNBifjnK5aBKLDwQHypbnL3Cw3a5A==}
 
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
@@ -1222,6 +1228,7 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@unrs/resolver-binding-android-arm-eabi@1.11.1':
     resolution: {integrity: sha512-ppLRUgHVaGRWUx0R0Ut06Mjo9gBaBkg3v/8AxusGLhsIotbBLuRk51rAzqLC8gq6NyyAojEXglNjzf6R948DNw==}
@@ -1317,6 +1324,19 @@ packages:
     resolution: {integrity: sha512-lrW200hZdbfRtztbygyaq/6jP6AKE8qQN2KvPcJ+x7wiD038YtnYtZ82IMNJ69GJibV7bwL3y9FgK+5w/pYt6g==}
     cpu: [x64]
     os: [win32]
+
+  '@vercel/functions@3.6.1':
+    resolution: {integrity: sha512-xz+zZvj/XE6KDHZ8kYNO25Axpjng/kTJd/87SwONa6hzlq94K69OdqH1ZC/CehbtwWknpeyHqUHmpnfoaCbLZQ==}
+    engines: {node: '>= 20'}
+    peerDependencies:
+      '@aws-sdk/credential-provider-web-identity': '*'
+    peerDependenciesMeta:
+      '@aws-sdk/credential-provider-web-identity':
+        optional: true
+
+  '@vercel/oidc@3.5.0':
+    resolution: {integrity: sha512-jo7GgeJx2YMkjg9A28pFM5p88n5SnSHvDeNlf9898bRWiG9jPxwedj/gn/2XTw4UOTyQ50uHlrTGSlf/XU5tgw==}
+    engines: {node: '>= 20'}
 
   '@vimeo/player@2.27.1':
     resolution: {integrity: sha512-G3lk+BI0qPvJYxh+OguN5uE5aKfJBcGOQODl++NlXNLP9OMe21jZql0iI6AFGGd1KBLXZXuNmpvBKb4PG+fiVw==}
@@ -1510,11 +1530,16 @@ packages:
   capital-case@1.0.4:
     resolution: {integrity: sha512-ds37W8CytHgwnhGGTi88pcPyR15qoNkOpYwmMMfnWqqWgESapLqvDx6huFjQ5vqWSn2Z06173XNA7LtMOeUh1A==}
 
-  castable-video@1.0.10:
-    resolution: {integrity: sha512-tJgUv+8/zE191y8EKojvB0eKIyKA9obIttd6Wpdm6x2qBmuwZ7wDgzVCSmf5cN2v9jBiuu0s7O5poz8a8cFX/w==}
+  castable-video@1.1.16:
+    resolution: {integrity: sha512-wBhe2dZu2afhewL3EaGgVYTyDsa9HvNhY98clMZkNzDrLelOValSrTaoMos9YX7PPBCrgpd1j6YmNyyI2Vbq3w==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
+
+  ce-la-react@0.3.2:
+    resolution: {integrity: sha512-QJ6k4lOD/btI08xG8jBPxRCGXvCnusGGkTsiXk0u3NqUu/W+BXRnFD4PYjwtqh8AWmGa5LDbGk0fLQsqr0nSMA==}
+    peerDependencies:
+      react: '>=17.0.0'
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -1643,8 +1668,8 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
-  custom-media-element@1.3.3:
-    resolution: {integrity: sha512-5Tenv3iLP8ZiLHcT0qSyfDPrqzkCMxczeLY7cTndbsMF7EkVgL/74a6hxNrn/F6RuD74TLK6R2r0GsmntTTtRg==}
+  custom-media-element@1.4.6:
+    resolution: {integrity: sha512-/HRYqJOa1ob5ik4q7FIJVYxTJCFs/FL3+cQPAJjUf2uiqrDEzbTgB315gQ2rG8oK3w094W9m5tcB8S5Qah+caA==}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -2233,8 +2258,8 @@ packages:
   header-case@2.0.4:
     resolution: {integrity: sha512-H/vuk5TEEVZwrR0lp2zed9OCo1uAILMlx0JEMgC26rzyJJ3N1v6XkwHHXJQdR2doSjcGPM6OKPYoJgf0plJ11Q==}
 
-  hls.js@1.5.20:
-    resolution: {integrity: sha512-uu0VXUK52JhihhnN/MVVo1lvqNNuhoxkonqgO3IpjvQiGpJBdIXMGkofjQb/j9zvV7a1SW8U9g1FslWx/1HOiQ==}
+  hls.js@1.6.16:
+    resolution: {integrity: sha512-VSIRpLfRwlAAdGL4wiTucx2ScRipo0ed1FBatWkyt832jC4CReKstga6yIhYVwGu9LOBjuX9wzmRMeQdBJtzEA==}
 
   html-url-attributes@3.0.1:
     resolution: {integrity: sha512-ol6UPyBWqsrO6EJySPz2O7ZSr856WDrEzM5zMqp+FJJLGMW35cLYmmZnl0vztAZxRUoNZJFTCohfjuIJ8I4QBQ==}
@@ -2639,11 +2664,11 @@ packages:
   mdn-data@2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
 
-  media-chrome@3.2.5:
-    resolution: {integrity: sha512-tTsgS7x77Bn4p/wca/Si/7A+Q3z9DzKq0SOkroQvrNMXBVyQasMayDcsKg5Ur5NGsymZfttnJi7tXvVr/tPj8g==}
+  media-chrome@4.19.0:
+    resolution: {integrity: sha512-HWhDTwts+BSbdPkkB1VsJXp5kvL0IxY7xFT5tBwliM2+89kTPVTnHnev+9it2f9PweANjT/C8/C/S0PW9oyZbA==}
 
-  media-tracks@0.3.3:
-    resolution: {integrity: sha512-9P2FuUHnZZ3iji+2RQk7Zkh5AmZTnOG5fODACnjhCVveX1McY3jmCRHofIEI+yTBqplz7LXy48c7fQ3Uigp88w==}
+  media-tracks@0.3.5:
+    resolution: {integrity: sha512-l54rkKXlLBt3ob3zOLWHcnjvwUmX5bNEZ70igyapOZZC9imzqBmq1oz8p2roiV04KhjblFIi2hetLPF1oYVLRA==}
 
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -2798,8 +2823,8 @@ packages:
     resolution: {integrity: sha512-WWdIxpyjEn+FhQJQQv9aQAYlHoNVdzIzUySNV1gHUPDSdZJ3yZn7pAAbQcV7B56Mvu881q9FZV+0Vx2xC44VWA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  mux-embed@5.2.1:
-    resolution: {integrity: sha512-NukHw91xeEVDBeXVDBpi2BvXNix7gSuvdtyvOph5yR/ROn1hHbTlcYWoKQyCyJX9frsF00UROEul+S8wPzU3aQ==}
+  mux-embed@5.18.1:
+    resolution: {integrity: sha512-ePsHjiEKY+FgrSBiMmaF+LOtTQSSBWv/1zqpREQFN96JE93xlsArT/MEi30yKOE06MgjOlL70YI750molu3y7g==}
 
   nano-css@5.6.2:
     resolution: {integrity: sha512-+6bHaC8dSDGALM1HJjOHVXpuastdu2xFoZlC77Jh4cg+33Zcgm+Gxd+1xsnpZK14eyHObSp82+ll5y3SX75liw==}
@@ -2827,10 +2852,10 @@ packages:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
 
-  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/da2705e5acc98da65274eff601e7b33aaca99af0:
-    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/da2705e5acc98da65274eff601e7b33aaca99af0}
-    version: 2.0.253
-    engines: {node: '>=0.18'}
+  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/12d5bf2210cf44263f72a4980665e11209886a87:
+    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/12d5bf2210cf44263f72a4980665e11209886a87}
+    version: 2.0.369
+    engines: {node: '>=0.22'}
     hasBin: true
     peerDependencies:
       '@datocms/cda-client': '>=0.2.7'
@@ -2838,6 +2863,7 @@ packages:
       '@datocms/cma-client-browser': '>=5.0.0'
       '@datocms/cma-client-node': '>=5.0.0'
       '@datocms/content-link': '>=0.3.18'
+      '@vercel/functions': '>=3.4.3'
       datocms-structured-text-utils: '>=2.0.0'
       graphql: '>=16.0.0'
       next: '>=16.0.0'
@@ -2846,6 +2872,7 @@ packages:
       react-datocms: '>=8.0.0'
       react-dom: 19.x
       sass: '>=1.69.0'
+      sharp: '>=0.34.5'
       zod: '>=3.0.0'
 
   next-intl@4.4.0:
@@ -3028,6 +3055,9 @@ packages:
   picomatch@4.0.3:
     resolution: {integrity: sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==}
     engines: {node: '>=12'}
+
+  player.style@0.3.4:
+    resolution: {integrity: sha512-5O9bkbq0APQIkhptyZwp0gUgheCeImGPFo4hvPF2M5xBmgsUYzsUPHCfMye2xyeRE1zvQBKtziaC3jPgnHE1tw==}
 
   pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
@@ -3657,6 +3687,7 @@ packages:
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   vfile-message@4.0.2:
@@ -4533,8 +4564,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@img/colour@1.0.0':
-    optional: true
+  '@img/colour@1.0.0': {}
 
   '@img/sharp-darwin-arm64@0.34.4':
     optionalDependencies:
@@ -4764,37 +4794,41 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@mux/mux-player-react@2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@mux/mux-data-google-ima@0.3.17':
     dependencies:
-      '@mux/mux-player': 2.9.1
-      '@mux/playback-core': 0.25.2
+      mux-embed: 5.18.1
+
+  '@mux/mux-player-react@3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@mux/mux-player': 3.13.0(react@19.2.3)
+      '@mux/playback-core': 0.35.0
       prop-types: 15.8.1
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
     optionalDependencies:
       '@types/react': 18.3.23
-    optional: true
 
-  '@mux/mux-player@2.9.1':
+  '@mux/mux-player@3.13.0(react@19.2.3)':
     dependencies:
-      '@mux/mux-video': 0.20.2
-      '@mux/playback-core': 0.25.2
-      media-chrome: 3.2.5
-    optional: true
+      '@mux/mux-video': 0.31.0
+      '@mux/playback-core': 0.35.0
+      media-chrome: 4.19.0(react@19.2.3)
+      player.style: 0.3.4(react@19.2.3)
+    transitivePeerDependencies:
+      - react
 
-  '@mux/mux-video@0.20.2':
+  '@mux/mux-video@0.31.0':
     dependencies:
-      '@mux/playback-core': 0.25.2
-      castable-video: 1.0.10
-      custom-media-element: 1.3.3
-      media-tracks: 0.3.3
-    optional: true
+      '@mux/mux-data-google-ima': 0.3.17
+      '@mux/playback-core': 0.35.0
+      castable-video: 1.1.16
+      custom-media-element: 1.4.6
+      media-tracks: 0.3.5
 
-  '@mux/playback-core@0.25.2':
+  '@mux/playback-core@0.35.0':
     dependencies:
-      hls.js: 1.5.20
-      mux-embed: 5.2.1
-    optional: true
+      hls.js: 1.6.16
+      mux-embed: 5.18.1
 
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
@@ -5167,6 +5201,12 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
+  '@vercel/functions@3.6.1':
+    dependencies:
+      '@vercel/oidc': 3.5.0
+
+  '@vercel/oidc@3.5.0': {}
+
   '@vimeo/player@2.27.1':
     dependencies:
       native-promise-only: 0.8.1
@@ -5392,12 +5432,15 @@ snapshots:
       tslib: 2.8.1
       upper-case-first: 2.0.2
 
-  castable-video@1.0.10:
+  castable-video@1.1.16:
     dependencies:
-      custom-media-element: 1.3.3
-    optional: true
+      custom-media-element: 1.4.6
 
   ccount@2.0.1: {}
+
+  ce-la-react@0.3.2(react@19.2.3):
+    dependencies:
+      react: 19.2.3
 
   chalk@4.1.2:
     dependencies:
@@ -5544,8 +5587,7 @@ snapshots:
 
   csstype@3.1.3: {}
 
-  custom-media-element@1.3.3:
-    optional: true
+  custom-media-element@1.4.6: {}
 
   damerau-levenshtein@1.0.8: {}
 
@@ -5640,8 +5682,7 @@ snapshots:
 
   detect-libc@1.0.3: {}
 
-  detect-libc@2.1.2:
-    optional: true
+  detect-libc@2.1.2: {}
 
   devlop@1.1.0:
     dependencies:
@@ -6270,8 +6311,7 @@ snapshots:
       capital-case: 1.0.4
       tslib: 2.8.1
 
-  hls.js@1.5.20:
-    optional: true
+  hls.js@1.6.16: {}
 
   html-url-attributes@3.0.1: {}
 
@@ -6774,11 +6814,13 @@ snapshots:
 
   mdn-data@2.0.14: {}
 
-  media-chrome@3.2.5:
-    optional: true
+  media-chrome@4.19.0(react@19.2.3):
+    dependencies:
+      ce-la-react: 0.3.2(react@19.2.3)
+    transitivePeerDependencies:
+      - react
 
-  media-tracks@0.3.3:
-    optional: true
+  media-tracks@0.3.5: {}
 
   merge2@1.4.1: {}
 
@@ -7020,8 +7062,7 @@ snapshots:
 
   mute-stream@2.0.0: {}
 
-  mux-embed@5.2.1:
-    optional: true
+  mux-embed@5.18.1: {}
 
   nano-css@5.6.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
@@ -7046,7 +7087,7 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/da2705e5acc98da65274eff601e7b33aaca99af0(@datocms/cda-client@0.2.7(graphql@16.11.0))(@datocms/cma-client-browser@5.1.26)(@datocms/cma-client-node@5.1.26)(@datocms/cma-client@5.1.26)(@datocms/content-link@0.3.18)(@types/react@18.3.23)(datocms-structured-text-utils@5.1.7)(graphql@16.11.0)(next@15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4))(postmark@4.0.5)(react-datocms@8.0.0(@mux/mux-player-react@2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4)(zod@3.25.36):
+  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/12d5bf2210cf44263f72a4980665e11209886a87(@datocms/cda-client@0.2.7(graphql@16.11.0))(@datocms/cma-client-browser@5.1.26)(@datocms/cma-client-node@5.1.26)(@datocms/cma-client@5.1.26)(@datocms/content-link@0.3.18)(@types/react@18.3.23)(@vercel/functions@3.6.1)(datocms-structured-text-utils@5.1.7)(graphql@16.11.0)(next@15.5.9(@babel/core@7.27.3)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4))(postmark@4.0.5)(react-datocms@8.0.0(@mux/mux-player-react@3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.80.4)(sharp@0.34.4)(zod@3.25.36):
     dependencies:
       '@datocms/cda-client': 0.2.7(graphql@16.11.0)
       '@datocms/cma-client': 5.1.26
@@ -7054,6 +7095,7 @@ snapshots:
       '@datocms/cma-client-node': 5.1.26
       '@datocms/content-link': 0.3.18
       '@opentelemetry/api': 1.9.0
+      '@vercel/functions': 3.6.1
       commander: 11.1.0
       datocms-structured-text-utils: 5.1.7
       dedent-js: 1.0.1
@@ -7067,12 +7109,13 @@ snapshots:
       prettier: 3.5.3
       pretty-bytes: 6.1.1
       react: 19.2.3
-      react-datocms: 8.0.0(@mux/mux-player-react@2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react-datocms: 8.0.0(@mux/mux-player-react@3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-dom: 19.2.3(react@19.2.3)
       react-markdown: 9.1.0(@types/react@18.3.23)(react@19.2.3)
       remark-breaks: 4.0.0
       remark-gfm: 4.0.1
       sass: 1.80.4
+      sharp: 0.34.4
       table: 6.9.0
       zod: 3.25.36
     transitivePeerDependencies:
@@ -7276,6 +7319,12 @@ snapshots:
 
   picomatch@4.0.3: {}
 
+  player.style@0.3.4(react@19.2.3):
+    dependencies:
+      media-chrome: 4.19.0(react@19.2.3)
+    transitivePeerDependencies:
+      - react
+
   pluralize@8.0.0: {}
 
   possible-typed-array-names@1.1.0: {}
@@ -7320,7 +7369,7 @@ snapshots:
     dependencies:
       performance-now: 2.1.0
 
-  react-datocms@8.0.0(@mux/mux-player-react@2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  react-datocms@8.0.0(@mux/mux-player-react@3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(graphql@16.11.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@datocms/content-link': 0.3.18
       datocms-listen: 1.0.2(graphql@16.11.0)
@@ -7331,7 +7380,7 @@ snapshots:
       react-string-replace: 1.1.1
       use-deep-compare-effect: 1.8.1(react@19.2.3)
     optionalDependencies:
-      '@mux/mux-player-react': 2.9.1(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@mux/mux-player-react': 3.13.0(@types/react@18.3.23)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     transitivePeerDependencies:
       - graphql
       - react-dom
@@ -7626,7 +7675,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.4
       '@img/sharp-win32-ia32': 0.34.4
       '@img/sharp-win32-x64': 0.34.4
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
