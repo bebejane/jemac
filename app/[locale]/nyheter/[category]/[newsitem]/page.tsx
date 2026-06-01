@@ -1,5 +1,4 @@
 import s from './page.module.scss';
-import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
 import { AllNewsItemsDocument, NewsItemDocument, NewsStartDocument } from '@/graphql';
 import { notFound } from 'next/navigation';
@@ -8,12 +7,10 @@ import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'next';
 import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildMetadata } from '@/app/layout';
 import Footer from '@/components/layout/Footer';
 import { getPathname, Link } from '@/i18n/routing';
-import { format } from 'date-fns';
-import { sv, enUS } from 'date-fns/locale';
 import { formatDate } from '@/lib/utils';
 
 export type NewsItemProps = {
@@ -42,7 +39,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 	if (!newsItem) return notFound();
 
 	const { id, title, headline, intro, text, image, category, _createdAt } = newsItem;
-
+	const t = await getTranslations('News');
 	return (
 		<>
 			<Article title={title} className={s.page}>
@@ -50,7 +47,7 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 					<div className={s.image}>
 						{image?.responsiveImage && <Image data={image.responsiveImage} />}
 						<Link className={s.back} href={{ pathname: '/nyheter' }}>
-							Alla Nyheter
+							{t('allNews')}
 						</Link>
 					</div>
 
@@ -62,13 +59,13 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 						<Content content={intro} className={s.intro} />
 						<Content content={text} className={s.text} />
 						<Link className={s.back} href={{ pathname: '/nyheter' }}>
-							Alla Nyheter
+							{t('allNews')}
 						</Link>
 					</div>
 				</header>
 				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
-			<DraftMode url={[draftUrl, newsStartDraftUrl]} path={`/nyheter/${category.slug}/${slug}`} />
+			<DraftMode url={[draftUrl, newsStartDraftUrl]} path={getPathname({ locale, href: { pathname: '/nyheter/[category]/[newsitem]', params: { category: category.slug, newsitem: slug } } })} />
 		</>
 	);
 }

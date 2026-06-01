@@ -9,7 +9,7 @@ import { useScrollInfo } from 'next-dato-utils/hooks';
 import { use, useEffect, useRef, useState } from 'react';
 import { useWindowSize } from 'rooks';
 import { getPathname } from '@/i18n/routing';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 type FooterProps = {
 	footer?: FooterRecord;
@@ -21,7 +21,7 @@ export default function Footer({ footer }: FooterProps) {
 	const [show, setShow] = useState<boolean>(false);
 	const [hide, setHide] = useState<boolean>(true);
 	const locale = useLocale();
-
+	const t = useTranslations('Footer');
 	const ref = useRef<HTMLDivElement>(null);
 
 	if (!footer) return null;
@@ -58,7 +58,9 @@ export default function Footer({ footer }: FooterProps) {
 					Jemac Sweden AB<span>&emsp;Trångsundsvägen 20F&emsp;393 56 Kalmar</span>
 				</p>
 				<p>
-					<Link href='https://www.linkedin.com/company/jemac-sweden-ab'>Följ oss på LinkedIn</Link>
+					<Link href='https://www.linkedin.com/company/jemac-sweden-ab'>
+						{t('followUs')} LinkedIn
+					</Link>
 				</p>
 			</div>
 		</footer>

@@ -3,7 +3,7 @@ import { StartDocument, AllShowcaseProjectsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Image } from 'react-datocms';
 import Footer from '@/components/layout/Footer';
 import Article from '@/components/layout/Article';
@@ -37,6 +37,7 @@ export default async function Home({ params }: PageProps) {
 
 	if (!start) return notFound();
 
+	const t = await getTranslations('Common');
 	const {
 		header,
 		footer,
@@ -72,7 +73,7 @@ export default async function Home({ params }: PageProps) {
 					</div>
 				</section>
 				<section className={s.projects}>
-					<ProjectGallery projects={allProjects} title='Exempel på vad vi gjort' />
+					<ProjectGallery projects={allProjects} title={t('examples')} />
 				</section>
 				<section className={s.jobs}>
 					<div>
@@ -85,7 +86,7 @@ export default async function Home({ params }: PageProps) {
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={`/`} />
+			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={getPathname({ locale, href: '/' })} />
 		</>
 	);
 }

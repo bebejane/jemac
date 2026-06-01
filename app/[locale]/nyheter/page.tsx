@@ -3,7 +3,7 @@ import Article, { HeaderProps } from '@/components/layout/Article';
 import { AllNewsItemsDocument, AllNewsCategoriesDocument, NewsStartDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Footer from '@/components/layout/Footer';
 import Content from '@/components/common/Content';
 import { buildMetadata } from '@/app/layout';
@@ -37,6 +37,7 @@ export default async function NewsPage({ params }: PageProps) {
 		},
 	});
 
+	const t = await getTranslations('News');
 	const news = allNewsItems.filter((item) => !category || item.category.slug === category);
 	const headerNews = news[0]
 		? {
@@ -54,7 +55,7 @@ export default async function NewsPage({ params }: PageProps) {
 							params: { category: news[0].category.slug, newsitem: news[0].slug },
 						},
 					}),
-					text: 'Läs mer',
+					text: t('readMore'),
 				},
 			}
 		: null;
@@ -67,9 +68,9 @@ export default async function NewsPage({ params }: PageProps) {
 			>
 				<section className={s.news}>
 					<div className={s.header}>
-						<h3>Senaste nytt</h3>
+						<h3>{t('latestNews')}</h3>
 						<ul className={s.subnav}>
-							{[{ id: 'all', title: 'Alla', slug: null }, ...allNewsCategories].map(
+							{[{ id: 'all', title: t('all'), slug: null }, ...allNewsCategories].map(
 								({ id, title, slug }) => (
 									<li key={id}>
 										<Link
@@ -107,11 +108,11 @@ export default async function NewsPage({ params }: PageProps) {
 							))}
 						</ul>
 					)}
-					{news.length === 0 && <p className={s.empty}>Det finns inga nyheter i denna kategori</p>}
+					{news.length === 0 && <p className={s.empty}>{t('noNews')}</p>}
 				</section>
 				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
-			<DraftMode url={[draftUrl, draftUrlCategories]} path={'/nyheter'} />
+			<DraftMode url={[draftUrl, draftUrlCategories]} path={getPathname({ locale, href: { pathname: '/nyheter' } })} />
 		</>
 	);
 }

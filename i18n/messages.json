@@ -2,45 +2,152 @@
 	"menu": {
 		"offer": {
 			"en": "What we offer",
-			"sv": "Vårt erbjudande"
+			"sv": "Vårt erbjudande",
+			"fi": "Mitä tarjoamme"
 		},
 		"projects": {
 			"en": "Projects",
-			"sv": "Projekt"
+			"sv": "Projekt",
+			"fi": "Projektit"
 		},
 		"about": {
 			"en": "About us",
-			"sv": "Om oss"
+			"sv": "Om oss",
+			"fi": "Meistä"
 		},
 		"news": {
 			"en": "News",
-			"sv": "Nyheter"
+			"sv": "Nyheter",
+			"fi": "Uutiset"
 		},
 		"join": {
 			"en": "Join us",
-			"sv": "Bli en av oss"
+			"sv": "Bli en av oss",
+			"fi": "Liity mukaan"
 		},
 		"contact": {
 			"en": "Contact",
-			"sv": "Kontakt"
-		}
-	},
-	"Start": {
-		"readmore": {
-			"en": "Read more",
-			"sv": "Läs mer"
+			"sv": "Kontakt",
+			"fi": "Yhteystiedot"
 		}
 	},
 	"Contact": {
 		"title": {
 			"en": "Contact",
-			"sv": "Kontakt"
+			"sv": "Kontakt",
+			"fi": "Yhteystiedot"
 		},
 		"close": {
 			"en": "Close",
-			"sv": "Stäng"
+			"sv": "Stäng",
+			"fi": "Sulje"
 		}
 	},
-	"About": {},
-	"Manifest": {}
+	"Offer": {
+		"services": {
+			"en": "Services",
+			"sv": "Tjänster",
+			"fi": "Palvelut"
+		},
+		"products": {
+			"en": "Products",
+			"sv": "Produkter",
+			"fi": "Tuotteet"
+		}
+	},
+	"Section": {
+		"assignment": {
+			"en": "Assignment",
+			"sv": "Uppdrag",
+			"fi": "Toimeksianto"
+		}
+	},
+	"News": {
+		"latestNews": {
+			"en": "Latest news",
+			"sv": "Senaste nyheter",
+			"fi": "Viimeisimmät uutiset"
+		},
+		"all": {
+			"en": "All",
+			"sv": "Alla",
+			"fi": "Kaikki"
+		},
+		"allNews": {
+			"en": "All news",
+			"sv": "Alla nyheter",
+			"fi": "Kaikki uutiset"
+		},
+		"noNews": {
+			"sv": "Det finns inga nyheter i denna kategori",
+			"en": "There are no news in this category",
+			"fi": "Tässä kategoriassa ei ole uutisia"
+		},
+		"readMore": {
+			"en": "Read more",
+			"sv": "Läs mer",
+			"fi": "Lue lisää"
+		}
+	},
+	"Projects": {
+		"startingPoint": {
+			"en": "Starting point",
+			"sv": "Utgångspunkt",
+			"fi": "Lähtökohta"
+		},
+		"whatWasNeeded": {
+			"en": "What was needed",
+			"sv": "Vad behövdes för projektet",
+			"fi": "Mitä tarvittiin"
+		},
+		"solution": {
+			"en": "Solution",
+			"sv": "Lösningen",
+			"fi": "Ratkaisu"
+		},
+		"whatWeDid": {
+			"en": "What we did",
+			"sv": "Vad gjorde vi?",
+			"fi": "Mitä teimme?"
+		},
+		"result": {
+			"en": "Result",
+			"sv": "Resultat",
+			"fi": "Tulos"
+		},
+		"effect": {
+			"en": "What was the effect?",
+			"sv": "Vad blev effekten?",
+			"fi": "Mikä oli vaikutus?"
+		},
+		"moreExamples": {
+			"en": "More examples",
+			"sv": "Fler exempel på vad vi gjort",
+			"fi": "Lisää esimerkkejä"
+		}
+	},
+	"Footer": {
+		"followUs": {
+			"en": "Follow us on",
+			"sv": "Följ oss på",
+			"fi": "Seuraa meitä"
+		}
+	},
+	"Common": {
+		"readMore": {
+			"en": "Read more",
+			"sv": "Läs mer",
+			"fi": "Lue lisää"
+		},
+		"showAll": {
+			"en": "Show all",
+			"sv": "Visa alla",
+			"fi": "Näytä kaikki"
+		},
+		"examples": {
+			"sv": "Exempel på vad vi gjort",
+			"en": "Selected projects",
+			"fi": "Esimerkkejä tekemistämme"
+		}
+	}
 }

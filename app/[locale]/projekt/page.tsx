@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import { AllShowcaseProjectsDocument, ShowcaseDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import ProjectGallery from '@/components/common/ProjectGallery';
 import { buildMetadata } from '@/app/layout';
@@ -32,13 +32,14 @@ export default async function ShowcasePage({ params }: PageProps) {
 	);
 
 	if (!showcase) return notFound();
+	const t = await getTranslations('Common');
 	const { header, sections, title, footer } = showcase;
 
 	return (
 		<>
 			<Article title={title} header={header as HeaderRecord}>
 				<section className={s.gallery}>
-					<ProjectGallery projects={allProjects} noborder={true} title='Exempel på vad vi gjort' />
+					<ProjectGallery projects={allProjects} noborder={true} title={t('examples')} />
 				</section>
 				{sections.map((section) => (
 					<Section
@@ -51,7 +52,7 @@ export default async function ShowcasePage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={`/projekt`} />
+			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={getPathname({ locale, href: { pathname: '/projekt' } })} />
 		</>
 	);
 }

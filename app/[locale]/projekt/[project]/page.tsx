@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 import ProjectGallery from '@/components/common/ProjectGallery';
 import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import cn from 'classnames';
 import { buildMetadata } from '@/app/layout';
 import Footer from '@/components/layout/Footer';
@@ -50,6 +50,7 @@ export default async function ProjectPage({ params }: ProjectProps) {
 
 	if (!project) return notFound();
 
+	const t = await getTranslations('Projects');
 	const { title, headline, text, client, result, what, why, image } = project;
 	const { footer } = projectFooter;
 
@@ -68,34 +69,31 @@ export default async function ProjectPage({ params }: ProjectProps) {
 				</header>
 				<section className={s.section}>
 					<div className={s.header}>
-						<h5>Utgångspunkt</h5>
-						<h3>Vad behövdes för projektet</h3>
+						<h5>{t('startingPoint')}</h5>
+						<h3>{t('whatWasNeeded')}</h3>
 					</div>
 					<Content content={why} className={s.content} />
 				</section>
 				<section className={s.section}>
 					<div className={s.header}>
-						<h5>Lösningen</h5>
-						<h3>Vad gjorde vi?</h3>
+						<h5>{t('solution')}</h5>
+						<h3>{t('whatWeDid')}</h3>
 					</div>
 					<Content content={what} className={s.content} />
 				</section>
 				<section className={s.section}>
 					<div className={s.header}>
-						<h5>Resultat</h5>
-						<h3>Vad blev effekten?</h3>
+						<h5>{t('result')}</h5>
+						<h3>{t('effect')}</h3>
 					</div>
 					<Content content={result} className={s.content} />
 				</section>
 				<section>
-					<ProjectGallery
-						projects={allProjects as ProjectRecord[]}
-						title='Fler exempel på vad vi gjort'
-					/>
+					<ProjectGallery projects={allProjects as ProjectRecord[]} title={t('moreExamples')} />
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={[draftUrl, footerDraftUrl, allProjectsDraftUrl]} path={`/projekt/${slug}`} />
+			<DraftMode url={[draftUrl, footerDraftUrl, allProjectsDraftUrl]} path={getPathname({ locale, href: { pathname: '/projekt/[project]', params: { project: slug } } })} />
 		</>
 	);
 }
