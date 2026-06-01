@@ -3077,11 +3077,14 @@ type NewsRecordListListNonNullMultiLocaleField = {
 /** Record of type News (start) (news_start) */
 type NewsStartRecord = RecordInterface & {
   __typename?: 'NewsStartRecord';
+  _allFooterLocales?: Maybe<Array<FooterRecordNonNullMultiLocaleField>>;
+  _allSeoMetaLocales?: Maybe<Array<SeoRecordNonNullMultiLocaleField>>;
   _createdAt: Scalars['DateTime']['output'];
   /** Editing URL */
   _editingUrl?: Maybe<Scalars['String']['output']>;
   _firstPublishedAt: Scalars['DateTime']['output'];
   _isValid: Scalars['BooleanType']['output'];
+  _locales: Array<SiteLocale>;
   _modelApiKey: Scalars['String']['output'];
   _publicationScheduledAt?: Maybe<Scalars['DateTime']['output']>;
   _publishedAt: Scalars['DateTime']['output'];
@@ -3097,7 +3100,33 @@ type NewsStartRecord = RecordInterface & {
 
 
 /** Record of type News (start) (news_start) */
+type NewsStartRecord_allFooterLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News (start) (news_start) */
+type NewsStartRecord_allSeoMetaLocalesArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+};
+
+
+/** Record of type News (start) (news_start) */
 type NewsStartRecord_seoMetaTagsArgs = {
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News (start) (news_start) */
+type NewsStartRecordfooterArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
+  locale?: InputMaybe<SiteLocale>;
+};
+
+
+/** Record of type News (start) (news_start) */
+type NewsStartRecordseoMetaArgs = {
+  fallbackLocales?: InputMaybe<Array<SiteLocale>>;
   locale?: InputMaybe<SiteLocale>;
 };
 
@@ -4220,6 +4249,7 @@ type SiteglobalSeoArgs = {
 
 enum SiteLocale {
   en = 'en',
+  fi = 'fi',
   sv = 'sv'
 }
 
