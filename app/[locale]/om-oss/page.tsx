@@ -3,7 +3,7 @@ import Article from '@/components/layout/Article';
 import { AboutDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Image } from 'react-datocms';
 import Section from '@/components/layout/Section';
@@ -14,9 +14,12 @@ import { buildMetadata } from '@/app/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 
+
+
 export default async function AboutPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
+
 
 	const { about, allStaffs, draftUrl } = await apiQuery(AboutDocument, {
 		variables: {
@@ -25,7 +28,7 @@ export default async function AboutPage({ params }: PageProps) {
 	});
 
 	if (!about) return notFound();
-
+	const t = await getTranslations('Common');
 	const { title, header, sections, footer } = about;
 
 	return (
@@ -40,7 +43,7 @@ export default async function AboutPage({ params }: PageProps) {
 						image={section.image as FileField}
 					/>
 				))}
-				<h2 className={s.headerStaff}>Människorna bakom</h2>
+				<h2 className={s.headerStaff}>{t('peoplebehind')}</h2>
 				<ul className={s.staff}>
 					{allStaffs.map(({ id, name, image, text, email }) => (
 						<li key={id}>
