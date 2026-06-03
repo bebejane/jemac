@@ -2,8 +2,7 @@
 
 import Content from '@/components/common/Content';
 import s from './Shortcut.module.scss';
-import cn from 'classnames';
-import Link from '@/components/nav/Link';
+import { Link } from '@/i18n/routing';
 import { Image } from 'react-datocms';
 import { usePathname } from '@/i18n/routing';
 
@@ -14,7 +13,7 @@ type Props = {
 export default function FilterBar({ shortcut }: Props) {
 	if (!shortcut) return null;
 	const pathname = usePathname();
-	const { headline, text, id, image, linkText } = shortcut;
+	const { headline, text, image, linkText } = shortcut;
 
 	return (
 		<li className={s.shortcut}>
@@ -23,7 +22,12 @@ export default function FilterBar({ shortcut }: Props) {
 				<Image data={image.responsiveImage} className={s.image} />
 			</figure>
 
-			<Link href={`/${pathname}#${shortcut.sectionId}`}>
+			<Link
+				href={{
+					pathname: '/erbjudande',
+					hash: shortcut.sectionId,
+				}}
+			>
 				<div className={s.text}>
 					<Content content={headline} className={s.headline} />
 					<Content content={text} className={s.content} />

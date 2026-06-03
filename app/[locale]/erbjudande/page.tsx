@@ -28,7 +28,7 @@ export default async function OfferPage({ params }: PageProps) {
 	return (
 		<>
 			<Article title={title} header={header as HeaderRecord}>
-				<SectionNavigation />
+				<SectionNavigation sections={sections} />
 				{sections.map((section, idx) => (
 					<Section
 						id={section.sectionId}

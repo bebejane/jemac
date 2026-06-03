@@ -1,19 +1,25 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import s from './SectionNavigation.module.scss';
 import cn from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-export default function SectionNavigation() {
+export default function SectionNavigation({
+	sections: _sections,
+}: {
+	sections: OfferQuery['offer']['sections'];
+}) {
 	const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo();
 	const [hide, setHide] = useState(false);
-	const t = useTranslations('Offer');
-	const [sections, setSections] = useState([
-		{ id: 'services', title: t('services'), active: false },
-		{ id: 'products', title: t('products'), active: false },
-	]);
+	const locale = useLocale();
+	const [sections, setSections] = useState(
+		_sections
+			.filter((s) => s.menuItem)
+			.map((s) => ({ id: s.sectionId, title: s.menuItem, active: false })),
+	);
 
 	useEffect(() => {
 		const atBottom = scrolledPosition >= documentHeight - viewportHeight * 2;
@@ -41,9 +47,17 @@ export default function SectionNavigation() {
 	return (
 		<nav className={cn(s.nav, hide && s.hide)}>
 			{sections.map(({ id, title, active }) => (
-				<a id={id} key={id} href={`#${id}`} className={active ? s.active : undefined}>
+				<Link
+					key={id}
+					locale={locale}
+					className={active ? s.active : undefined}
+					href={{
+						pathname: '/erbjudande',
+						hash: id,
+					}}
+				>
 					{title}
-				</a>
+				</Link>
 			))}
 		</nav>
 	);
