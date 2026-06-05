@@ -8,7 +8,7 @@ import { DraftMode } from 'next-dato-utils/components';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import ProjectGallery from '@/components/common/ProjectGallery';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 
@@ -52,7 +52,10 @@ export default async function ShowcasePage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={[draftUrl, allProjectsDraftUrl]} path={getPathname({ locale, href: { pathname: '/projekt' } })} />
+			<DraftMode
+				url={[draftUrl, allProjectsDraftUrl]}
+				path={getPathname({ locale, href: { pathname: '/projekt' } })}
+			/>
 		</>
 	);
 }

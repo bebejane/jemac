@@ -1,4 +1,4 @@
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { AllNewsCategoriesDocument, NewsStartDocument } from '@/graphql';
 import { getPathname } from '@/i18n/routing';
 import { Metadata } from 'next';
@@ -21,7 +21,10 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 	return await buildMetadata({
 		title: newsStart?.seoMeta.title,
 		description: newsStart?.seoMeta.description,
-		pathname: getPathname({ locale, href: { pathname: '/nyheter/[category]', params: { category } } }),
+		pathname: getPathname({
+			locale,
+			href: { pathname: '/nyheter/[category]', params: { category } },
+		}),
 		locale,
 	});
 }

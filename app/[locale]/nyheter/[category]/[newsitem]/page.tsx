@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import Footer from '@/components/layout/Footer';
 import { getPathname, Link } from '@/i18n/routing';
 import { formatDate } from '@/lib/utils';
@@ -65,7 +65,16 @@ export default async function NewsItemPage({ params }: NewsItemProps) {
 				</header>
 				<Footer footer={newsStart?.footer as FooterRecord} />
 			</Article>
-			<DraftMode url={[draftUrl, newsStartDraftUrl]} path={getPathname({ locale, href: { pathname: '/nyheter/[category]/[newsitem]', params: { category: category.slug, newsitem: slug } } })} />
+			<DraftMode
+				url={[draftUrl, newsStartDraftUrl]}
+				path={getPathname({
+					locale,
+					href: {
+						pathname: '/nyheter/[category]/[newsitem]',
+						params: { category: category.slug, newsitem: slug },
+					},
+				})}
+			/>
 		</>
 	);
 }

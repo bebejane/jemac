@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { getPathname } from '@/i18n/routing';
 
 export default async function ContactPage({ params }: PageProps) {

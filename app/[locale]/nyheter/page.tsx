@@ -6,7 +6,7 @@ import { DraftMode } from 'next-dato-utils/components';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Footer from '@/components/layout/Footer';
 import Content from '@/components/common/Content';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname, Link } from '@/i18n/routing';
 import { formatDate } from '@/lib/utils';

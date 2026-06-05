@@ -11,7 +11,7 @@ import Content from '@/components/common/Content';
 import Shortcut from '@/components/common/Shortcut';
 import ProjectGallery from '@/components/common/ProjectGallery';
 import NewsTicker from '@/components/common/NewsTicker';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname, locales } from '@/i18n/routing';
 

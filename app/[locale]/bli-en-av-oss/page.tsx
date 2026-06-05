@@ -7,7 +7,7 @@ import { setRequestLocale } from 'next-intl/server';
 import Article from '@/components/layout/Article';
 import Footer from '@/components/layout/Footer';
 import Section from '@/components/layout/Section';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 
@@ -38,7 +38,10 @@ export default async function JoinPage({ params }: PageProps) {
 				))}
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={draftUrl} path={getPathname({ locale, href: { pathname: '/bli-en-av-oss' } })} />
+			<DraftMode
+				url={draftUrl}
+				path={getPathname({ locale, href: { pathname: '/bli-en-av-oss' } })}
+			/>
 		</>
 	);
 }

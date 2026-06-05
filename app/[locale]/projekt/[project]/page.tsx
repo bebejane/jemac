@@ -10,7 +10,7 @@ import { Image } from 'react-datocms';
 import Content from '@/components/common/Content';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import cn from 'classnames';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import Footer from '@/components/layout/Footer';
 import { getPathname } from '@/i18n/routing';
 
@@ -93,7 +93,13 @@ export default async function ProjectPage({ params }: ProjectProps) {
 				</section>
 			</Article>
 			<Footer footer={footer as FooterRecord} />
-			<DraftMode url={[draftUrl, footerDraftUrl, allProjectsDraftUrl]} path={getPathname({ locale, href: { pathname: '/projekt/[project]', params: { project: slug } } })} />
+			<DraftMode
+				url={[draftUrl, footerDraftUrl, allProjectsDraftUrl]}
+				path={getPathname({
+					locale,
+					href: { pathname: '/projekt/[project]', params: { project: slug } },
+				})}
+			/>
 		</>
 	);
 }

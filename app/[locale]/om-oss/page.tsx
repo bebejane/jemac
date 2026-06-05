@@ -10,16 +10,13 @@ import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
 import Content from '@/components/common/Content';
 import classNames from 'classnames';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
-
-
 
 export default async function AboutPage({ params }: PageProps) {
 	const { locale } = await params;
 	setRequestLocale(locale);
-
 
 	const { about, allStaffs, draftUrl } = await apiQuery(AboutDocument, {
 		variables: {

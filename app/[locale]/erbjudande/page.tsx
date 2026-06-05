@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/layout/Section';
 import Footer from '@/components/layout/Footer';
 import SectionNavigation from '@/app/[locale]/erbjudande/SectionNavigation';
-import { buildMetadata } from '@/app/layout';
+import { buildMetadata } from '@/app/[locale]/layout';
 import { Metadata } from 'next';
 import { getPathname } from '@/i18n/routing';
 
