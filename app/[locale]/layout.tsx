@@ -25,7 +25,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 	setRequestLocale(locale);
 
 	const menu = await buildMenu(locale);
-	console.log(locale);
+
 	return (
 		<>
 			<html lang={locale === 'sv' ? 'se-SE' : locale === 'en' ? 'en-US' : 'fi-FI'}>
