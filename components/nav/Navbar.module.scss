@@ -63,7 +63,7 @@
 			white-space: nowrap;
 			&::after {
 				position: absolute;
-				content: " ";
+				content: ' ';
 				margin-left: 0.1rem;
 			}
 
@@ -75,5 +75,11 @@
 	}
 	@include mq($until: desktop) {
 		display: none;
+	}
+
+	.language {
+		a {
+			margin-left: 0.5rem;
+		}
 	}
 }

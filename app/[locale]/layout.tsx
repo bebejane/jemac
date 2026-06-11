@@ -32,8 +32,8 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 				<body>
 					<NextIntlClientProvider locale={locale}>
 						<Suspense fallback={null}>
-							<Navbar menu={menu} />
-							<NavbarMobile menu={menu} />
+							<Navbar menu={menu} locale={locale} />
+							<NavbarMobile menu={menu} locale={locale} />
 							<main className={s.main}>{children}</main>
 							<FullscreenGallery />
 						</Suspense>

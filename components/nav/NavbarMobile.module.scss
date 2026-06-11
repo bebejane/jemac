@@ -113,4 +113,11 @@
 	@include mq($from: desktop) {
 		display: none;
 	}
+
+	.language {
+		border-bottom: 0px solid transparent !important;
+		a {
+			margin-right: 0.5rem;
+		}
+	}
 }

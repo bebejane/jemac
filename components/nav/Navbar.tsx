@@ -4,16 +4,19 @@ import s from './Navbar.module.scss';
 import cn from 'classnames';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Link from '@/components/nav/Link';
+
 import { useRef, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
-import { getPathname, locales } from '@/i18n/routing';
+import { getPathname, locales, Link as I18nLink } from '@/i18n/routing';
+import { capitalize } from 'next-dato-utils/utils';
 
 export type NavbarProps = {
 	menu: Menu;
 	bottom?: boolean;
+	locale: SiteLocale;
 };
 
-export default function Navbar({ menu, bottom }: NavbarProps) {
+export default function Navbar({ menu, bottom, locale }: NavbarProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
@@ -43,16 +46,27 @@ export default function Navbar({ menu, bottom }: NavbarProps) {
 				</figure>
 
 				<ul className={s.menu} onMouseLeave={handleLeave}>
-					{menu.map((item, idx) => (
-						<li
-							id={`${item.id}-menu`}
-							key={`${item.id}-menu`}
-							className={cn(isSelected(item) && s.active)}
-							onMouseEnter={() => handleEnter(item.sub ? item.id : null)}
-						>
-							<Link href={item.slug ?? item.href}>{item.title}</Link>
-						</li>
-					))}
+					{menu
+						.filter(({ sv }) => !sv || (sv && locale === 'sv'))
+						.map((item, idx) => (
+							<li
+								id={`${item.id}-menu`}
+								key={`${item.id}-menu`}
+								className={cn(isSelected(item) && s.active)}
+								onMouseEnter={() => handleEnter(item.sub ? item.id : null)}
+							>
+								<Link href={item.slug ?? item.href}>{item.title}</Link>
+							</li>
+						))}
+					<li className={s.language}>
+						{locales
+							.filter((l) => l !== locale)
+							.map((l, idx) => (
+								<I18nLink href='/' locale={l} key={idx}>
+									{capitalize(l)}
+								</I18nLink>
+							))}
+					</li>
 				</ul>
 			</nav>
 		</>

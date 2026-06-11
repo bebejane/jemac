@@ -7,18 +7,20 @@ import Link from '@/components/nav/Link';
 import { useEffect, useState } from 'react';
 import { Menu, MenuItem } from '@/lib/menu';
 import Hamburger from './Hamburger';
+import { locales, Link as I18nLink } from '@/i18n/routing';
+import { capitalize } from 'next-dato-utils/utils';
 
 export type NavbarMobileProps = {
 	menu: Menu;
+	locale: SiteLocale;
 };
 
-export default function NavbarMobile({ menu }: NavbarMobileProps) {
+export default function NavbarMobile({ menu, locale }: NavbarMobileProps) {
 	const path = usePathname();
 	const qs = useSearchParams().toString();
 	const pathname = `${path}${qs.length > 0 ? `?${qs}` : ''}`;
 	const [selected, setSelected] = useState<string | null>(null);
 	const [open, setOpen] = useState(false);
-	const member = menu.find(({ id }) => id === 'member');
 
 	useEffect(() => {
 		setOpen(false);
@@ -43,15 +45,26 @@ export default function NavbarMobile({ menu }: NavbarMobileProps) {
 			</div>
 			<nav className={cn(s.navbarMobile, open && s.open)}>
 				<ul className={s.menu}>
-					{menu.map(({ id, title, href, slug, sub }) => (
-						<li
-							key={id}
-							className={cn(sub && s.dropdown, pathname.startsWith(slug) && s.active)}
-							onClick={() => setSelected(selected === id ? null : id)}
-						>
-							<Link href={slug ?? href}>{title}</Link>
-						</li>
-					))}
+					{menu
+						.filter(({ sv }) => !sv || (sv && locale === 'sv'))
+						.map(({ id, title, href, slug, sub }) => (
+							<li
+								key={id}
+								className={cn(sub && s.dropdown, pathname.startsWith(slug) && s.active)}
+								onClick={() => setSelected(selected === id ? null : id)}
+							>
+								<Link href={slug ?? href}>{title}</Link>
+							</li>
+						))}
+					<li className={s.language}>
+						{locales
+							.filter((l) => l !== locale)
+							.map((l, idx) => (
+								<I18nLink href='/' locale={l} key={idx}>
+									{capitalize(l)}
+								</I18nLink>
+							))}
+					</li>
 				</ul>
 			</nav>
 		</>
