@@ -41,7 +41,7 @@ export default async function RootLayout({ children, params }: LayoutProps) {
 					<div id='page-transition' />
 					<div id='page-fade-transition' />
 				</body>
-				<GoogleAnalytics gaId='G-3YJRN86MF7' />
+				<GoogleAnalytics gaId='G-31L110Z7TY' />
 				<DraftModeContentLink />
 			</html>
 		</>
