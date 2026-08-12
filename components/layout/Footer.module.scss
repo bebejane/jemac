@@ -71,6 +71,20 @@
 		}
 	}
 
+	.aaa {
+		height: 1.5rem;
+		margin-right: 1em;
+		margin-top: -6px;
+	}
+
+	.right {
+		display: flex;
+		align-items: center;
+		a {
+			text-decoration: none;
+		}
+	}
+
 	.wrap,
 	.copyright {
 		transition: filter 1.2s ease-in-out;

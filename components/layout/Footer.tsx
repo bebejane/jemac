@@ -57,11 +57,16 @@ export default function Footer({ footer }: FooterProps) {
 				<p>
 					Jemac Sweden AB<span>&emsp;Trångsundsvägen 20F&emsp;393 56 Kalmar</span>
 				</p>
-				<p>
-					<Link href='https://www.linkedin.com/company/jemac-sweden-ab'>
-						{t('followUs')} LinkedIn
-					</Link>
-				</p>
+
+				<div className={s.right}>
+					<img className={s.aaa} src="/images/aaa-logotype.svg"></img>
+					<p>
+						<Link href='https://www.linkedin.com/company/jemac-sweden-ab'>
+							{t('followUs')} LinkedIn
+						</Link>
+					</p>
+				</div>
+
 			</div>
 		</footer>
 	);
