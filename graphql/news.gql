@@ -12,10 +12,15 @@ query NewsStart($locale: SiteLocale!) {
 }
 
 query AllNewsItems($first: IntType, $skip: IntType, $locale: SiteLocale!) {
-	allNewsItems(locale: $locale, first: $first, skip: $skip) {
+	allNewsItems(
+		locale: $locale
+		first: $first
+		skip: $skip
+		filter: { _locales: { allIn: [$locale] } }
+	) {
 		...NewsItemFragment
 	}
-	_allNewsItemsMeta {
+	_allNewsItemsMeta(filter: { _locales: { allIn: [$locale] } }) {
 		count
 	}
 }
