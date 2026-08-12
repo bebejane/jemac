@@ -47,7 +47,15 @@ fragment NewsItemFragment on NewsItemRecord {
 		blocks
 	}
 	text {
-		blocks
+		blocks {
+			__typename
+			... on ButtonRecord {
+				__typename
+				id
+				text
+				url
+			}
+		}
 		links
 		value
 	}
