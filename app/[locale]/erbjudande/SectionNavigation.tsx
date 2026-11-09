@@ -29,6 +29,7 @@ export default function SectionNavigation({
 
 	useEffect(() => {
 		const observer = new IntersectionObserver((entries) => {
+			console.log('observe');
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					setSections((prev) => {
@@ -43,6 +44,18 @@ export default function SectionNavigation({
 		sections.forEach((section) => {
 			observer.observe(document.getElementById(section.id));
 		});
+	}, []);
+
+	useEffect(() => {
+		const hash = window.location.hash.replaceAll('#', '');
+		if (!hash) return;
+
+		setSections((prev) => {
+			return prev.map((section) => {
+				return { ...section, active: section.id === hash };
+			});
+		});
+		document.getElementById(hash)?.scrollIntoView();
 	}, []);
 
 	return (
