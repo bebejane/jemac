@@ -6,6 +6,7 @@ import cn from 'classnames';
 import { useScrollInfo } from 'next-dato-utils/hooks';
 import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { stripStega } from '@datocms/content-link';
 
 export default function SectionNavigation({
 	sections: _sections,
@@ -52,8 +53,8 @@ export default function SectionNavigation({
 					locale={locale}
 					className={active ? s.active : undefined}
 					href={{
-						pathname: '/erbjudande',
-						hash: id,
+						pathname: `/erbjudande`,
+						hash: stripStega(id),
 					}}
 				>
 					{title}

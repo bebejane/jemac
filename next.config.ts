@@ -46,6 +46,11 @@ const nextConfig: NextConfig = {
 				destination: '/',
 				permanent: true,
 			},
+			{
+				source: '/legomontage',
+				destination: '/erbjudande#produktion',
+				permanent: true,
+			},
 		];
 	},
 	async headers() {
